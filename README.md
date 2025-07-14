@@ -19,12 +19,12 @@ A bilingual (Arabic/English), interactive dashboard visualizing Ajman’s offici
 
 All data is sourced from the [Ajman Data Portal](https://data.ajman.ae):
 
-- `data/medical-certificates-issued.csv`
-- `data/food-laboratory-test-results.csv`
-- `data/health-certificates-for-food-export.csv`
-- `data/confiscated-food-and-health-products.csv`
-- `data/warnings-and-public-health-violations.csv`
-- `data/shops-visited.csv`
+- `data/medical-certificates-issued.json`
+- `data/food-laboratory-test-results.json`
+- `data/health-certificates-for-food-export.json`
+- `data/confiscated-food-and-health-products.json`
+- `data/warnings-and-public-health-violations.json`
+- `data/shops-visited.json`
 
 ## Vision 2030
 
@@ -40,7 +40,7 @@ This dashboard is aligned with [Ajman Vision 2030 (PDF)](https://drive.google.co
 ## Deployment
 
 1. Clone or download this repository.
-2. Place all CSV data files in the `/data` folder.
+2. Place all JSON data files in the `/data` folder.
 3. Place Ajman Data and Vision 2030 logos in `/assets`.
 4. Enable GitHub Pages in repository settings (branch: `main`, folder: `/`).
 5. Access your dashboard at `https://yourusername.github.io/ajman-health-dashboard/`.

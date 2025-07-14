@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ajman Health & Food Safety Dashboard</title>
   <link rel="icon" href="assets/ajman-data-logo.png" />
-  <!-- Chart.js and PapaParse -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <style>
@@ -25,6 +24,7 @@
     .chart-card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
     .chart-card h3 { font-size: 1.15rem; margin-bottom: 1rem; color: #1e3a5f; }
     .chart-container { position: relative; height: 320px; }
+    .chart-narrative { font-size: 0.95rem; margin-top: 0.5rem; color: #444; }
     .insights-section { background: white; margin: 2rem; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); max-width: 1360px; margin: 2rem auto; }
     .insights-section h2 { color: #1e3a5f; margin-bottom: 1.5rem; font-size: 1.3rem; }
     .insight-item { display: flex; align-items: flex-start; margin-bottom: 1.2rem; padding: 1rem; background: #f8fafc; border-radius: 8px; border-left: 4px solid #7c3aed; }
@@ -32,7 +32,7 @@
     .insight-text h4 { color: #1e3a5f; margin-bottom: 0.5rem; }
     .footer { background: #1e3a5f; color: white; padding: 1.5rem; text-align: center; margin-top: 2rem; }
     .footer p { margin: 0.5rem 0; opacity: 0.9; }
-    .footer a { color: #93c5fd; text-decoration: none; }
+    .footer a { color: #93c5fd; text-decoration: underline; }
     .footer a:hover { text-decoration: underline; }
     @media (max-width: 768px) {
       .header { flex-direction: column; align-items: flex-start; }
@@ -64,7 +64,12 @@
   <div class="footer">
     <p id="footerSource"></p>
     <p id="footerVision"></p>
-    <p>© 2025 - Ajman University | Created by Haseeb Juma</p>
+    <p>
+      <a href="https://drive.google.com/file/d/117tCPxZFDSuK42dQhU_oRK0INWZ8Su2k/view" target="_blank">
+        Ajman Vision 2030 [PDF] | رؤية عجمان 2030 [ملف PDF]
+      </a>
+    </p>
+    <p>Created by Haseeb Juma | © 2025 - Ajman University</p>
   </div>
   <script>
     // === BILINGUAL TRANSLATION OBJECT ===
@@ -85,6 +90,13 @@
           "Confiscated Food & Health Products (kg)",
           "Warnings & Violations by Category",
           "Shops Visited for Inspection"
+        ],
+        chartNarratives: [
+          "Ajman’s export and veterinary health certification activity over time. Export certifications dominate, reflecting Ajman’s strong food export oversight.",
+          "Food safety testing results: steady improvement in 'Fit' samples, with a declining trend in 'Unfit' results, supporting Vision 2030 sustainability.",
+          "Confiscated product volumes indicate active enforcement. Spikes often follow increased inspections or targeted campaigns.",
+          "Most violations are issued to companies, suggesting targeted education/enforcement could yield quick wins for public health.",
+          "Inspection activity shows Ajman’s preventive approach to health and food safety, with peaks during high-risk periods."
         ],
         insightsTitle: "Key Insights & Vision 2030 Alignment",
         insights: [
@@ -129,6 +141,13 @@
           "الإنذارات والمخالفات حسب الفئة",
           "المحلات التي تمت زيارتها للتفتيش"
         ],
+        chartNarratives: [
+          "نشاط إصدار الشهادات الصحية للتصدير والبيطرية في عجمان عبر السنوات. شهادات التصدير تتصدر المشهد، مما يعكس الرقابة القوية على التصدير الغذائي.",
+          "نتائج اختبارات سلامة الأغذية: تحسن مستمر في العينات الصالحة وتراجع في غير الصالحة، دعمًا لاستدامة رؤية عجمان 2030.",
+          "كميات المنتجات المصادرة تعكس فعالية الإنفاذ. الارتفاعات غالبًا ما تتبع حملات تفتيش أو حملات موجهة.",
+          "معظم المخالفات تصدر للشركات، مما يشير إلى أن التوعية أو الإنفاذ الموجه قد يحقق نتائج سريعة للصحة العامة.",
+          "نشاط التفتيش يُظهر نهج عجمان الوقائي في الصحة وسلامة الغذاء مع ذروات في الفترات عالية المخاطر."
+        ],
         insightsTitle: "رؤى رئيسية ومحاذاة مع رؤية عجمان 2030",
         insights: [
           {
@@ -159,7 +178,6 @@
 
     let currentLang = 'en';
 
-    // === LANGUAGE TOGGLE ===
     function setLang(lang) {
       currentLang = lang;
       document.documentElement.lang = lang;
@@ -230,7 +248,7 @@
       });
       // 5. Export Certificates
       const cert = dataStore.certificates || [];
-      const totalExport = cert.filter(r => (r.Category_EN || r["Category_EN"]) && (r.Category_EN === "Export CoH issued" || r["Category_EN"] === "Export CoH issued"))
+      const totalExport = cert.filter(r => (r.Category_EN === "Export CoH issued" || r.Category_AR === "شهادات صحية تصدير"))
         .reduce((sum, row) => sum + (parseFloat(row["Number of Certificates of Health"]) || 0), 0);
       metrics.push({
         title: translations[currentLang].metrics[4].title,
@@ -244,7 +262,6 @@
     // === CHARTS ===
     let chartInstances = [];
     function renderCharts() {
-      // Destroy old charts
       chartInstances.forEach(ch => ch.destroy && ch.destroy());
       chartInstances = [];
       const chartsDiv = document.getElementById('chartsContainer');
@@ -253,10 +270,12 @@
       const cert = dataStore.certificates || [];
       const certByYear = {};
       cert.forEach(row => {
-        const year = String(parseInt(row.Year));
+        let year = parseInt(row.Year);
+        if (isNaN(year)) return;
+        year = String(year);
         const cat = (currentLang === 'ar' ? row.Category_AR : row.Category_EN) || '';
         const count = parseFloat(row["Number of Certificates of Health"]) || 0;
-        if (!year || !cat) return;
+        if (!cat) return;
         if (!certByYear[year]) certByYear[year] = {Export:0, Veterinary:0};
         if (cat.includes(currentLang === 'ar' ? 'تصدير' : 'Export')) certByYear[year].Export += count;
         else if (cat.includes(currentLang === 'ar' ? 'بيطرية' : 'Veterinary')) certByYear[year].Veterinary += count;
@@ -264,7 +283,7 @@
       const yearsCert = Object.keys(certByYear).sort();
       const exportData = yearsCert.map(y => certByYear[y].Export);
       const vetData = yearsCert.map(y => certByYear[y].Veterinary);
-      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[0]}</h3><div class="chart-container"><canvas id="certificatesChart"></canvas></div></div>`;
+      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[0]}</h3><div class="chart-container"><canvas id="certificatesChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[0]}</div></div>`;
       chartInstances.push(new Chart(document.getElementById('certificatesChart').getContext('2d'), {
         type: 'line',
         data: {
@@ -280,10 +299,12 @@
       const foodLab = dataStore.foodLab || [];
       const foodByYear = {};
       foodLab.forEach(row => {
-        const year = String(parseInt(row.year || row.Year));
+        let year = parseInt(row.year || row.Year);
+        if (isNaN(year)) return;
+        year = String(year);
         const result = (currentLang === 'ar' ? row["Analysis Results_AR"] : row["Analysis Results_EN"]) || '';
         const val = parseFloat(row.value) || 0;
-        if (!year || !result) return;
+        if (!result) return;
         if (!foodByYear[year]) foodByYear[year] = {Fit:0, Unfit:0};
         if (result === (currentLang === 'ar' ? 'صالحة' : 'Fit')) foodByYear[year].Fit += val;
         else if (result === (currentLang === 'ar' ? 'غير صالحة' : 'Unfit')) foodByYear[year].Unfit += val;
@@ -291,7 +312,7 @@
       const yearsFood = Object.keys(foodByYear).sort();
       const fitData = yearsFood.map(y => foodByYear[y].Fit);
       const unfitData = yearsFood.map(y => foodByYear[y].Unfit);
-      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[1]}</h3><div class="chart-container"><canvas id="foodLabChart"></canvas></div></div>`;
+      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[1]}</h3><div class="chart-container"><canvas id="foodLabChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[1]}</div></div>`;
       chartInstances.push(new Chart(document.getElementById('foodLabChart').getContext('2d'), {
         type: 'bar',
         data: {
@@ -307,14 +328,15 @@
       const conf = dataStore.confiscated || [];
       const confByYear = {};
       conf.forEach(row => {
-        const year = String(parseInt(row.Year));
+        let year = parseInt(row.Year);
+        if (isNaN(year)) return;
+        year = String(year);
         const val = parseFloat(row["Confiscated food and health products(kg)"]) || 0;
-        if (!year) return;
         confByYear[year] = (confByYear[year] || 0) + val;
       });
       const yearsConf = Object.keys(confByYear).sort();
       const confData = yearsConf.map(y => confByYear[y]);
-      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[2]}</h3><div class="chart-container"><canvas id="confiscatedChart"></canvas></div></div>`;
+      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[2]}</h3><div class="chart-container"><canvas id="confiscatedChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[2]}</div></div>`;
       chartInstances.push(new Chart(document.getElementById('confiscatedChart').getContext('2d'), {
         type: 'line',
         data: {
@@ -334,21 +356,25 @@
       const violations = dataStore.violations || [];
       const violByYearCat = {};
       violations.forEach(row => {
-        const year = String(parseInt(row.Year));
+        let year = parseInt(row.Year);
+        if (isNaN(year)) return;
+        year = String(year);
         const cat = (currentLang === 'ar' ? row.Category_AR : row.Category_EN) || 'Other';
         const val = parseFloat(row["Number Of Violations And Cleanliness Issued By Waste Management &Public Higiene Sec"]) || 0;
-        if (!year) return;
         if (!violByYearCat[cat]) violByYearCat[cat] = {};
         violByYearCat[cat][year] = (violByYearCat[cat][year] || 0) + val;
       });
-      const yearsViol = [...new Set(violations.map(r => String(parseInt(r.Year))))].sort();
+      const yearsViol = [...new Set(violations.map(r => {
+        let y = parseInt(r.Year);
+        return isNaN(y) ? null : String(y);
+      }).filter(Boolean))].sort();
       const categories = Object.keys(violByYearCat);
       const datasetsViol = categories.map((cat, i) => ({
         label: cat,
         data: yearsViol.map(y => violByYearCat[cat][y] || 0),
         backgroundColor: ['#007bff','#28a745','#dc3545','#ffc107','#6f42c1'][i % 5]
       }));
-      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[3]}</h3><div class="chart-container"><canvas id="violationsChart"></canvas></div></div>`;
+      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[3]}</h3><div class="chart-container"><canvas id="violationsChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[3]}</div></div>`;
       chartInstances.push(new Chart(document.getElementById('violationsChart').getContext('2d'), {
         type: 'bar',
         data: { labels: yearsViol, datasets: datasetsViol },
@@ -358,14 +384,15 @@
       const shops = dataStore.shops || [];
       const shopsByYear = {};
       shops.forEach(row => {
-        const year = String(parseInt(row.Year));
+        let year = parseInt(row.Year);
+        if (isNaN(year)) return;
+        year = String(year);
         const val = parseFloat(row["Number of Shops Visited"]) || 0;
-        if (!year) return;
         shopsByYear[year] = (shopsByYear[year] || 0) + val;
       });
       const yearsShops = Object.keys(shopsByYear).sort();
       const shopsData = yearsShops.map(y => shopsByYear[y]);
-      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[4]}</h3><div class="chart-container"><canvas id="shopsChart"></canvas></div></div>`;
+      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[4]}</h3><div class="chart-container"><canvas id="shopsChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[4]}</div></div>`;
       chartInstances.push(new Chart(document.getElementById('shopsChart').getContext('2d'), {
         type: 'line',
         data: {

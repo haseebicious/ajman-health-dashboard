@@ -1,0 +1,984 @@
+﻿Year,Month_AR,Month_EN,Service_AR,Service_EN,Category_EN,Category_AR,Number Of Violations And Cleanliness Issued By Waste Management &Public Higiene Sec
+2021.0,ديسيمبر,December,مخالفات,Fines,Companies,الشركات,70.0
+2021.0,اكتوبر,October,مخالفات,Fines,Vehicles,المركبات,6.0
+2015.0,يوليو,July,إنذارات,Warnings,Companies,الشركات,38.0
+2015.0,نوفمبر,November,إنذارات,Warnings,Companies,الشركات,47.0
+2015.0,ديسيمبر,December,إنذارات,Warnings,Companies,الشركات,26.0
+2015.0,مايو,May,إنذارات,Warnings,Vehicles,المركبات,3.0
+2015.0,يوليو,July,إنذارات,Warnings,Vehicles,المركبات,0.0
+2015.0,اكتوبر,October,إنذارات,Warnings,Vehicles,المركبات,0.0
+2015.0,نوفمبر,November,إنذارات,Warnings,Vehicles,المركبات,0.0
+2015.0,ابريل,April,مخالفات,Fines,Companies,الشركات,145.0
+2015.0,مايو,May,مخالفات,Fines,Companies,الشركات,83.0
+2015.0,نوفمبر,November,مخالفات,Fines,Companies,الشركات,95.0
+2015.0,ديسيمبر,December,مخالفات,Fines,Companies,الشركات,50.0
+2015.0,يناير,January,مخالفات,Fines,Vehicles,المركبات,4.0
+2015.0,ابريل,April,مخالفات,Fines,Vehicles,المركبات,8.0
+2015.0,مايو,May,مخالفات,Fines,Vehicles,المركبات,5.0
+2015.0,ابريل,April,مخالفات,Fines,Personal,الأفراد,1.0
+2015.0,يونيو,June,مخالفات,Fines,Personal,الأفراد,4.0
+2016.0,يناير,January,إنذارات,Warnings,Companies,الشركات,63.0
+2016.0,يوليو,July,إنذارات,Warnings,Companies,الشركات,4.0
+2016.0,سبتمبر,September,إنذارات,Warnings,Companies,الشركات,11.0
+2016.0,يناير,January,إنذارات,Warnings,Vehicles,المركبات,0.0
+2016.0,فبراير,February,إنذارات,Warnings,Vehicles,المركبات,0.0
+2016.0,يوليو,July,إنذارات,Warnings,Vehicles,المركبات,0.0
+2016.0,فبراير,February,إنذارات,Warnings,Personal,الأفراد,23.0
+2016.0,ابريل,April,إنذارات,Warnings,Personal,الأفراد,9.0
+2016.0,مايو,May,إنذارات,Warnings,Personal,الأفراد,0.0
+2016.0,سبتمبر,September,إنذارات,Warnings,Personal,الأفراد,2.0
+2016.0,فبراير,February,مخالفات,Fines,Companies,الشركات,94.0
+2016.0,مارس,March,مخالفات,Fines,Companies,الشركات,49.0
+2016.0,يوليو,July,مخالفات,Fines,Companies,الشركات,34.0
+2016.0,سبتمبر,September,مخالفات,Fines,Companies,الشركات,20.0
+2016.0,اكتوبر,October,مخالفات,Fines,Companies,الشركات,29.0
+2016.0,مايو,May,مخالفات,Fines,Vehicles,المركبات,1.0
+2016.0,اغسطس,August,مخالفات,Fines,Vehicles,المركبات,6.0
+2016.0,اكتوبر,October,مخالفات,Fines,Vehicles,المركبات,4.0
+2016.0,يناير,January,مخالفات,Fines,Personal,الأفراد,7.0
+2016.0,مارس,March,مخالفات,Fines,Personal,الأفراد,2.0
+2016.0,اغسطس,August,مخالفات,Fines,Personal,الأفراد,2.0
+2016.0,سبتمبر,September,مخالفات,Fines,Personal,الأفراد,1.0
+2016.0,ديسيمبر,December,مخالفات,Fines,Personal,الأفراد,1.0
+2017.0,يناير,January,إنذارات,Warnings,Companies,الشركات,52.0
+2017.0,فبراير,February,إنذارات,Warnings,Companies,الشركات,62.0
+2017.0,مايو,May,إنذارات,Warnings,Companies,الشركات,14.0
+2017.0,يونيو,June,إنذارات,Warnings,Companies,الشركات,3.0
+2017.0,اغسطس,August,إنذارات,Warnings,Companies,الشركات,23.0
+2017.0,اكتوبر,October,إنذارات,Warnings,Companies,الشركات,27.0
+2017.0,نوفمبر,November,إنذارات,Warnings,Companies,الشركات,17.0
+2017.0,مارس,March,إنذارات,Warnings,Vehicles,المركبات,0.0
+2017.0,ابريل,April,إنذارات,Warnings,Vehicles,المركبات,0.0
+2017.0,مايو,May,إنذارات,Warnings,Vehicles,المركبات,1.0
+2017.0,يوليو,July,إنذارات,Warnings,Vehicles,المركبات,0.0
+2017.0,اكتوبر,October,إنذارات,Warnings,Vehicles,المركبات,0.0
+2017.0,نوفمبر,November,إنذارات,Warnings,Vehicles,المركبات,1.0
+2017.0,ديسيمبر,December,إنذارات,Warnings,Vehicles,المركبات,0.0
+2017.0,مارس,March,إنذارات,Warnings,Personal,الأفراد,14.0
+2017.0,اكتوبر,October,إنذارات,Warnings,Personal,الأفراد,1.0
+2017.0,نوفمبر,November,إنذارات,Warnings,Personal,الأفراد,9.0
+2017.0,ديسيمبر,December,إنذارات,Warnings,Personal,الأفراد,7.0
+2017.0,يناير,January,مخالفات,Fines,Companies,الشركات,58.0
+2017.0,فبراير,February,مخالفات,Fines,Companies,الشركات,58.0
+2017.0,مايو,May,مخالفات,Fines,Companies,الشركات,153.0
+2017.0,يونيو,June,مخالفات,Fines,Companies,الشركات,35.0
+2017.0,يوليو,July,مخالفات,Fines,Companies,الشركات,123.0
+2017.0,يناير,January,مخالفات,Fines,Vehicles,المركبات,17.0
+2017.0,اغسطس,August,مخالفات,Fines,Vehicles,المركبات,19.0
+2017.0,نوفمبر,November,مخالفات,Fines,Vehicles,المركبات,15.0
+2017.0,ديسيمبر,December,مخالفات,Fines,Vehicles,المركبات,14.0
+2017.0,ابريل,April,مخالفات,Fines,Personal,الأفراد,5.0
+2017.0,اغسطس,August,مخالفات,Fines,Personal,الأفراد,3.0
+2017.0,اكتوبر,October,مخالفات,Fines,Personal,الأفراد,2.0
+2018.0,ابريل,April,إنذارات,Warnings,Companies,الشركات,12.0
+2018.0,نوفمبر,November,إنذارات,Warnings,Companies,الشركات,4.0
+2018.0,يناير,January,إنذارات,Warnings,Vehicles,المركبات,0.0
+2018.0,ابريل,April,إنذارات,Warnings,Vehicles,المركبات,0.0
+2018.0,مايو,May,إنذارات,Warnings,Vehicles,المركبات,0.0
+2018.0,يونيو,June,إنذارات,Warnings,Vehicles,المركبات,0.0
+2018.0,اغسطس,August,إنذارات,Warnings,Vehicles,المركبات,0.0
+2018.0,نوفمبر,November,إنذارات,Warnings,Vehicles,المركبات,0.0
+2018.0,مارس,March,إنذارات,Warnings,Personal,الأفراد,3.0
+2018.0,اغسطس,August,إنذارات,Warnings,Personal,الأفراد,3.0
+2018.0,سبتمبر,September,إنذارات,Warnings,Personal,الأفراد,0.0
+2018.0,يناير,January,مخالفات,Fines,Companies,الشركات,39.0
+2018.0,مارس,March,مخالفات,Fines,Companies,الشركات,57.0
+2018.0,اغسطس,August,مخالفات,Fines,Companies,الشركات,26.0
+2018.0,سبتمبر,September,مخالفات,Fines,Companies,الشركات,42.0
+2018.0,نوفمبر,November,مخالفات,Fines,Companies,الشركات,31.0
+2018.0,يناير,January,مخالفات,Fines,Vehicles,المركبات,11.0
+2018.0,ابريل,April,مخالفات,Fines,Vehicles,المركبات,22.0
+2018.0,اغسطس,August,مخالفات,Fines,Vehicles,المركبات,22.0
+2018.0,نوفمبر,November,مخالفات,Fines,Vehicles,المركبات,17.0
+2018.0,يناير,January,مخالفات,Fines,Personal,الأفراد,2.0
+2018.0,مارس,March,مخالفات,Fines,Personal,الأفراد,2.0
+2018.0,يونيو,June,مخالفات,Fines,Personal,الأفراد,1.0
+2018.0,اكتوبر,October,مخالفات,Fines,Personal,الأفراد,1.0
+2019.0,فبراير,February,إنذارات,Warnings,Companies,الشركات,3.0
+2019.0,مارس,March,إنذارات,Warnings,Companies,الشركات,1.0
+2019.0,مايو,May,إنذارات,Warnings,Companies,الشركات,3.0
+2019.0,سبتمبر,September,إنذارات,Warnings,Companies,الشركات,5.0
+2019.0,ديسيمبر,December,إنذارات,Warnings,Companies,الشركات,0.0
+2019.0,مارس,March,إنذارات,Warnings,Vehicles,المركبات,0.0
+2019.0,سبتمبر,September,إنذارات,Warnings,Vehicles,المركبات,0.0
+2019.0,ديسيمبر,December,إنذارات,Warnings,Personal,الأفراد,0.0
+2019.0,ابريل,April,مخالفات,Fines,Companies,الشركات,48.0
+2019.0,يونيو,June,مخالفات,Fines,Companies,الشركات,3.0
+2019.0,يناير,January,مخالفات,Fines,Vehicles,المركبات,11.0
+2019.0,مارس,March,مخالفات,Fines,Vehicles,المركبات,6.0
+2019.0,ابريل,April,مخالفات,Fines,Vehicles,المركبات,26.0
+2019.0,يونيو,June,مخالفات,Fines,Vehicles,المركبات,8.0
+2019.0,سبتمبر,September,مخالفات,Fines,Vehicles,المركبات,42.0
+2019.0,يناير,January,مخالفات,Fines,Personal,الأفراد,6.0
+2019.0,مارس,March,مخالفات,Fines,Personal,الأفراد,2.0
+2019.0,ابريل,April,مخالفات,Fines,Personal,الأفراد,0.0
+2019.0,مايو,May,مخالفات,Fines,Personal,الأفراد,0.0
+2019.0,يونيو,June,مخالفات,Fines,Personal,الأفراد,0.0
+2019.0,سبتمبر,September,مخالفات,Fines,Personal,الأفراد,0.0
+2019.0,اكتوبر,October,مخالفات,Fines,Personal,الأفراد,0.0
+2019.0,ديسيمبر,December,مخالفات,Fines,Personal,الأفراد,0.0
+2020.0,يناير,January,إنذارات,Warnings,Companies,الشركات,0.0
+2020.0,ابريل,April,إنذارات,Warnings,Companies,الشركات,103.0
+2020.0,مايو,May,إنذارات,Warnings,Companies,الشركات,110.0
+2020.0,اغسطس,August,إنذارات,Warnings,Companies,الشركات,0.0
+2020.0,اكتوبر,October,إنذارات,Warnings,Companies,الشركات,0.0
+2020.0,ديسيمبر,December,إنذارات,Warnings,Companies,الشركات,0.0
+2020.0,مايو,May,إنذارات,Warnings,Vehicles,المركبات,0.0
+2020.0,يوليو,July,إنذارات,Warnings,Vehicles,المركبات,0.0
+2020.0,اكتوبر,October,إنذارات,Warnings,Vehicles,المركبات,0.0
+2020.0,نوفمبر,November,إنذارات,Warnings,Vehicles,المركبات,0.0
+2020.0,ديسيمبر,December,إنذارات,Warnings,Vehicles,المركبات,0.0
+2020.0,مايو,May,إنذارات,Warnings,Personal,الأفراد,0.0
+2020.0,يونيو,June,إنذارات,Warnings,Personal,الأفراد,0.0
+2020.0,اغسطس,August,إنذارات,Warnings,Personal,الأفراد,0.0
+2020.0,نوفمبر,November,إنذارات,Warnings,Personal,الأفراد,0.0
+2020.0,ابريل,April,مخالفات,Fines,Companies,الشركات,2.0
+2020.0,فبراير,February,مخالفات,Fines,Vehicles,المركبات,14.0
+2020.0,مارس,March,مخالفات,Fines,Vehicles,المركبات,14.0
+2020.0,يونيو,June,مخالفات,Fines,Vehicles,المركبات,10.0
+2020.0,اغسطس,August,مخالفات,Fines,Vehicles,المركبات,18.0
+2020.0,اكتوبر,October,مخالفات,Fines,Vehicles,المركبات,3.0
+2020.0,ابريل,April,مخالفات,Fines,Personal,الأفراد,0.0
+2020.0,سبتمبر,September,مخالفات,Fines,Personal,الأفراد,1.0
+2020.0,ديسيمبر,December,مخالفات,Fines,Personal,الأفراد,2.0
+2021.0,يناير,January,إنذارات,Warnings,Companies,الشركات,5.0
+2021.0,ابريل,April,إنذارات,Warnings,Companies,الشركات,8.0
+2021.0,يوليو,July,إنذارات,Warnings,Companies,الشركات,4.0
+2021.0,يناير,January,إنذارات,Warnings,Vehicles,المركبات,2.0
+2021.0,فبراير,February,إنذارات,Warnings,Vehicles,المركبات,1.0
+2021.0,اغسطس,August,إنذارات,Warnings,Vehicles,المركبات,1.0
+2021.0,يناير,January,إنذارات,Warnings,Personal,الأفراد,0.0
+2021.0,يونيو,June,إنذارات,Warnings,Personal,الأفراد,0.0
+2021.0,سبتمبر,September,إنذارات,Warnings,Personal,الأفراد,2.0
+2021.0,نوفمبر,November,إنذارات,Warnings,Personal,الأفراد,1.0
+2021.0,يناير,January,مخالفات,Fines,Companies,الشركات,38.0
+2021.0,يوليو,July,مخالفات,Fines,Companies,الشركات,9.0
+2021.0,سبتمبر,September,مخالفات,Fines,Companies,الشركات,33.0
+2021.0,اكتوبر,October,مخالفات,Fines,Companies,الشركات,65.0
+2021.0,يوليو,July,مخالفات,Fines,Vehicles,المركبات,15.0
+2021.0,مايو,May,مخالفات,Fines,Personal,الأفراد,2.0
+2021.0,سبتمبر,September,مخالفات,Fines,Personal,الأفراد,0.0
+2021.0,نوفمبر,November,مخالفات,Fines,Personal,الأفراد,1.0
+2022.0,يونيو,June,إنذارات,Warnings,Companies,الشركات,201.0
+2022.0,سبتمبر,September,إنذارات,Warnings,Companies,الشركات,388.0
+2022.0,نوفمبر,November,إنذارات,Warnings,Companies,الشركات,49.0
+2022.0,فبراير,February,إنذارات,Warnings,Vehicles,المركبات,0.0
+2022.0,سبتمبر,September,إنذارات,Warnings,Vehicles,المركبات,4.0
+2022.0,يناير,January,إنذارات,Warnings,Personal,الأفراد,2.0
+2022.0,يوليو,July,إنذارات,Warnings,Personal,الأفراد,1.0
+2022.0,نوفمبر,November,إنذارات,Warnings,Personal,الأفراد,0.0
+2022.0,ديسيمبر,December,إنذارات,Warnings,Personal,الأفراد,2.0
+2022.0,مايو,May,مخالفات,Fines,Companies,الشركات,71.0
+2022.0,يوليو,July,مخالفات,Fines,Companies,الشركات,150.0
+2022.0,اكتوبر,October,مخالفات,Fines,Companies,الشركات,65.0
+2022.0,يناير,January,مخالفات,Fines,Vehicles,المركبات,4.0
+2022.0,مارس,March,مخالفات,Fines,Vehicles,المركبات,6.0
+2022.0,يونيو,June,مخالفات,Fines,Vehicles,المركبات,24.0
+2022.0,يوليو,July,مخالفات,Fines,Vehicles,المركبات,62.0
+2022.0,سبتمبر,September,مخالفات,Fines,Vehicles,المركبات,58.0
+2022.0,اكتوبر,October,مخالفات,Fines,Vehicles,المركبات,116.0
+2022.0,نوفمبر,November,مخالفات,Fines,Vehicles,المركبات,107.0
+2022.0,نوفمبر,November,مخالفات,Fines,Personal,الأفراد,1.0
+2022.0,ديسيمبر,December,مخالفات,Fines,Personal,الأفراد,9.0
+2023.0,مارس,March,إنذارات,Warnings,Personal,الأفراد,2.0
+2023.0,مايو,May,إنذارات,Warnings,,قطعة أرض,57.0
+2023.0,يونيو,June,إنذارات,Warnings,,قطعة أرض,14.0
+2023.0,يناير,January,مخالفات,Fines,Companies,الشركات,16.0
+2023.0,مارس,March,مخالفات,Fines,Companies,الشركات,62.0
+2023.0,فبراير,February,مخالفات,Fines,Vehicles,المركبات,73.0
+2023.0,يناير,January,مخالفات,Fines,Personal,الأفراد,0.0
+2023.0,مارس,March,مخالفات,Fines,,قطعة أرض,47.0
+2015.0,فبراير,February,إنذارات,Warnings,Shops,محلات تجارية,
+2015.0,ابريل,April,إنذارات,Warnings,Shops,محلات تجارية,
+2015.0,مايو,May,إنذارات,Warnings,Shops,محلات تجارية,
+2015.0,نوفمبر,November,إنذارات,Warnings,Shops,محلات تجارية,
+2015.0,ديسيمبر,December,إنذارات,Warnings,Shops,محلات تجارية,
+2015.0,يناير,January,مخالفات,Irregularities,Shops,محلات تجارية,
+2015.0,ابريل,April,مخالفات,Irregularities,Shops,محلات تجارية,
+2015.0,مايو,May,إنذارات,Warnings,Houses,منازل,
+2015.0,اغسطس,August,إنذارات,Warnings,Houses,منازل,
+2015.0,اكتوبر,October,إنذارات,Warnings,Houses,منازل,
+2015.0,يناير,January,مخالفات,Irregularities,Houses,منازل,
+2015.0,مارس,March,مخالفات,Irregularities,Houses,منازل,
+2015.0,يونيو,June,مخالفات,Irregularities,Houses,منازل,
+2015.0,اغسطس,August,مخالفات,Irregularities,Houses,منازل,
+2015.0,ديسيمبر,December,مخالفات,Irregularities,Houses,منازل,
+2016.0,فبراير,February,إنذارات,Warnings,Shops,محلات تجارية,
+2016.0,سبتمبر,September,إنذارات,Warnings,Shops,محلات تجارية,
+2016.0,ديسيمبر,December,إنذارات,Warnings,Shops,محلات تجارية,
+2016.0,مارس,March,مخالفات,Irregularities,Shops,محلات تجارية,
+2016.0,مايو,May,مخالفات,Irregularities,Shops,محلات تجارية,
+2016.0,يوليو,July,مخالفات,Irregularities,Shops,محلات تجارية,
+2016.0,سبتمبر,September,مخالفات,Irregularities,Shops,محلات تجارية,
+2016.0,نوفمبر,November,مخالفات,Irregularities,Shops,محلات تجارية,
+2016.0,فبراير,February,إنذارات,Warnings,Houses,منازل,
+2016.0,مارس,March,إنذارات,Warnings,Houses,منازل,
+2016.0,ابريل,April,إنذارات,Warnings,Houses,منازل,
+2016.0,يوليو,July,إنذارات,Warnings,Houses,منازل,
+2016.0,اغسطس,August,إنذارات,Warnings,Houses,منازل,
+2016.0,اكتوبر,October,إنذارات,Warnings,Houses,منازل,
+2016.0,ديسيمبر,December,إنذارات,Warnings,Houses,منازل,
+2016.0,يناير,January,مخالفات,Irregularities,Houses,منازل,
+2016.0,يونيو,June,مخالفات,Irregularities,Houses,منازل,
+2016.0,اكتوبر,October,مخالفات,Irregularities,Houses,منازل,
+2017.0,فبراير,February,إنذارات,Warnings,Shops,محلات تجارية,
+2017.0,يونيو,June,إنذارات,Warnings,Shops,محلات تجارية,
+2017.0,سبتمبر,September,إنذارات,Warnings,Shops,محلات تجارية,
+2017.0,يونيو,June,مخالفات,Irregularities,Shops,محلات تجارية,
+2017.0,يوليو,July,مخالفات,Irregularities,Shops,محلات تجارية,
+2017.0,سبتمبر,September,مخالفات,Irregularities,Shops,محلات تجارية,
+2017.0,اكتوبر,October,مخالفات,Irregularities,Shops,محلات تجارية,
+2017.0,نوفمبر,November,مخالفات,Irregularities,Shops,محلات تجارية,
+2017.0,مارس,March,إنذارات,Warnings,Houses,منازل,
+2017.0,يوليو,July,إنذارات,Warnings,Houses,منازل,
+2017.0,اغسطس,August,إنذارات,Warnings,Houses,منازل,
+2017.0,سبتمبر,September,إنذارات,Warnings,Houses,منازل,
+2017.0,ديسيمبر,December,إنذارات,Warnings,Houses,منازل,
+2017.0,فبراير,February,مخالفات,Irregularities,Houses,منازل,
+2017.0,مايو,May,مخالفات,Irregularities,Houses,منازل,
+2017.0,يوليو,July,مخالفات,Irregularities,Houses,منازل,
+2017.0,اغسطس,August,مخالفات,Irregularities,Houses,منازل,
+2018.0,مايو,May,إنذارات,Warnings,Shops,محلات تجارية,
+2018.0,يوليو,July,إنذارات,Warnings,Shops,محلات تجارية,
+2018.0,اغسطس,August,إنذارات,Warnings,Shops,محلات تجارية,
+2018.0,سبتمبر,September,إنذارات,Warnings,Shops,محلات تجارية,
+2018.0,ديسيمبر,December,إنذارات,Warnings,Shops,محلات تجارية,
+2018.0,فبراير,February,مخالفات,Irregularities,Shops,محلات تجارية,
+2018.0,يونيو,June,مخالفات,Irregularities,Shops,محلات تجارية,
+2018.0,اغسطس,August,مخالفات,Irregularities,Shops,محلات تجارية,
+2018.0,نوفمبر,November,مخالفات,Irregularities,Shops,محلات تجارية,
+2018.0,ديسيمبر,December,مخالفات,Irregularities,Shops,محلات تجارية,
+2018.0,يناير,January,إنذارات,Warnings,Houses,منازل,
+2018.0,فبراير,February,إنذارات,Warnings,Houses,منازل,
+2018.0,يوليو,July,إنذارات,Warnings,Houses,منازل,
+2018.0,يوليو,July,مخالفات,Irregularities,Houses,منازل,
+2018.0,اغسطس,August,مخالفات,Irregularities,Houses,منازل,
+2018.0,سبتمبر,September,مخالفات,Irregularities,Houses,منازل,
+2018.0,اكتوبر,October,مخالفات,Irregularities,Houses,منازل,
+2018.0,ديسيمبر,December,مخالفات,Irregularities,Houses,منازل,
+2019.0,يناير,January,إنذارات,Warnings,Shops,محلات تجارية,
+2019.0,فبراير,February,إنذارات,Warnings,Shops,محلات تجارية,
+2019.0,ابريل,April,إنذارات,Warnings,Shops,محلات تجارية,
+2019.0,يونيو,June,إنذارات,Warnings,Shops,محلات تجارية,
+2019.0,مارس,March,مخالفات,Irregularities,Shops,محلات تجارية,
+2019.0,ابريل,April,مخالفات,Irregularities,Shops,محلات تجارية,
+2019.0,ديسيمبر,December,مخالفات,Irregularities,Shops,محلات تجارية,
+2019.0,يناير,January,إنذارات,Warnings,Houses,منازل,
+2019.0,فبراير,February,إنذارات,Warnings,Houses,منازل,
+2019.0,يونيو,June,إنذارات,Warnings,Houses,منازل,
+2019.0,ديسيمبر,December,إنذارات,Warnings,Houses,منازل,
+2019.0,يناير,January,مخالفات,Irregularities,Houses,منازل,
+2019.0,مارس,March,مخالفات,Irregularities,Houses,منازل,
+2019.0,ابريل,April,مخالفات,Irregularities,Houses,منازل,
+2019.0,يونيو,June,مخالفات,Irregularities,Houses,منازل,
+2019.0,يوليو,July,مخالفات,Irregularities,Houses,منازل,
+2019.0,اغسطس,August,مخالفات,Irregularities,Houses,منازل,
+2019.0,اكتوبر,October,مخالفات,Irregularities,Houses,منازل,
+2020.0,ابريل,April,إنذارات,Warnings,Shops,محلات تجارية,
+2020.0,يونيو,June,إنذارات,Warnings,Shops,محلات تجارية,
+2020.0,يوليو,July,إنذارات,Warnings,Shops,محلات تجارية,
+2020.0,اغسطس,August,إنذارات,Warnings,Shops,محلات تجارية,
+2020.0,ديسيمبر,December,إنذارات,Warnings,Shops,محلات تجارية,
+2020.0,يناير,January,مخالفات,Irregularities,Shops,محلات تجارية,
+2020.0,اغسطس,August,مخالفات,Irregularities,Shops,محلات تجارية,
+2020.0,اكتوبر,October,مخالفات,Irregularities,Shops,محلات تجارية,
+2020.0,فبراير,February,إنذارات,Warnings,Houses,منازل,
+2020.0,مارس,March,إنذارات,Warnings,Houses,منازل,
+2020.0,مايو,May,إنذارات,Warnings,Houses,منازل,
+2020.0,يوليو,July,إنذارات,Warnings,Houses,منازل,
+2020.0,اكتوبر,October,إنذارات,Warnings,Houses,منازل,
+2020.0,مايو,May,مخالفات,Irregularities,Houses,منازل,
+2020.0,يونيو,June,مخالفات,Irregularities,Houses,منازل,
+2020.0,سبتمبر,September,مخالفات,Irregularities,Houses,منازل,
+2020.0,ديسيمبر,December,مخالفات,Irregularities,Houses,منازل,
+2021.0,مارس,March,إنذارات,Warnings,Shops,محلات تجارية,
+2021.0,مايو,May,إنذارات,Warnings,Shops,محلات تجارية,
+2021.0,يونيو,June,إنذارات,Warnings,Shops,محلات تجارية,
+2021.0,يناير,January,مخالفات,Irregularities,Shops,محلات تجارية,
+2021.0,مايو,May,مخالفات,Irregularities,Shops,محلات تجارية,
+2021.0,نوفمبر,November,مخالفات,Irregularities,Shops,محلات تجارية,
+2021.0,ديسيمبر,December,مخالفات,Irregularities,Shops,محلات تجارية,
+2021.0,ابريل,April,إنذارات,Warnings,Houses,منازل,
+2021.0,مايو,May,إنذارات,Warnings,Houses,منازل,
+2021.0,يونيو,June,إنذارات,Warnings,Houses,منازل,
+2021.0,اغسطس,August,إنذارات,Warnings,Houses,منازل,
+2021.0,اكتوبر,October,إنذارات,Warnings,Houses,منازل,
+2021.0,نوفمبر,November,إنذارات,Warnings,Houses,منازل,
+2021.0,مارس,March,مخالفات,Irregularities,Houses,منازل,
+2021.0,يونيو,June,مخالفات,Irregularities,Houses,منازل,
+2021.0,يوليو,July,مخالفات,Irregularities,Houses,منازل,
+2021.0,نوفمبر,November,مخالفات,Irregularities,Houses,منازل,
+2022.0,فبراير,February,إنذارات,Warnings,Shops,محلات تجارية,
+2022.0,سبتمبر,September,إنذارات,Warnings,Shops,محلات تجارية,
+2022.0,فبراير,February,مخالفات,Irregularities,Shops,محلات تجارية,
+2022.0,مارس,March,مخالفات,Irregularities,Shops,محلات تجارية,
+2022.0,يونيو,June,مخالفات,Irregularities,Shops,محلات تجارية,
+2022.0,سبتمبر,September,مخالفات,Irregularities,Shops,محلات تجارية,
+2022.0,نوفمبر,November,إنذارات,Warnings,Houses,منازل,
+2022.0,ابريل,April,مخالفات,Irregularities,Houses,منازل,
+2022.0,مايو,May,مخالفات,Irregularities,Houses,منازل,
+2022.0,سبتمبر,September,مخالفات,Irregularities,Houses,منازل,
+2022.0,نوفمبر,November,مخالفات,Irregularities,Houses,منازل,
+2015.0,سبتمبر,September,إنذارات,Warnings,Companies,الشركات,4.0
+2015.0,اكتوبر,October,إنذارات,Warnings,Companies,الشركات,75.0
+2015.0,مارس,March,إنذارات,Warnings,Vehicles,المركبات,0.0
+2015.0,سبتمبر,September,إنذارات,Warnings,Vehicles,المركبات,0.0
+2015.0,ديسيمبر,December,إنذارات,Warnings,Vehicles,المركبات,0.0
+2015.0,يوليو,July,إنذارات,Warnings,Personal,الأفراد,6.0
+2015.0,سبتمبر,September,إنذارات,Warnings,Personal,الأفراد,5.0
+2015.0,مارس,March,مخالفات,Fines,Companies,الشركات,60.0
+2015.0,يوليو,July,مخالفات,Fines,Companies,الشركات,63.0
+2015.0,سبتمبر,September,مخالفات,Fines,Companies,الشركات,82.0
+2015.0,ديسيمبر,December,مخالفات,Fines,Personal,الأفراد,1.0
+2016.0,مارس,March,إنذارات,Warnings,Companies,الشركات,55.0
+2016.0,يونيو,June,إنذارات,Warnings,Companies,الشركات,14.0
+2016.0,اغسطس,August,إنذارات,Warnings,Companies,الشركات,64.0
+2016.0,مارس,March,إنذارات,Warnings,Vehicles,المركبات,0.0
+2016.0,يناير,January,إنذارات,Warnings,Personal,الأفراد,22.0
+2016.0,يونيو,June,إنذارات,Warnings,Personal,الأفراد,1.0
+2016.0,اغسطس,August,إنذارات,Warnings,Personal,الأفراد,20.0
+2016.0,نوفمبر,November,إنذارات,Warnings,Personal,الأفراد,8.0
+2016.0,ديسيمبر,December,إنذارات,Warnings,Personal,الأفراد,15.0
+2016.0,مايو,May,مخالفات,Fines,Companies,الشركات,58.0
+2016.0,اغسطس,August,مخالفات,Fines,Companies,الشركات,13.0
+2016.0,ديسيمبر,December,مخالفات,Fines,Companies,الشركات,94.0
+2016.0,يوليو,July,مخالفات,Fines,Vehicles,المركبات,2.0
+2016.0,فبراير,February,مخالفات,Fines,Personal,الأفراد,7.0
+2016.0,يونيو,June,مخالفات,Fines,Personal,الأفراد,3.0
+2017.0,ابريل,April,إنذارات,Warnings,Companies,الشركات,15.0
+2017.0,يوليو,July,إنذارات,Warnings,Companies,الشركات,12.0
+2017.0,اكتوبر,October,مخالفات,Fines,Companies,الشركات,72.0
+2017.0,ابريل,April,مخالفات,Fines,Vehicles,المركبات,8.0
+2017.0,يوليو,July,مخالفات,Fines,Vehicles,المركبات,7.0
+2017.0,مارس,March,مخالفات,Fines,Personal,الأفراد,5.0
+2017.0,مايو,May,مخالفات,Fines,Personal,الأفراد,6.0
+2017.0,نوفمبر,November,مخالفات,Fines,Personal,الأفراد,5.0
+2018.0,يناير,January,إنذارات,Warnings,Companies,الشركات,4.0
+2018.0,يوليو,July,إنذارات,Warnings,Companies,الشركات,8.0
+2018.0,سبتمبر,September,إنذارات,Warnings,Companies,الشركات,43.0
+2018.0,مارس,March,إنذارات,Warnings,Vehicles,المركبات,0.0
+2018.0,ديسيمبر,December,إنذارات,Warnings,Vehicles,المركبات,0.0
+2018.0,فبراير,February,إنذارات,Warnings,Personal,الأفراد,2.0
+2018.0,مايو,May,إنذارات,Warnings,Personal,الأفراد,2.0
+2018.0,نوفمبر,November,إنذارات,Warnings,Personal,الأفراد,9.0
+2018.0,مايو,May,مخالفات,Fines,Companies,الشركات,44.0
+2018.0,يونيو,June,مخالفات,Fines,Vehicles,المركبات,18.0
+2018.0,اكتوبر,October,مخالفات,Fines,Vehicles,المركبات,26.0
+2018.0,اغسطس,August,مخالفات,Fines,Personal,الأفراد,0.0
+2018.0,ديسيمبر,December,مخالفات,Fines,Personal,الأفراد,2.0
+2019.0,نوفمبر,November,إنذارات,Warnings,Companies,الشركات,0.0
+2019.0,اغسطس,August,إنذارات,Warnings,Vehicles,المركبات,0.0
+2019.0,اكتوبر,October,إنذارات,Warnings,Vehicles,المركبات,0.0
+2019.0,نوفمبر,November,إنذارات,Warnings,Vehicles,المركبات,0.0
+2019.0,يناير,January,إنذارات,Warnings,Personal,الأفراد,5.0
+2019.0,فبراير,February,إنذارات,Warnings,Personal,الأفراد,3.0
+2019.0,مارس,March,إنذارات,Warnings,Personal,الأفراد,0.0
+2019.0,يونيو,June,إنذارات,Warnings,Personal,الأفراد,3.0
+2019.0,يوليو,July,إنذارات,Warnings,Personal,الأفراد,3.0
+2019.0,اغسطس,August,إنذارات,Warnings,Personal,الأفراد,1.0
+2019.0,اكتوبر,October,إنذارات,Warnings,Personal,الأفراد,3.0
+2019.0,نوفمبر,November,إنذارات,Warnings,Personal,الأفراد,2.0
+2019.0,مايو,May,مخالفات,Fines,Companies,الشركات,31.0
+2019.0,اغسطس,August,مخالفات,Fines,Companies,الشركات,50.0
+2019.0,نوفمبر,November,مخالفات,Fines,Companies,الشركات,51.0
+2019.0,ديسيمبر,December,مخالفات,Fines,Companies,الشركات,44.0
+2019.0,فبراير,February,مخالفات,Fines,Vehicles,المركبات,19.0
+2019.0,نوفمبر,November,مخالفات,Fines,Vehicles,المركبات,9.0
+2019.0,ديسيمبر,December,مخالفات,Fines,Vehicles,المركبات,8.0
+2019.0,فبراير,February,مخالفات,Fines,Personal,الأفراد,0.0
+2019.0,يوليو,July,مخالفات,Fines,Personal,الأفراد,0.0
+2019.0,اغسطس,August,مخالفات,Fines,Personal,الأفراد,4.0
+2020.0,مارس,March,إنذارات,Warnings,Companies,الشركات,0.0
+2020.0,سبتمبر,September,إنذارات,Warnings,Companies,الشركات,19.0
+2020.0,نوفمبر,November,إنذارات,Warnings,Companies,الشركات,0.0
+2020.0,يناير,January,إنذارات,Warnings,Vehicles,المركبات,0.0
+2020.0,فبراير,February,إنذارات,Warnings,Vehicles,المركبات,0.0
+2020.0,ابريل,April,إنذارات,Warnings,Vehicles,المركبات,0.0
+2020.0,يونيو,June,إنذارات,Warnings,Vehicles,المركبات,0.0
+2020.0,سبتمبر,September,إنذارات,Warnings,Vehicles,المركبات,0.0
+2020.0,يناير,January,إنذارات,Warnings,Personal,الأفراد,2.0
+2020.0,سبتمبر,September,إنذارات,Warnings,Personal,الأفراد,0.0
+2020.0,ديسيمبر,December,إنذارات,Warnings,Personal,الأفراد,0.0
+2020.0,يناير,January,مخالفات,Fines,Companies,الشركات,32.0
+2020.0,مارس,March,مخالفات,Fines,Companies,الشركات,18.0
+2020.0,مايو,May,مخالفات,Fines,Companies,الشركات,3.0
+2020.0,يونيو,June,مخالفات,Fines,Companies,الشركات,7.0
+2020.0,يوليو,July,مخالفات,Fines,Companies,الشركات,18.0
+2020.0,اغسطس,August,مخالفات,Fines,Companies,الشركات,36.0
+2020.0,سبتمبر,September,مخالفات,Fines,Companies,الشركات,16.0
+2020.0,ابريل,April,مخالفات,Fines,Vehicles,المركبات,0.0
+2020.0,يوليو,July,مخالفات,Fines,Vehicles,المركبات,3.0
+2020.0,نوفمبر,November,مخالفات,Fines,Vehicles,المركبات,10.0
+2020.0,ديسيمبر,December,مخالفات,Fines,Vehicles,المركبات,4.0
+2020.0,فبراير,February,مخالفات,Fines,Personal,الأفراد,0.0
+2020.0,يونيو,June,مخالفات,Fines,Personal,الأفراد,0.0
+2020.0,اغسطس,August,مخالفات,Fines,Personal,الأفراد,0.0
+2020.0,نوفمبر,November,مخالفات,Fines,Personal,الأفراد,1.0
+2021.0,مارس,March,إنذارات,Warnings,Companies,الشركات,10.0
+2021.0,مايو,May,إنذارات,Warnings,Companies,الشركات,10.0
+2021.0,يونيو,June,إنذارات,Warnings,Companies,الشركات,16.0
+2021.0,اكتوبر,October,إنذارات,Warnings,Companies,الشركات,116.0
+2021.0,نوفمبر,November,إنذارات,Warnings,Companies,الشركات,143.0
+2021.0,مارس,March,إنذارات,Warnings,Vehicles,المركبات,0.0
+2021.0,ابريل,April,إنذارات,Warnings,Vehicles,المركبات,0.0
+2021.0,مايو,May,إنذارات,Warnings,Vehicles,المركبات,1.0
+2021.0,يونيو,June,إنذارات,Warnings,Vehicles,المركبات,0.0
+2021.0,يوليو,July,إنذارات,Warnings,Vehicles,المركبات,0.0
+2021.0,سبتمبر,September,إنذارات,Warnings,Vehicles,المركبات,0.0
+2021.0,اكتوبر,October,إنذارات,Warnings,Vehicles,المركبات,4.0
+2021.0,ديسيمبر,December,إنذارات,Warnings,Vehicles,المركبات,4.0
+2021.0,فبراير,February,إنذارات,Warnings,Personal,الأفراد,1.0
+2021.0,مارس,March,إنذارات,Warnings,Personal,الأفراد,1.0
+2021.0,ابريل,April,إنذارات,Warnings,Personal,الأفراد,0.0
+2021.0,مايو,May,إنذارات,Warnings,Personal,الأفراد,4.0
+2021.0,اغسطس,August,إنذارات,Warnings,Personal,الأفراد,0.0
+2021.0,مارس,March,مخالفات,Fines,Companies,الشركات,25.0
+2021.0,يونيو,June,مخالفات,Fines,Companies,الشركات,12.0
+2021.0,فبراير,February,مخالفات,Fines,Vehicles,المركبات,16.0
+2021.0,مارس,March,مخالفات,Fines,Vehicles,المركبات,7.0
+2021.0,ابريل,April,مخالفات,Fines,Vehicles,المركبات,12.0
+2021.0,مايو,May,مخالفات,Fines,Vehicles,المركبات,18.0
+2021.0,اغسطس,August,مخالفات,Fines,Vehicles,المركبات,4.0
+2021.0,نوفمبر,November,مخالفات,Fines,Vehicles,المركبات,9.0
+2021.0,ديسيمبر,December,مخالفات,Fines,Vehicles,المركبات,12.0
+2021.0,ابريل,April,مخالفات,Fines,Personal,الأفراد,1.0
+2021.0,يونيو,June,مخالفات,Fines,Personal,الأفراد,1.0
+2021.0,اغسطس,August,مخالفات,Fines,Personal,الأفراد,0.0
+2015.0,اغسطس,August,إنذارات,Warnings,Companies,الشركات,25.0
+2015.0,يناير,January,إنذارات,Warnings,Vehicles,المركبات,0.0
+2015.0,مايو,May,إنذارات,Warnings,Personal,الأفراد,0.0
+2015.0,يونيو,June,إنذارات,Warnings,Personal,الأفراد,0.0
+2015.0,اغسطس,August,إنذارات,Warnings,Personal,الأفراد,0.0
+2015.0,نوفمبر,November,إنذارات,Warnings,Personal,الأفراد,11.0
+2015.0,يناير,January,مخالفات,Fines,Companies,الشركات,98.0
+2015.0,يونيو,June,مخالفات,Fines,Companies,الشركات,170.0
+2015.0,اغسطس,August,مخالفات,Fines,Companies,الشركات,50.0
+2015.0,يونيو,June,مخالفات,Fines,Vehicles,المركبات,4.0
+2015.0,يوليو,July,مخالفات,Fines,Vehicles,المركبات,6.0
+2015.0,اغسطس,August,مخالفات,Fines,Vehicles,المركبات,3.0
+2015.0,اكتوبر,October,مخالفات,Fines,Vehicles,المركبات,3.0
+2015.0,نوفمبر,November,مخالفات,Fines,Vehicles,المركبات,2.0
+2015.0,مارس,March,مخالفات,Fines,Personal,الأفراد,1.0
+2015.0,يوليو,July,مخالفات,Fines,Personal,الأفراد,1.0
+2015.0,اغسطس,August,مخالفات,Fines,Personal,الأفراد,6.0
+2015.0,نوفمبر,November,مخالفات,Fines,Personal,الأفراد,15.0
+2016.0,ابريل,April,إنذارات,Warnings,Companies,الشركات,33.0
+2016.0,ديسيمبر,December,إنذارات,Warnings,Companies,الشركات,20.0
+2016.0,مايو,May,إنذارات,Warnings,Vehicles,المركبات,0.0
+2016.0,ديسيمبر,December,إنذارات,Warnings,Vehicles,المركبات,0.0
+2016.0,اكتوبر,October,إنذارات,Warnings,Personal,الأفراد,5.0
+2016.0,يونيو,June,مخالفات,Fines,Companies,الشركات,5.0
+2016.0,فبراير,February,مخالفات,Fines,Vehicles,المركبات,7.0
+2016.0,نوفمبر,November,مخالفات,Fines,Vehicles,المركبات,18.0
+2016.0,ابريل,April,مخالفات,Fines,Personal,الأفراد,2.0
+2017.0,مارس,March,إنذارات,Warnings,Companies,الشركات,31.0
+2017.0,ديسيمبر,December,إنذارات,Warnings,Companies,الشركات,6.0
+2017.0,فبراير,February,إنذارات,Warnings,Vehicles,المركبات,0.0
+2017.0,يونيو,June,إنذارات,Warnings,Vehicles,المركبات,0.0
+2017.0,اغسطس,August,إنذارات,Warnings,Vehicles,المركبات,1.0
+2017.0,سبتمبر,September,إنذارات,Warnings,Vehicles,المركبات,0.0
+2017.0,مايو,May,إنذارات,Warnings,Personal,الأفراد,8.0
+2017.0,يونيو,June,إنذارات,Warnings,Personal,الأفراد,1.0
+2017.0,يوليو,July,إنذارات,Warnings,Personal,الأفراد,24.0
+2017.0,مارس,March,مخالفات,Fines,Companies,الشركات,50.0
+2017.0,ابريل,April,مخالفات,Fines,Companies,الشركات,53.0
+2017.0,ديسيمبر,December,مخالفات,Fines,Companies,الشركات,45.0
+2017.0,فبراير,February,مخالفات,Fines,Vehicles,المركبات,14.0
+2017.0,مايو,May,مخالفات,Fines,Vehicles,المركبات,9.0
+2017.0,اكتوبر,October,مخالفات,Fines,Vehicles,المركبات,21.0
+2017.0,يونيو,June,مخالفات,Fines,Personal,الأفراد,2.0
+2017.0,ديسيمبر,December,مخالفات,Fines,Personal,الأفراد,1.0
+2018.0,مايو,May,إنذارات,Warnings,Companies,الشركات,6.0
+2018.0,يونيو,June,إنذارات,Warnings,Companies,الشركات,0.0
+2018.0,اكتوبر,October,إنذارات,Warnings,Companies,الشركات,44.0
+2018.0,يوليو,July,إنذارات,Warnings,Vehicles,المركبات,0.0
+2018.0,ابريل,April,إنذارات,Warnings,Personal,الأفراد,4.0
+2018.0,يوليو,July,إنذارات,Warnings,Personal,الأفراد,4.0
+2018.0,فبراير,February,مخالفات,Fines,Companies,الشركات,40.0
+2018.0,ابريل,April,مخالفات,Fines,Companies,الشركات,63.0
+2018.0,ديسيمبر,December,مخالفات,Fines,Companies,الشركات,22.0
+2018.0,ابريل,April,مخالفات,Fines,Personal,الأفراد,2.0
+2018.0,نوفمبر,November,مخالفات,Fines,Personal,الأفراد,2.0
+2019.0,اغسطس,August,إنذارات,Warnings,Companies,الشركات,4.0
+2019.0,يناير,January,إنذارات,Warnings,Vehicles,المركبات,0.0
+2022.0,فبراير,February,إنذارات,Warnings,Companies,الشركات,84.0
+2022.0,مايو,May,إنذارات,Warnings,Companies,الشركات,173.0
+2022.0,اكتوبر,October,إنذارات,Warnings,Companies,الشركات,225.0
+2022.0,يناير,January,إنذارات,Warnings,Vehicles,المركبات,0.0
+2022.0,ابريل,April,إنذارات,Warnings,Vehicles,المركبات,11.0
+2022.0,يوليو,July,إنذارات,Warnings,Vehicles,المركبات,4.0
+2022.0,اغسطس,August,إنذارات,Warnings,Vehicles,المركبات,1.0
+2022.0,مارس,March,إنذارات,Warnings,Personal,الأفراد,1.0
+2022.0,ابريل,April,إنذارات,Warnings,Personal,الأفراد,1.0
+2022.0,يناير,January,مخالفات,Fines,Companies,الشركات,55.0
+2022.0,فبراير,February,مخالفات,Fines,Companies,الشركات,68.0
+2022.0,ابريل,April,مخالفات,Fines,Companies,الشركات,50.0
+2022.0,يونيو,June,مخالفات,Fines,Companies,الشركات,59.0
+2022.0,اغسطس,August,مخالفات,Fines,Companies,الشركات,113.0
+2022.0,فبراير,February,مخالفات,Fines,Vehicles,المركبات,6.0
+2022.0,اغسطس,August,مخالفات,Fines,Vehicles,المركبات,22.0
+2022.0,ديسيمبر,December,مخالفات,Fines,Vehicles,المركبات,340.0
+2022.0,يناير,January,مخالفات,Fines,Personal,الأفراد,5.0
+2022.0,فبراير,February,مخالفات,Fines,Personal,الأفراد,5.0
+2022.0,مارس,March,مخالفات,Fines,Personal,الأفراد,0.0
+2022.0,يونيو,June,مخالفات,Fines,Personal,الأفراد,0.0
+2022.0,يوليو,July,مخالفات,Fines,Personal,الأفراد,0.0
+2022.0,اغسطس,August,مخالفات,Fines,Personal,الأفراد,0.0
+2023.0,يناير,January,إنذارات,Warnings,Companies,الشركات,190.0
+2023.0,فبراير,February,إنذارات,Warnings,Companies,الشركات,174.0
+2023.0,مارس,March,إنذارات,Warnings,Companies,الشركات,217.0
+2023.0,فبراير,February,إنذارات,Warnings,Vehicles,المركبات,6.0
+2023.0,يناير,January,إنذارات,Warnings,Personal,الأفراد,14.0
+2023.0,فبراير,February,مخالفات,Fines,Companies,الشركات,48.0
+2023.0,يناير,January,مخالفات,Fines,Vehicles,المركبات,797.0
+2023.0,مارس,March,مخالفات,Fines,Vehicles,المركبات,44.0
+2023.0,فبراير,February,مخالفات,Fines,Personal,الأفراد,0.0
+2023.0,مارس,March,مخالفات,Fines,Personal,الأفراد,6.0
+2023.0,فبراير,February,مخالفات,Fines,,قطعة أرض,1.0
+2015.0,مارس,March,إنذارات,Warnings,Shops,محلات تجارية,
+2015.0,يونيو,June,إنذارات,Warnings,Shops,محلات تجارية,
+2015.0,سبتمبر,September,إنذارات,Warnings,Shops,محلات تجارية,
+2015.0,اكتوبر,October,إنذارات,Warnings,Shops,محلات تجارية,
+2015.0,فبراير,February,مخالفات,Irregularities,Shops,محلات تجارية,
+2015.0,مايو,May,مخالفات,Irregularities,Shops,محلات تجارية,
+2015.0,يونيو,June,مخالفات,Irregularities,Shops,محلات تجارية,
+2015.0,سبتمبر,September,مخالفات,Irregularities,Shops,محلات تجارية,
+2015.0,اكتوبر,October,مخالفات,Irregularities,Shops,محلات تجارية,
+2015.0,فبراير,February,إنذارات,Warnings,Houses,منازل,
+2015.0,مارس,March,إنذارات,Warnings,Houses,منازل,
+2015.0,ابريل,April,إنذارات,Warnings,Houses,منازل,
+2015.0,يونيو,June,إنذارات,Warnings,Houses,منازل,
+2015.0,يوليو,July,إنذارات,Warnings,Houses,منازل,
+2015.0,سبتمبر,September,إنذارات,Warnings,Houses,منازل,
+2015.0,نوفمبر,November,إنذارات,Warnings,Houses,منازل,
+2015.0,مايو,May,مخالفات,Irregularities,Houses,منازل,
+2015.0,اكتوبر,October,مخالفات,Irregularities,Houses,منازل,
+2015.0,نوفمبر,November,مخالفات,Irregularities,Houses,منازل,
+2016.0,يناير,January,إنذارات,Warnings,Shops,محلات تجارية,
+2016.0,ابريل,April,إنذارات,Warnings,Shops,محلات تجارية,
+2016.0,اغسطس,August,إنذارات,Warnings,Shops,محلات تجارية,
+2016.0,نوفمبر,November,إنذارات,Warnings,Shops,محلات تجارية,
+2016.0,يناير,January,مخالفات,Irregularities,Shops,محلات تجارية,
+2016.0,فبراير,February,مخالفات,Irregularities,Shops,محلات تجارية,
+2016.0,اكتوبر,October,مخالفات,Irregularities,Shops,محلات تجارية,
+2016.0,ديسيمبر,December,مخالفات,Irregularities,Shops,محلات تجارية,
+2016.0,يناير,January,إنذارات,Warnings,Houses,منازل,
+2016.0,يونيو,June,إنذارات,Warnings,Houses,منازل,
+2016.0,نوفمبر,November,إنذارات,Warnings,Houses,منازل,
+2016.0,مايو,May,مخالفات,Irregularities,Houses,منازل,
+2016.0,اغسطس,August,مخالفات,Irregularities,Houses,منازل,
+2016.0,نوفمبر,November,مخالفات,Irregularities,Houses,منازل,
+2017.0,يناير,January,إنذارات,Warnings,Shops,محلات تجارية,
+2017.0,مارس,March,إنذارات,Warnings,Shops,محلات تجارية,
+2017.0,ابريل,April,إنذارات,Warnings,Shops,محلات تجارية,
+2017.0,مايو,May,إنذارات,Warnings,Shops,محلات تجارية,
+2017.0,يوليو,July,إنذارات,Warnings,Shops,محلات تجارية,
+2017.0,اغسطس,August,إنذارات,Warnings,Shops,محلات تجارية,
+2017.0,اكتوبر,October,إنذارات,Warnings,Shops,محلات تجارية,
+2017.0,فبراير,February,مخالفات,Irregularities,Shops,محلات تجارية,
+2017.0,مارس,March,مخالفات,Irregularities,Shops,محلات تجارية,
+2017.0,ابريل,April,مخالفات,Irregularities,Shops,محلات تجارية,
+2017.0,مايو,May,مخالفات,Irregularities,Shops,محلات تجارية,
+2017.0,نوفمبر,November,إنذارات,Warnings,Houses,منازل,
+2017.0,يناير,January,مخالفات,Irregularities,Houses,منازل,
+2017.0,ابريل,April,مخالفات,Irregularities,Houses,منازل,
+2017.0,يونيو,June,مخالفات,Irregularities,Houses,منازل,
+2017.0,اكتوبر,October,مخالفات,Irregularities,Houses,منازل,
+2017.0,نوفمبر,November,مخالفات,Irregularities,Houses,منازل,
+2018.0,فبراير,February,إنذارات,Warnings,Shops,محلات تجارية,
+2018.0,ابريل,April,إنذارات,Warnings,Shops,محلات تجارية,
+2018.0,يونيو,June,إنذارات,Warnings,Shops,محلات تجارية,
+2018.0,اكتوبر,October,إنذارات,Warnings,Shops,محلات تجارية,
+2018.0,ابريل,April,مخالفات,Irregularities,Shops,محلات تجارية,
+2018.0,سبتمبر,September,مخالفات,Irregularities,Shops,محلات تجارية,
+2018.0,اكتوبر,October,مخالفات,Irregularities,Shops,محلات تجارية,
+2018.0,مارس,March,إنذارات,Warnings,Houses,منازل,
+2018.0,ابريل,April,إنذارات,Warnings,Houses,منازل,
+2018.0,مايو,May,إنذارات,Warnings,Houses,منازل,
+2018.0,اغسطس,August,إنذارات,Warnings,Houses,منازل,
+2018.0,سبتمبر,September,إنذارات,Warnings,Houses,منازل,
+2018.0,اكتوبر,October,إنذارات,Warnings,Houses,منازل,
+2018.0,نوفمبر,November,إنذارات,Warnings,Houses,منازل,
+2018.0,ديسيمبر,December,إنذارات,Warnings,Houses,منازل,
+2018.0,يناير,January,مخالفات,Irregularities,Houses,منازل,
+2018.0,فبراير,February,مخالفات,Irregularities,Houses,منازل,
+2018.0,مارس,March,مخالفات,Irregularities,Houses,منازل,
+2018.0,ابريل,April,مخالفات,Irregularities,Houses,منازل,
+2018.0,يونيو,June,مخالفات,Irregularities,Houses,منازل,
+2019.0,مارس,March,إنذارات,Warnings,Shops,محلات تجارية,
+2019.0,اغسطس,August,إنذارات,Warnings,Shops,محلات تجارية,
+2019.0,اكتوبر,October,إنذارات,Warnings,Shops,محلات تجارية,
+2019.0,ديسيمبر,December,إنذارات,Warnings,Shops,محلات تجارية,
+2019.0,يناير,January,مخالفات,Irregularities,Shops,محلات تجارية,
+2019.0,فبراير,February,مخالفات,Irregularities,Shops,محلات تجارية,
+2019.0,مايو,May,مخالفات,Irregularities,Shops,محلات تجارية,
+2019.0,يونيو,June,مخالفات,Irregularities,Shops,محلات تجارية,
+2019.0,اغسطس,August,مخالفات,Irregularities,Shops,محلات تجارية,
+2019.0,اكتوبر,October,مخالفات,Irregularities,Shops,محلات تجارية,
+2019.0,نوفمبر,November,مخالفات,Irregularities,Shops,محلات تجارية,
+2019.0,ابريل,April,إنذارات,Warnings,Houses,منازل,
+2019.0,مايو,May,إنذارات,Warnings,Houses,منازل,
+2019.0,سبتمبر,September,إنذارات,Warnings,Houses,منازل,
+2019.0,فبراير,February,مخالفات,Irregularities,Houses,منازل,
+2019.0,نوفمبر,November,مخالفات,Irregularities,Houses,منازل,
+2020.0,يناير,January,إنذارات,Warnings,Shops,محلات تجارية,
+2020.0,سبتمبر,September,إنذارات,Warnings,Shops,محلات تجارية,
+2020.0,مارس,March,مخالفات,Irregularities,Shops,محلات تجارية,
+2015.0,يناير,January,إنذارات,Warnings,Shops,محلات تجارية,
+2020.0,مايو,May,مخالفات,Irregularities,Shops,محلات تجارية,
+2015.0,يوليو,July,إنذارات,Warnings,Shops,محلات تجارية,
+2020.0,يوليو,July,مخالفات,Irregularities,Shops,محلات تجارية,
+2015.0,اغسطس,August,إنذارات,Warnings,Shops,محلات تجارية,
+2020.0,سبتمبر,September,مخالفات,Irregularities,Shops,محلات تجارية,
+2015.0,مارس,March,مخالفات,Irregularities,Shops,محلات تجارية,
+2020.0,نوفمبر,November,مخالفات,Irregularities,Shops,محلات تجارية,
+2015.0,يوليو,July,مخالفات,Irregularities,Shops,محلات تجارية,
+2020.0,ابريل,April,إنذارات,Warnings,Houses,منازل,
+2015.0,اغسطس,August,مخالفات,Irregularities,Shops,محلات تجارية,
+2020.0,اغسطس,August,إنذارات,Warnings,Houses,منازل,
+2015.0,نوفمبر,November,مخالفات,Irregularities,Shops,محلات تجارية,
+2020.0,سبتمبر,September,إنذارات,Warnings,Houses,منازل,
+2015.0,ديسيمبر,December,مخالفات,Irregularities,Shops,محلات تجارية,
+2020.0,نوفمبر,November,إنذارات,Warnings,Houses,منازل,
+2015.0,يناير,January,إنذارات,Warnings,Houses,منازل,
+2020.0,فبراير,February,مخالفات,Irregularities,Houses,منازل,
+2015.0,ديسيمبر,December,إنذارات,Warnings,Houses,منازل,
+2020.0,مارس,March,مخالفات,Irregularities,Houses,منازل,
+2015.0,فبراير,February,مخالفات,Irregularities,Houses,منازل,
+2020.0,يوليو,July,مخالفات,Irregularities,Houses,منازل,
+2015.0,ابريل,April,مخالفات,Irregularities,Houses,منازل,
+2020.0,اغسطس,August,مخالفات,Irregularities,Houses,منازل,
+2015.0,يوليو,July,مخالفات,Irregularities,Houses,منازل,
+2020.0,اكتوبر,October,مخالفات,Irregularities,Houses,منازل,
+2015.0,سبتمبر,September,مخالفات,Irregularities,Houses,منازل,
+2020.0,نوفمبر,November,مخالفات,Irregularities,Houses,منازل,
+2016.0,مارس,March,إنذارات,Warnings,Shops,محلات تجارية,
+2021.0,يناير,January,إنذارات,Warnings,Shops,محلات تجارية,
+2016.0,مايو,May,إنذارات,Warnings,Shops,محلات تجارية,
+2021.0,ابريل,April,إنذارات,Warnings,Shops,محلات تجارية,
+2016.0,يونيو,June,إنذارات,Warnings,Shops,محلات تجارية,
+2021.0,يوليو,July,إنذارات,Warnings,Shops,محلات تجارية,
+2016.0,يوليو,July,إنذارات,Warnings,Shops,محلات تجارية,
+2021.0,نوفمبر,November,إنذارات,Warnings,Shops,محلات تجارية,
+2016.0,اكتوبر,October,إنذارات,Warnings,Shops,محلات تجارية,
+2021.0,ديسيمبر,December,إنذارات,Warnings,Shops,محلات تجارية,
+2016.0,ابريل,April,مخالفات,Irregularities,Shops,محلات تجارية,
+2021.0,ابريل,April,مخالفات,Irregularities,Shops,محلات تجارية,
+2016.0,يونيو,June,مخالفات,Irregularities,Shops,محلات تجارية,
+2021.0,يونيو,June,مخالفات,Irregularities,Shops,محلات تجارية,
+2016.0,اغسطس,August,مخالفات,Irregularities,Shops,محلات تجارية,
+2021.0,اغسطس,August,مخالفات,Irregularities,Shops,محلات تجارية,
+2016.0,مايو,May,إنذارات,Warnings,Houses,منازل,
+2021.0,سبتمبر,September,مخالفات,Irregularities,Shops,محلات تجارية,
+2016.0,سبتمبر,September,إنذارات,Warnings,Houses,منازل,
+2021.0,اكتوبر,October,مخالفات,Irregularities,Shops,محلات تجارية,
+2016.0,فبراير,February,مخالفات,Irregularities,Houses,منازل,
+2021.0,مارس,March,إنذارات,Warnings,Houses,منازل,
+2016.0,مارس,March,مخالفات,Irregularities,Houses,منازل,
+2021.0,يوليو,July,إنذارات,Warnings,Houses,منازل,
+2016.0,ابريل,April,مخالفات,Irregularities,Houses,منازل,
+2021.0,سبتمبر,September,إنذارات,Warnings,Houses,منازل,
+2016.0,يوليو,July,مخالفات,Irregularities,Houses,منازل,
+2021.0,فبراير,February,مخالفات,Irregularities,Houses,منازل,
+2016.0,سبتمبر,September,مخالفات,Irregularities,Houses,منازل,
+2021.0,مايو,May,مخالفات,Irregularities,Houses,منازل,
+2016.0,ديسيمبر,December,مخالفات,Irregularities,Houses,منازل,
+2021.0,سبتمبر,September,مخالفات,Irregularities,Houses,منازل,
+2017.0,نوفمبر,November,إنذارات,Warnings,Shops,محلات تجارية,
+2021.0,ديسيمبر,December,مخالفات,Irregularities,Houses,منازل,
+2017.0,ديسيمبر,December,إنذارات,Warnings,Shops,محلات تجارية,
+2022.0,يناير,January,إنذارات,Warnings,Shops,محلات تجارية,
+2017.0,يناير,January,مخالفات,Irregularities,Shops,محلات تجارية,
+2022.0,ابريل,April,إنذارات,Warnings,Shops,محلات تجارية,
+2017.0,اغسطس,August,مخالفات,Irregularities,Shops,محلات تجارية,
+2022.0,اغسطس,August,إنذارات,Warnings,Shops,محلات تجارية,
+2017.0,ديسيمبر,December,مخالفات,Irregularities,Shops,محلات تجارية,
+2022.0,اكتوبر,October,مخالفات,Irregularities,Shops,محلات تجارية,
+2017.0,يناير,January,إنذارات,Warnings,Houses,منازل,
+2022.0,فبراير,February,إنذارات,Warnings,Houses,منازل,
+2017.0,فبراير,February,إنذارات,Warnings,Houses,منازل,
+2022.0,ابريل,April,إنذارات,Warnings,Houses,منازل,
+2017.0,ابريل,April,إنذارات,Warnings,Houses,منازل,
+2022.0,يونيو,June,إنذارات,Warnings,Houses,منازل,
+2017.0,مايو,May,إنذارات,Warnings,Houses,منازل,
+2022.0,يوليو,July,إنذارات,Warnings,Houses,منازل,
+2017.0,يونيو,June,إنذارات,Warnings,Houses,منازل,
+2022.0,يناير,January,مخالفات,Irregularities,Houses,منازل,
+2017.0,اكتوبر,October,إنذارات,Warnings,Houses,منازل,
+2022.0,فبراير,February,مخالفات,Irregularities,Houses,منازل,
+2017.0,مارس,March,مخالفات,Irregularities,Houses,منازل,
+2022.0,يونيو,June,مخالفات,Irregularities,Houses,منازل,
+2017.0,سبتمبر,September,مخالفات,Irregularities,Houses,منازل,
+2022.0,اكتوبر,October,مخالفات,Irregularities,Houses,منازل,
+2017.0,ديسيمبر,December,مخالفات,Irregularities,Houses,منازل,
+2018.0,يناير,January,إنذارات,Warnings,Shops,محلات تجارية,
+2018.0,مارس,March,إنذارات,Warnings,Shops,محلات تجارية,
+2018.0,نوفمبر,November,إنذارات,Warnings,Shops,محلات تجارية,
+2018.0,يناير,January,مخالفات,Irregularities,Shops,محلات تجارية,
+2018.0,مارس,March,مخالفات,Irregularities,Shops,محلات تجارية,
+2018.0,مايو,May,مخالفات,Irregularities,Shops,محلات تجارية,
+2018.0,يوليو,July,مخالفات,Irregularities,Shops,محلات تجارية,
+2018.0,يونيو,June,إنذارات,Warnings,Houses,منازل,
+2018.0,مايو,May,مخالفات,Irregularities,Houses,منازل,
+2018.0,نوفمبر,November,مخالفات,Irregularities,Houses,منازل,
+2019.0,مايو,May,إنذارات,Warnings,Shops,محلات تجارية,
+2019.0,يوليو,July,إنذارات,Warnings,Shops,محلات تجارية,
+2019.0,سبتمبر,September,إنذارات,Warnings,Shops,محلات تجارية,
+2019.0,نوفمبر,November,إنذارات,Warnings,Shops,محلات تجارية,
+2019.0,يوليو,July,مخالفات,Irregularities,Shops,محلات تجارية,
+2019.0,سبتمبر,September,مخالفات,Irregularities,Shops,محلات تجارية,
+2019.0,مارس,March,إنذارات,Warnings,Houses,منازل,
+2019.0,يوليو,July,إنذارات,Warnings,Houses,منازل,
+2019.0,اغسطس,August,إنذارات,Warnings,Houses,منازل,
+2019.0,اكتوبر,October,إنذارات,Warnings,Houses,منازل,
+2019.0,نوفمبر,November,إنذارات,Warnings,Houses,منازل,
+2019.0,مايو,May,مخالفات,Irregularities,Houses,منازل,
+2019.0,سبتمبر,September,مخالفات,Irregularities,Houses,منازل,
+2020.0,فبراير,February,إنذارات,Warnings,Shops,محلات تجارية,
+2020.0,مارس,March,إنذارات,Warnings,Shops,محلات تجارية,
+2020.0,مايو,May,إنذارات,Warnings,Shops,محلات تجارية,
+2020.0,اكتوبر,October,إنذارات,Warnings,Shops,محلات تجارية,
+2020.0,نوفمبر,November,إنذارات,Warnings,Shops,محلات تجارية,
+2020.0,فبراير,February,مخالفات,Irregularities,Shops,محلات تجارية,
+2020.0,ابريل,April,مخالفات,Irregularities,Shops,محلات تجارية,
+2020.0,يونيو,June,مخالفات,Irregularities,Shops,محلات تجارية,
+2020.0,ديسيمبر,December,مخالفات,Irregularities,Shops,محلات تجارية,
+2020.0,يناير,January,إنذارات,Warnings,Houses,منازل,
+2020.0,يونيو,June,إنذارات,Warnings,Houses,منازل,
+2020.0,ديسيمبر,December,إنذارات,Warnings,Houses,منازل,
+2020.0,يناير,January,مخالفات,Irregularities,Houses,منازل,
+2020.0,ابريل,April,مخالفات,Irregularities,Houses,منازل,
+2021.0,فبراير,February,إنذارات,Warnings,Shops,محلات تجارية,
+2021.0,اغسطس,August,إنذارات,Warnings,Shops,محلات تجارية,
+2021.0,سبتمبر,September,إنذارات,Warnings,Shops,محلات تجارية,
+2021.0,اكتوبر,October,إنذارات,Warnings,Shops,محلات تجارية,
+2021.0,فبراير,February,مخالفات,Irregularities,Shops,محلات تجارية,
+2021.0,مارس,March,مخالفات,Irregularities,Shops,محلات تجارية,
+2021.0,يوليو,July,مخالفات,Irregularities,Shops,محلات تجارية,
+2021.0,يناير,January,إنذارات,Warnings,Houses,منازل,
+2021.0,فبراير,February,إنذارات,Warnings,Houses,منازل,
+2021.0,ديسيمبر,December,إنذارات,Warnings,Houses,منازل,
+2021.0,يناير,January,مخالفات,Irregularities,Houses,منازل,
+2021.0,ابريل,April,مخالفات,Irregularities,Houses,منازل,
+2021.0,اغسطس,August,مخالفات,Irregularities,Houses,منازل,
+2021.0,اكتوبر,October,مخالفات,Irregularities,Houses,منازل,
+2022.0,مارس,March,إنذارات,Warnings,Shops,محلات تجارية,
+2022.0,مايو,May,إنذارات,Warnings,Shops,محلات تجارية,
+2022.0,يونيو,June,إنذارات,Warnings,Shops,محلات تجارية,
+2022.0,يوليو,July,إنذارات,Warnings,Shops,محلات تجارية,
+2022.0,اكتوبر,October,إنذارات,Warnings,Shops,محلات تجارية,
+2022.0,نوفمبر,November,إنذارات,Warnings,Shops,محلات تجارية,
+2022.0,ديسيمبر,December,إنذارات,Warnings,Shops,محلات تجارية,
+2022.0,يناير,January,مخالفات,Irregularities,Shops,محلات تجارية,
+2022.0,ابريل,April,مخالفات,Irregularities,Shops,محلات تجارية,
+2022.0,مايو,May,مخالفات,Irregularities,Shops,محلات تجارية,
+2022.0,يوليو,July,مخالفات,Irregularities,Shops,محلات تجارية,
+2022.0,اغسطس,August,مخالفات,Irregularities,Shops,محلات تجارية,
+2022.0,نوفمبر,November,مخالفات,Irregularities,Shops,محلات تجارية,
+2022.0,ديسيمبر,December,مخالفات,Irregularities,Shops,محلات تجارية,
+2022.0,يناير,January,إنذارات,Warnings,Houses,منازل,
+2022.0,مارس,March,إنذارات,Warnings,Houses,منازل,
+2022.0,مايو,May,إنذارات,Warnings,Houses,منازل,
+2022.0,اغسطس,August,إنذارات,Warnings,Houses,منازل,
+2022.0,سبتمبر,September,إنذارات,Warnings,Houses,منازل,
+2022.0,اكتوبر,October,إنذارات,Warnings,Houses,منازل,
+2022.0,ديسيمبر,December,إنذارات,Warnings,Houses,منازل,
+2022.0,مارس,March,مخالفات,Irregularities,Houses,منازل,
+2022.0,يوليو,July,مخالفات,Irregularities,Houses,منازل,
+2022.0,اغسطس,August,مخالفات,Irregularities,Houses,منازل,
+2022.0,ديسيمبر,December,مخالفات,Irregularities,Houses,منازل,
+2015.0,فبراير,February,إنذارات,Warnings,Companies,الشركات,41.0
+2015.0,ابريل,April,إنذارات,Warnings,Companies,الشركات,29.0
+2015.0,مايو,May,إنذارات,Warnings,Companies,الشركات,11.0
+2015.0,فبراير,February,إنذارات,Warnings,Vehicles,المركبات,2.0
+2015.0,اغسطس,August,إنذارات,Warnings,Vehicles,المركبات,0.0
+2015.0,فبراير,February,إنذارات,Warnings,Personal,الأفراد,0.0
+2015.0,مارس,March,إنذارات,Warnings,Personal,الأفراد,2.0
+2015.0,اكتوبر,October,إنذارات,Warnings,Personal,الأفراد,11.0
+2015.0,ديسيمبر,December,إنذارات,Warnings,Personal,الأفراد,4.0
+2015.0,فبراير,February,مخالفات,Fines,Vehicles,المركبات,6.0
+2015.0,مارس,March,مخالفات,Fines,Vehicles,المركبات,6.0
+2015.0,ديسيمبر,December,مخالفات,Fines,Vehicles,المركبات,4.0
+2015.0,فبراير,February,مخالفات,Fines,Personal,الأفراد,0.0
+2015.0,مايو,May,مخالفات,Fines,Personal,الأفراد,3.0
+2016.0,فبراير,February,إنذارات,Warnings,Companies,الشركات,56.0
+2016.0,اكتوبر,October,إنذارات,Warnings,Companies,الشركات,16.0
+2016.0,ابريل,April,إنذارات,Warnings,Vehicles,المركبات,0.0
+2016.0,اغسطس,August,إنذارات,Warnings,Vehicles,المركبات,0.0
+2016.0,سبتمبر,September,إنذارات,Warnings,Vehicles,المركبات,0.0
+2016.0,مارس,March,إنذارات,Warnings,Personal,الأفراد,18.0
+2016.0,ابريل,April,مخالفات,Fines,Companies,الشركات,36.0
+2016.0,نوفمبر,November,مخالفات,Fines,Companies,الشركات,50.0
+2016.0,مارس,March,مخالفات,Fines,Vehicles,المركبات,3.0
+2016.0,ابريل,April,مخالفات,Fines,Vehicles,المركبات,0.0
+2016.0,سبتمبر,September,مخالفات,Fines,Vehicles,المركبات,0.0
+2016.0,مايو,May,مخالفات,Fines,Personal,الأفراد,2.0
+2016.0,يوليو,July,مخالفات,Fines,Personal,الأفراد,2.0
+2016.0,نوفمبر,November,مخالفات,Fines,Personal,الأفراد,2.0
+2017.0,سبتمبر,September,إنذارات,Warnings,Companies,الشركات,15.0
+2017.0,يناير,January,إنذارات,Warnings,Vehicles,المركبات,0.0
+2017.0,فبراير,February,إنذارات,Warnings,Personal,الأفراد,16.0
+2017.0,ابريل,April,إنذارات,Warnings,Personal,الأفراد,5.0
+2017.0,سبتمبر,September,إنذارات,Warnings,Personal,الأفراد,1.0
+2017.0,اغسطس,August,مخالفات,Fines,Companies,الشركات,95.0
+2017.0,نوفمبر,November,مخالفات,Fines,Companies,الشركات,71.0
+2017.0,مارس,March,مخالفات,Fines,Vehicles,المركبات,11.0
+2017.0,سبتمبر,September,مخالفات,Fines,Vehicles,المركبات,13.0
+2017.0,يناير,January,مخالفات,Fines,Personal,الأفراد,4.0
+2017.0,يوليو,July,مخالفات,Fines,Personal,الأفراد,4.0
+2017.0,سبتمبر,September,مخالفات,Fines,Personal,الأفراد,3.0
+2018.0,مارس,March,إنذارات,Warnings,Companies,الشركات,3.0
+2018.0,اغسطس,August,إنذارات,Warnings,Companies,الشركات,70.0
+2018.0,فبراير,February,إنذارات,Warnings,Vehicles,المركبات,0.0
+2018.0,سبتمبر,September,إنذارات,Warnings,Vehicles,المركبات,0.0
+2018.0,يناير,January,إنذارات,Warnings,Personal,الأفراد,0.0
+2018.0,اكتوبر,October,إنذارات,Warnings,Personal,الأفراد,4.0
+2018.0,يوليو,July,مخالفات,Fines,Vehicles,المركبات,20.0
+2018.0,فبراير,February,مخالفات,Fines,Personal,الأفراد,1.0
+2018.0,مايو,May,مخالفات,Fines,Personal,الأفراد,1.0
+2018.0,سبتمبر,September,مخالفات,Fines,Personal,الأفراد,0.0
+2019.0,ابريل,April,إنذارات,Warnings,Companies,الشركات,8.0
+2019.0,يوليو,July,إنذارات,Warnings,Companies,الشركات,5.0
+2019.0,فبراير,February,إنذارات,Warnings,Vehicles,المركبات,0.0
+2019.0,ابريل,April,إنذارات,Warnings,Vehicles,المركبات,0.0
+2019.0,يونيو,June,إنذارات,Warnings,Vehicles,المركبات,0.0
+2019.0,يوليو,July,إنذارات,Warnings,Vehicles,المركبات,0.0
+2019.0,ابريل,April,إنذارات,Warnings,Personal,الأفراد,1.0
+2019.0,يناير,January,مخالفات,Fines,Companies,الشركات,17.0
+2019.0,مارس,March,مخالفات,Fines,Companies,الشركات,69.0
+2019.0,سبتمبر,September,مخالفات,Fines,Companies,الشركات,38.0
+2019.0,مايو,May,مخالفات,Fines,Vehicles,المركبات,3.0
+2019.0,يوليو,July,مخالفات,Fines,Vehicles,المركبات,6.0
+2019.0,اغسطس,August,مخالفات,Fines,Vehicles,المركبات,7.0
+2019.0,اكتوبر,October,مخالفات,Fines,Vehicles,المركبات,22.0
+2020.0,فبراير,February,إنذارات,Warnings,Companies,الشركات,0.0
+2020.0,يوليو,July,إنذارات,Warnings,Companies,الشركات,0.0
+2020.0,اغسطس,August,إنذارات,Warnings,Vehicles,المركبات,0.0
+2020.0,يوليو,July,إنذارات,Warnings,Personal,الأفراد,0.0
+2020.0,فبراير,February,مخالفات,Fines,Companies,الشركات,19.0
+2020.0,ديسيمبر,December,مخالفات,Fines,Companies,الشركات,17.0
+2020.0,مايو,May,مخالفات,Fines,Vehicles,المركبات,1.0
+2020.0,يناير,January,مخالفات,Fines,Personal,الأفراد,0.0
+2020.0,مايو,May,مخالفات,Fines,Personal,الأفراد,0.0
+2020.0,اكتوبر,October,مخالفات,Fines,Personal,الأفراد,0.0
+2021.0,اغسطس,August,إنذارات,Warnings,Companies,الشركات,19.0
+2021.0,سبتمبر,September,إنذارات,Warnings,Companies,الشركات,34.0
+2021.0,ديسيمبر,December,إنذارات,Warnings,Companies,الشركات,68.0
+2021.0,نوفمبر,November,إنذارات,Warnings,Vehicles,المركبات,2.0
+2021.0,يوليو,July,إنذارات,Warnings,Personal,الأفراد,0.0
+2021.0,اكتوبر,October,إنذارات,Warnings,Personal,الأفراد,0.0
+2021.0,ديسيمبر,December,إنذارات,Warnings,Personal,الأفراد,3.0
+2021.0,فبراير,February,مخالفات,Fines,Companies,الشركات,21.0
+2021.0,ابريل,April,مخالفات,Fines,Companies,الشركات,29.0
+2021.0,مايو,May,مخالفات,Fines,Companies,الشركات,27.0
+2021.0,اغسطس,August,مخالفات,Fines,Companies,الشركات,26.0
+2021.0,نوفمبر,November,مخالفات,Fines,Companies,الشركات,82.0
+2021.0,يناير,January,مخالفات,Fines,Vehicles,المركبات,11.0
+2021.0,يونيو,June,مخالفات,Fines,Vehicles,المركبات,10.0
+2021.0,سبتمبر,September,مخالفات,Fines,Vehicles,المركبات,8.0
+2021.0,يناير,January,مخالفات,Fines,Personal,الأفراد,0.0
+2021.0,فبراير,February,مخالفات,Fines,Personal,الأفراد,7.0
+2021.0,مارس,March,مخالفات,Fines,Personal,الأفراد,6.0
+2021.0,يوليو,July,مخالفات,Fines,Personal,الأفراد,1.0
+2015.0,يناير,January,إنذارات,Warnings,Companies,الشركات,101.0
+2015.0,مارس,March,إنذارات,Warnings,Companies,الشركات,64.0
+2015.0,يونيو,June,إنذارات,Warnings,Companies,الشركات,62.0
+2015.0,ابريل,April,إنذارات,Warnings,Vehicles,المركبات,1.0
+2015.0,يونيو,June,إنذارات,Warnings,Vehicles,المركبات,0.0
+2015.0,يناير,January,إنذارات,Warnings,Personal,الأفراد,4.0
+2015.0,ابريل,April,إنذارات,Warnings,Personal,الأفراد,3.0
+2015.0,فبراير,February,مخالفات,Fines,Companies,الشركات,102.0
+2015.0,اكتوبر,October,مخالفات,Fines,Companies,الشركات,86.0
+2015.0,سبتمبر,September,مخالفات,Fines,Vehicles,المركبات,3.0
+2015.0,يناير,January,مخالفات,Fines,Personal,الأفراد,0.0
+2015.0,سبتمبر,September,مخالفات,Fines,Personal,الأفراد,1.0
+2015.0,اكتوبر,October,مخالفات,Fines,Personal,الأفراد,3.0
+2016.0,مايو,May,إنذارات,Warnings,Companies,الشركات,33.0
+2016.0,نوفمبر,November,إنذارات,Warnings,Companies,الشركات,21.0
+2016.0,يونيو,June,إنذارات,Warnings,Vehicles,المركبات,0.0
+2016.0,اكتوبر,October,إنذارات,Warnings,Vehicles,المركبات,0.0
+2016.0,نوفمبر,November,إنذارات,Warnings,Vehicles,المركبات,3.0
+2016.0,يوليو,July,إنذارات,Warnings,Personal,الأفراد,19.0
+2016.0,يناير,January,مخالفات,Fines,Companies,الشركات,82.0
+2016.0,يناير,January,مخالفات,Fines,Vehicles,المركبات,8.0
+2016.0,يونيو,June,مخالفات,Fines,Vehicles,المركبات,0.0
+2016.0,ديسيمبر,December,مخالفات,Fines,Vehicles,المركبات,4.0
+2016.0,اكتوبر,October,مخالفات,Fines,Personal,الأفراد,4.0
+2017.0,يناير,January,إنذارات,Warnings,Personal,الأفراد,11.0
+2017.0,اغسطس,August,إنذارات,Warnings,Personal,الأفراد,2.0
+2017.0,سبتمبر,September,مخالفات,Fines,Companies,الشركات,94.0
+2017.0,يونيو,June,مخالفات,Fines,Vehicles,المركبات,5.0
+2017.0,فبراير,February,مخالفات,Fines,Personal,الأفراد,4.0
+2018.0,فبراير,February,إنذارات,Warnings,Companies,الشركات,11.0
+2018.0,ديسيمبر,December,إنذارات,Warnings,Companies,الشركات,14.0
+2018.0,اكتوبر,October,إنذارات,Warnings,Vehicles,المركبات,2.0
+2018.0,يونيو,June,إنذارات,Warnings,Personal,الأفراد,6.0
+2018.0,ديسيمبر,December,إنذارات,Warnings,Personal,الأفراد,6.0
+2018.0,يونيو,June,مخالفات,Fines,Companies,الشركات,20.0
+2018.0,يوليو,July,مخالفات,Fines,Companies,الشركات,26.0
+2018.0,اكتوبر,October,مخالفات,Fines,Companies,الشركات,36.0
+2018.0,فبراير,February,مخالفات,Fines,Vehicles,المركبات,14.0
+2018.0,مارس,March,مخالفات,Fines,Vehicles,المركبات,14.0
+2018.0,مايو,May,مخالفات,Fines,Vehicles,المركبات,15.0
+2018.0,سبتمبر,September,مخالفات,Fines,Vehicles,المركبات,11.0
+2018.0,ديسيمبر,December,مخالفات,Fines,Vehicles,المركبات,8.0
+2018.0,يوليو,July,مخالفات,Fines,Personal,الأفراد,2.0
+2019.0,يناير,January,إنذارات,Warnings,Companies,الشركات,26.0
+2019.0,يونيو,June,إنذارات,Warnings,Companies,الشركات,2.0
+2019.0,اكتوبر,October,إنذارات,Warnings,Companies,الشركات,2.0
+2019.0,مايو,May,إنذارات,Warnings,Vehicles,المركبات,0.0
+2019.0,ديسيمبر,December,إنذارات,Warnings,Vehicles,المركبات,0.0
+2019.0,مايو,May,إنذارات,Warnings,Personal,الأفراد,1.0
+2019.0,سبتمبر,September,إنذارات,Warnings,Personal,الأفراد,1.0
+2019.0,فبراير,February,مخالفات,Fines,Companies,الشركات,57.0
+2019.0,يوليو,July,مخالفات,Fines,Companies,الشركات,6.0
+2019.0,اكتوبر,October,مخالفات,Fines,Companies,الشركات,66.0
+2019.0,نوفمبر,November,مخالفات,Fines,Personal,الأفراد,6.0
+2020.0,يونيو,June,إنذارات,Warnings,Companies,الشركات,32.0
+2020.0,مارس,March,إنذارات,Warnings,Vehicles,المركبات,0.0
+2020.0,فبراير,February,إنذارات,Warnings,Personal,الأفراد,2.0
+2020.0,مارس,March,إنذارات,Warnings,Personal,الأفراد,1.0
+2020.0,ابريل,April,إنذارات,Warnings,Personal,الأفراد,0.0
+2020.0,اكتوبر,October,إنذارات,Warnings,Personal,الأفراد,0.0
+2020.0,اكتوبر,October,مخالفات,Fines,Companies,الشركات,52.0
+2020.0,نوفمبر,November,مخالفات,Fines,Companies,الشركات,27.0
+2020.0,يناير,January,مخالفات,Fines,Vehicles,المركبات,15.0
+2020.0,سبتمبر,September,مخالفات,Fines,Vehicles,المركبات,3.0
+2020.0,مارس,March,مخالفات,Fines,Personal,الأفراد,0.0
+2020.0,يوليو,July,مخالفات,Fines,Personal,الأفراد,0.0
+2021.0,فبراير,February,إنذارات,Warnings,Companies,الشركات,9.0
+2021.0,اكتوبر,October,مخالفات,Fines,Personal,الأفراد,3.0
+2021.0,ديسيمبر,December,مخالفات,Fines,Personal,الأفراد,1.0
+2022.0,يناير,January,إنذارات,Warnings,Companies,الشركات,83.0
+2022.0,مارس,March,إنذارات,Warnings,Companies,الشركات,204.0
+2022.0,ابريل,April,إنذارات,Warnings,Companies,الشركات,248.0
+2022.0,يوليو,July,إنذارات,Warnings,Companies,الشركات,278.0
+2022.0,اغسطس,August,إنذارات,Warnings,Companies,الشركات,227.0
+2022.0,ديسيمبر,December,إنذارات,Warnings,Companies,الشركات,239.0
+2022.0,مارس,March,إنذارات,Warnings,Vehicles,المركبات,1.0
+2022.0,مايو,May,إنذارات,Warnings,Vehicles,المركبات,2.0
+2022.0,يونيو,June,إنذارات,Warnings,Vehicles,المركبات,13.0
+2022.0,اكتوبر,October,إنذارات,Warnings,Vehicles,المركبات,3.0
+2022.0,نوفمبر,November,إنذارات,Warnings,Vehicles,المركبات,4.0
+2022.0,ديسيمبر,December,إنذارات,Warnings,Vehicles,المركبات,10.0
+2022.0,فبراير,February,إنذارات,Warnings,Personal,الأفراد,3.0
+2022.0,مايو,May,إنذارات,Warnings,Personal,الأفراد,0.0
+2022.0,يونيو,June,إنذارات,Warnings,Personal,الأفراد,0.0
+2022.0,اغسطس,August,إنذارات,Warnings,Personal,الأفراد,1.0
+2022.0,سبتمبر,September,إنذارات,Warnings,Personal,الأفراد,1.0
+2022.0,اكتوبر,October,إنذارات,Warnings,Personal,الأفراد,0.0
+2022.0,مارس,March,مخالفات,Fines,Companies,الشركات,40.0
+2022.0,سبتمبر,September,مخالفات,Fines,Companies,الشركات,63.0
+2022.0,نوفمبر,November,مخالفات,Fines,Companies,الشركات,95.0
+2022.0,ديسيمبر,December,مخالفات,Fines,Companies,الشركات,95.0
+2022.0,ابريل,April,مخالفات,Fines,Vehicles,المركبات,14.0
+2022.0,مايو,May,مخالفات,Fines,Vehicles,المركبات,59.0
+2022.0,ابريل,April,مخالفات,Fines,Personal,الأفراد,0.0
+2022.0,مايو,May,مخالفات,Fines,Personal,الأفراد,1.0
+2022.0,سبتمبر,September,مخالفات,Fines,Personal,الأفراد,0.0
+2022.0,اكتوبر,October,مخالفات,Fines,Personal,الأفراد,0.0
+2023.0,يناير,January,إنذارات,Warnings,Vehicles,المركبات,10.0
+2023.0,مارس,March,إنذارات,Warnings,Vehicles,المركبات,9.0
+2023.0,فبراير,February,إنذارات,Warnings,Personal,الأفراد,0.0
+2023.0,أبريل,April,إنذارات,Warnings,,قطعة أرض,19.0
+2023.0,يناير,January,مخالفات,Fines,,قطعة أرض,2.0

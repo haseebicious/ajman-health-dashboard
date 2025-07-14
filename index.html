@@ -33,8 +33,6 @@
     .footer p { margin: 0.5rem 0; opacity: 0.9; }
     .footer a { color: #93c5fd; text-decoration: underline; }
     .footer a:hover { text-decoration: underline; }
-    .debug-info { background: #fff3cd; border: 1px solid #ffeaa7; padding: 1rem; margin: 2rem; border-radius: 8px; font-family: monospace; font-size: 0.9rem; }
-    .loading-indicator { text-align: center; padding: 2rem; color: #666; }
     @media (max-width: 768px) {
       .header { flex-direction: column; align-items: flex-start; }
       .charts-container { grid-template-columns: 1fr; }
@@ -46,8 +44,8 @@
 <body>
   <div class="header" id="header">
     <div class="logos">
-      <img src="assets/ajman-data-logo.png" alt="Ajman Data Logo" onerror="this.style.display='none'" />
-      <img src="assets/ajman-vision-2030-logo.png" alt="Ajman Vision 2030 Logo" onerror="this.style.display='none'" />
+      <img src="assets/ajman-data-logo.png" alt="Ajman Data Logo" />
+      <img src="assets/ajman-vision-2030-logo.png" alt="Ajman Vision 2030 Logo" />
       <h1 id="dashboardTitle"></h1>
     </div>
     <div class="lang-toggle" id="langToggle">
@@ -56,18 +54,6 @@
     </div>
   </div>
   <p id="dashboardSubtitle" style="text-align:center; margin:1rem 0 0.5rem;"></p>
-  
-  <!-- Debug information panel -->
-  <div id="debugInfo" class="debug-info" style="display: none;">
-    <h4>Debug Information:</h4>
-    <div id="debugContent"></div>
-  </div>
-  
-  <!-- Loading indicator -->
-  <div id="loadingIndicator" class="loading-indicator">
-    <p>Loading dashboard data...</p>
-  </div>
-  
   <div class="metrics-container" id="metricsContainer"></div>
   <div class="charts-container" id="chartsContainer"></div>
   <div class="insights-section" id="insightsSection">
@@ -88,18 +74,13 @@
       <a href="https://data.ajman.ae" target="_blank">بوابة بيانات عجمان</a>
     </p>
     <p>Created by Haseeb Juma | © 2025 - Ajman University</p>
-    <p style="margin-top: 1rem;">
-      <button onclick="toggleDebug()" style="background: #7c3aed; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">
-        Toggle Debug Info
-      </button>
-    </p>
   </div>
   <script>
-    // Enhanced translation object
+    // Translation object as before
     const translations = {
       en: {
         dashboardTitle: "Ajman Health & Food Safety Dashboard",
-        dashboardSubtitle: "Empowering Ajman's Future: Data-Driven Health for All",
+        dashboardSubtitle: "Empowering Ajman’s Future: Data-Driven Health for All",
         metrics: [
           { title: "Shops Inspected" },
           { title: "Food Safety Pass Rate" },
@@ -115,18 +96,18 @@
           "Shops Visited for Inspection"
         ],
         chartNarratives: [
-          "Ajman's export and veterinary health certification activity over time. Export certifications dominate, reflecting Ajman's strong food export oversight.",
+          "Ajman’s export and veterinary health certification activity over time. Export certifications dominate, reflecting Ajman’s strong food export oversight.",
           "Food safety testing results: steady improvement in 'Fit' samples, with a declining trend in 'Unfit' results, supporting Vision 2030 sustainability.",
           "Confiscated product volumes indicate active enforcement. Spikes often follow increased inspections or targeted campaigns.",
           "Most violations are issued to companies, suggesting targeted education/enforcement could yield quick wins for public health.",
-          "Inspection activity shows Ajman's preventive approach to health and food safety, with peaks during high-risk periods."
+          "Inspection activity shows Ajman’s preventive approach to health and food safety, with peaks during high-risk periods."
         ],
         insightsTitle: "Key Insights & Vision 2030 Alignment",
         insights: [
           {
             icon: "🌱",
             title: "Sustainability in Action",
-            text: "Reduction in unsafe food and increased preventive enforcement support Ajman's sustainability goals."
+            text: "Reduction in unsafe food and increased preventive enforcement support Ajman’s sustainability goals."
           },
           {
             icon: "🤝",
@@ -200,127 +181,8 @@
     };
 
     let currentLang = 'en';
-    let dataStore = {};
-    let loadingErrors = [];
-
-    // Sample fallback data for testing when files aren't available
-    const sampleData = {
-      certificates: [
-        {year: 2020, category_en: "Export CoH issued", category_ar: "شهادات صحية تصدير", number_of_certificates_of_health: 1250},
-        {year: 2021, category_en: "Export CoH issued", category_ar: "شهادات صحية تصدير", number_of_certificates_of_health: 1400},
-        {year: 2022, category_en: "Export CoH issued", category_ar: "شهادات صحية تصدير", number_of_certificates_of_health: 1600},
-        {year: 2020, category_en: "Veterinary CoH issued", category_ar: "شهادات صحية بيطرية", number_of_certificates_of_health: 850},
-        {year: 2021, category_en: "Veterinary CoH issued", category_ar: "شهادات صحية بيطرية", number_of_certificates_of_health: 920},
-        {year: 2022, category_en: "Veterinary CoH issued", category_ar: "شهادات صحية بيطرية", number_of_certificates_of_health: 1050}
-      ],
-      foodLab: [
-        {year: 2020, analysis_results_en: "Fit", analysis_results_ar: "صالحة", value: 1850},
-        {year: 2021, analysis_results_en: "Fit", analysis_results_ar: "صالحة", value: 1950},
-        {year: 2022, analysis_results_en: "Fit", analysis_results_ar: "صالحة", value: 2100},
-        {year: 2020, analysis_results_en: "Unfit", analysis_results_ar: "غير صالحة", value: 150},
-        {year: 2021, analysis_results_en: "Unfit", analysis_results_ar: "غير صالحة", value: 120},
-        {year: 2022, analysis_results_en: "Unfit", analysis_results_ar: "غير صالحة", value: 95}
-      ],
-      confiscated: [
-        {year: 2020, confiscated_food_and_health_products_kg: 2500},
-        {year: 2021, confiscated_food_and_health_products_kg: 1800},
-        {year: 2022, confiscated_food_and_health_products_kg: 2200}
-      ],
-      violations: [
-        {year: 2020, category_en: "Companies", category_ar: "شركات", number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec: 45},
-        {year: 2021, category_en: "Companies", category_ar: "شركات", number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec: 52},
-        {year: 2022, category_en: "Companies", category_ar: "شركات", number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec: 38},
-        {year: 2020, category_en: "Individuals", category_ar: "أفراد", number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec: 18},
-        {year: 2021, category_en: "Individuals", category_ar: "أفراد", number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec: 22},
-        {year: 2022, category_en: "Individuals", category_ar: "أفراد", number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec: 15}
-      ],
-      shops: [
-        {year: 2020, number_of_shops_visited: 450},
-        {year: 2021, number_of_shops_visited: 520},
-        {year: 2022, number_of_shops_visited: 580}
-      ]
-    };
-
-    // Enhanced data loading with robust error handling
-    const files = {
-      certificates: 'data/medical-certificates-issued.json',
-      foodLab: 'data/food-laboratory-test-results.json',
-      confiscated: 'data/confiscated-food-and-health-products.json',
-      violations: 'data/warnings-and-public-health-violations.json',
-      shops: 'data/shops-visited.json'
-    };
-
-    function logDebug(message, data = null) {
-      console.log('[Dashboard Debug]', message, data);
-      const debugContent = document.getElementById('debugContent');
-      if (debugContent) {
-        const timestamp = new Date().toLocaleTimeString();
-        debugContent.innerHTML += `<div>[${timestamp}] ${message}</div>`;
-        if (data) {
-          debugContent.innerHTML += `<div style="margin-left: 20px; color: #666;">${JSON.stringify(data, null, 2)}</div>`;
-        }
-      }
-    }
-
-    function toggleDebug() {
-      const debugInfo = document.getElementById('debugInfo');
-      debugInfo.style.display = debugInfo.style.display === 'none' ? 'block' : 'none';
-    }
-
-    async function loadDataWithFallback() {
-      logDebug('Starting data loading process...');
-      document.getElementById('loadingIndicator').style.display = 'block';
-
-      try {
-        // Attempt to load each file individually with error handling
-        const loadPromises = Object.entries(files).map(async ([key, url]) => {
-          try {
-            logDebug(`Attempting to load: ${url}`);
-            const response = await fetch(url);
-            
-            if (!response.ok) {
-              throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-            }
-            
-            const data = await response.json();
-            logDebug(`Successfully loaded ${key}`, { recordCount: data.length });
-            return [key, data];
-          } catch (error) {
-            const errorMsg = `Failed to load ${key} from ${url}: ${error.message}`;
-            logDebug(errorMsg);
-            loadingErrors.push(errorMsg);
-            
-            // Use sample data as fallback
-            logDebug(`Using sample data for ${key}`);
-            return [key, sampleData[key] || []];
-          }
-        });
-
-        const results = await Promise.all(loadPromises);
-        
-        // Store all loaded data
-        results.forEach(([key, data]) => {
-          dataStore[key] = data;
-        });
-
-        logDebug('Data loading completed', {
-          loadedFiles: Object.keys(dataStore),
-          errors: loadingErrors.length
-        });
-
-      } catch (error) {
-        logDebug('Critical error during data loading', error);
-        // Use all sample data as complete fallback
-        dataStore = { ...sampleData };
-      }
-
-      // Hide loading indicator and initialize dashboard
-      document.getElementById('loadingIndicator').style.display = 'none';
-      setLang(currentLang);
-    }
 
     function setLang(lang) {
-      logDebug(`Setting language to: ${lang}`);
       currentLang = lang;
       document.documentElement.lang = lang;
       document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
@@ -331,244 +193,218 @@
       document.getElementById('insightsTitle').textContent = translations[lang].insightsTitle;
       document.getElementById('footerSource').innerHTML = translations[lang].footerSource;
       document.getElementById('footerVision').textContent = translations[lang].footerVision;
-      
-      // Only render if we have data
-      if (Object.keys(dataStore).length > 0) {
-        renderMetrics();
-        renderCharts();
-        renderInsights();
-      }
+      renderMetrics();
+      renderCharts();
+      renderInsights();
     }
 
+    // JSON file paths (match your real file names exactly)
+    const files = {
+      certificates: 'data/medical-certificates-issued.json',
+      foodLab: 'data/food-laboratory-test-results.json',
+      confiscated: 'data/confiscated-food-and-health-products.json',
+      violations: 'data/warnings-and-public-health-violations.json',
+      shops: 'data/shops-visited.json'
+    };
+    let dataStore = {};
+
+    Promise.all(Object.entries(files).map(([k, url]) =>
+      fetch(url).then(r => r.json()).then(data => [k, data])
+    )).then(results => {
+      results.forEach(([k, d]) => dataStore[k] = d);
+      setLang(currentLang);
+    });
+
     function renderMetrics() {
-      logDebug('Rendering metrics...');
       const metrics = [];
-      
-      try {
-        // Shops Inspected
-        const shops = dataStore.shops || [];
-        const totalShops = shops.reduce((sum, row) => sum + (parseFloat(row.number_of_shops_visited) || 0), 0);
-        metrics.push({
-          title: translations[currentLang].metrics[0].title,
-          value: totalShops.toLocaleString()
-        });
-
-        // Food Safety Pass Rate
-        const foodLab = dataStore.foodLab || [];
-        const fit = foodLab.filter(r => (r.analysis_results_en === "Fit" || r.analysis_results_ar === "صالحة"))
-          .reduce((sum, row) => sum + (parseFloat(row.value) || 0), 0);
-        const unfit = foodLab.filter(r => (r.analysis_results_en === "Unfit" || r.analysis_results_ar === "غير صالحة"))
-          .reduce((sum, row) => sum + (parseFloat(row.value) || 0), 0);
-        const passRate = (fit + unfit) > 0 ? (fit / (fit + unfit) * 100).toFixed(1) : "0";
-        metrics.push({
-          title: translations[currentLang].metrics[1].title,
-          value: passRate + "%"
-        });
-
-        // Violations Issued
-        const violations = dataStore.violations || [];
-        const totalViol = violations.reduce((sum, row) => sum + (parseFloat(row.number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec) || 0), 0);
-        metrics.push({
-          title: translations[currentLang].metrics[2].title,
-          value: totalViol.toLocaleString()
-        });
-
-        // Products Confiscated
-        const conf = dataStore.confiscated || [];
-        const totalConf = conf.reduce((sum, row) => sum + (parseFloat(row.confiscated_food_and_health_products_kg) || 0), 0);
-        metrics.push({
-          title: translations[currentLang].metrics[3].title,
-          value: (totalConf/1000).toFixed(1) + " t"
-        });
-
-        // Export Certificates
-        const cert = dataStore.certificates || [];
-        const totalExport = cert.filter(r => (r.category_en === "Export CoH issued" || r.category_ar === "شهادات صحية تصدير"))
-          .reduce((sum, row) => sum + (parseFloat(row.number_of_certificates_of_health) || 0), 0);
-        metrics.push({
-          title: translations[currentLang].metrics[4].title,
-          value: totalExport.toLocaleString()
-        });
-
-        document.getElementById('metricsContainer').innerHTML = metrics.map(m =>
-          `<div class="metric-card"><div class="metric-title">${m.title}</div><div class="metric-value">${m.value}</div></div>`
-        ).join('');
-
-        logDebug('Metrics rendered successfully', { metricsCount: metrics.length });
-      } catch (error) {
-        logDebug('Error rendering metrics', error);
-      }
+      // Shops Inspected
+      const shops = dataStore.shops || [];
+      const totalShops = shops.reduce((sum, row) => sum + (parseFloat(row.number_of_shops_visited) || 0), 0);
+      metrics.push({
+        title: translations[currentLang].metrics[0].title,
+        value: totalShops.toLocaleString()
+      });
+      // Food Safety Pass Rate
+      const foodLab = dataStore.foodLab || [];
+      const fit = foodLab.filter(r => (r.analysis_results_en === "Fit" || r.analysis_results_ar === "صالحة"))
+        .reduce((sum, row) => sum + (parseFloat(row.value) || 0), 0);
+      const unfit = foodLab.filter(r => (r.analysis_results_en === "Unfit" || r.analysis_results_ar === "غير صالحة"))
+        .reduce((sum, row) => sum + (parseFloat(row.value) || 0), 0);
+      const passRate = (fit + unfit) > 0 ? (fit / (fit + unfit) * 100).toFixed(1) : "0";
+      metrics.push({
+        title: translations[currentLang].metrics[1].title,
+        value: passRate + "%"
+      });
+      // Violations Issued
+      const violations = dataStore.violations || [];
+      const totalViol = violations.reduce((sum, row) => sum + (parseFloat(row.number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec) || 0), 0);
+      metrics.push({
+        title: translations[currentLang].metrics[2].title,
+        value: totalViol.toLocaleString()
+      });
+      // Products Confiscated
+      const conf = dataStore.confiscated || [];
+      const totalConf = conf.reduce((sum, row) => sum + (parseFloat(row.confiscated_food_and_health_products_kg) || 0), 0);
+      metrics.push({
+        title: translations[currentLang].metrics[3].title,
+        value: (totalConf/1000).toFixed(1) + " t"
+      });
+      // Export Certificates
+      const cert = dataStore.certificates || [];
+      const totalExport = cert.filter(r => (r.category_en === "Export CoH issued" || r.category_ar === "شهادات صحية تصدير"))
+        .reduce((sum, row) => sum + (parseFloat(row.number_of_certificates_of_health) || 0), 0);
+      metrics.push({
+        title: translations[currentLang].metrics[4].title,
+        value: totalExport.toLocaleString()
+      });
+      document.getElementById('metricsContainer').innerHTML = metrics.map(m =>
+        `<div class="metric-card"><div class="metric-title">${m.title}</div><div class="metric-value">${m.value}</div></div>`
+      ).join('');
     }
 
     let chartInstances = [];
     function renderCharts() {
-      logDebug('Rendering charts...');
-      
-      try {
-        // Destroy existing charts
-        chartInstances.forEach(ch => ch.destroy && ch.destroy());
-        chartInstances = [];
-        
-        const chartsDiv = document.getElementById('chartsContainer');
-        chartsDiv.innerHTML = '';
+      chartInstances.forEach(ch => ch.destroy && ch.destroy());
+      chartInstances = [];
+      const chartsDiv = document.getElementById('chartsContainer');
+      chartsDiv.innerHTML = '';
 
-        // Helper function for robust year/category axis
-        function allYearsFromDatasets(...datasets) {
-          const years = new Set();
-          datasets.forEach(ds => ds.forEach(row => {
-            if (row.year !== undefined) years.add(String(parseInt(row.year)));
-          }));
-          return Array.from(years).sort();
-        }
-
-        // 1. Medical Certificates Chart
-        const cert = dataStore.certificates || [];
-        const yearsCert = allYearsFromDatasets(cert);
-        const exportData = yearsCert.map(year =>
-          cert.filter(row => String(parseInt(row.year)) === year && (row.category_en === "Export CoH issued" || row.category_ar === "شهادات صحية تصدير"))
-            .reduce((sum, row) => sum + (parseFloat(row.number_of_certificates_of_health) || 0), 0)
-        );
-        const vetData = yearsCert.map(year =>
-          cert.filter(row => String(parseInt(row.year)) === year && (row.category_en === "Veterinary CoH issued" || row.category_ar === "شهادات صحية بيطرية"))
-            .reduce((sum, row) => sum + (parseFloat(row.number_of_certificates_of_health) || 0), 0)
-        );
-        
-        chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[0]}</h3><div class="chart-container"><canvas id="certificatesChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[0]}</div></div>`;
-        chartInstances.push(new Chart(document.getElementById('certificatesChart').getContext('2d'), {
-          type: 'line',
-          data: {
-            labels: yearsCert,
-            datasets: [
-              {label: currentLang === 'ar' ? 'تصدير' : 'Export', data: exportData, borderColor: '#007bff', fill:false, tension:0.3},
-              {label: currentLang === 'ar' ? 'بيطرية' : 'Veterinary', data: vetData, borderColor: '#28a745', fill:false, tension:0.3}
-            ]
-          },
-          options: {responsive:true, maintainAspectRatio: false, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
+      // Helper for robust year/category axis
+      function allYearsFromDatasets(...datasets) {
+        const years = new Set();
+        datasets.forEach(ds => ds.forEach(row => {
+          if (row.year !== undefined) years.add(String(parseInt(row.year)));
         }));
-
-        // 2. Food Laboratory Test Results Chart
-        const foodLab = dataStore.foodLab || [];
-        const yearsFood = allYearsFromDatasets(foodLab);
-        const fitData = yearsFood.map(year =>
-          foodLab.filter(row => String(parseInt(row.year)) === year && (row.analysis_results_en === "Fit" || row.analysis_results_ar === "صالحة"))
-            .reduce((sum, row) => sum + (parseFloat(row.value) || 0), 0)
-        );
-        const unfitData = yearsFood.map(year =>
-          foodLab.filter(row => String(parseInt(row.year)) === year && (row.analysis_results_en === "Unfit" || row.analysis_results_ar === "غير صالحة"))
-            .reduce((sum, row) => sum + (parseFloat(row.value) || 0), 0)
-        );
-        
-        chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[1]}</h3><div class="chart-container"><canvas id="foodLabChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[1]}</div></div>`;
-        chartInstances.push(new Chart(document.getElementById('foodLabChart').getContext('2d'), {
-          type: 'bar',
-          data: {
-            labels: yearsFood,
-            datasets: [
-              {label: currentLang === 'ar' ? 'صالحة' : 'Fit', data: fitData, backgroundColor: '#28a745'},
-              {label: currentLang === 'ar' ? 'غير صالحة' : 'Unfit', data: unfitData, backgroundColor: '#dc3545'}
-            ]
-          },
-          options: {responsive:true, maintainAspectRatio: false, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
-        }));
-
-        // 3. Confiscated Food & Health Products Chart
-        const conf = dataStore.confiscated || [];
-        const yearsConf = allYearsFromDatasets(conf);
-        const confData = yearsConf.map(year =>
-          conf.filter(row => String(parseInt(row.year)) === year)
-            .reduce((sum, row) => sum + (parseFloat(row.confiscated_food_and_health_products_kg) || 0), 0)
-        );
-        
-        chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[2]}</h3><div class="chart-container"><canvas id="confiscatedChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[2]}</div></div>`;
-        chartInstances.push(new Chart(document.getElementById('confiscatedChart').getContext('2d'), {
-          type: 'line',
-          data: {
-            labels: yearsConf,
-            datasets: [{
-              label: currentLang === 'ar' ? 'المصادرات (كجم)' : 'Confiscated (kg)',
-              data: confData,
-              borderColor: '#ffc107',
-              fill: true,
-              backgroundColor: 'rgba(255, 193, 7, 0.3)',
-              tension: 0.3
-            }]
-          },
-          options: {responsive:true, maintainAspectRatio: false, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
-        }));
-
-        // 4. Warnings & Violations by Category
-        const violations = dataStore.violations || [];
-        const yearsViol = allYearsFromDatasets(violations);
-        const allCats = Array.from(new Set(violations.map(row => (currentLang === 'ar' ? row.category_ar : row.category_en)).filter(Boolean)));
-        const violByCat = allCats.map(cat =>
-          yearsViol.map(year =>
-            violations.filter(row => String(parseInt(row.year)) === year && ((currentLang === 'ar' ? row.category_ar : row.category_en) === cat))
-              .reduce((sum, row) => sum + (parseFloat(row.number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec) || 0), 0)
-          )
-        );
-        
-        chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[3]}</h3><div class="chart-container"><canvas id="violationsChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[3]}</div></div>`;
-        chartInstances.push(new Chart(document.getElementById('violationsChart').getContext('2d'), {
-          type: 'bar',
-          data: {
-            labels: yearsViol,
-            datasets: allCats.map((cat, i) => ({
-              label: cat,
-              data: violByCat[i],
-              backgroundColor: ['#007bff','#28a745','#dc3545','#ffc107','#6f42c1','#00bcd4','#ff9800'][i % 7]
-            }))
-          },
-          options: {responsive:true, maintainAspectRatio: false, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
-        }));
-
-        // 5. Shops Visited Chart
-        const shops = dataStore.shops || [];
-        const yearsShops = allYearsFromDatasets(shops);
-        const shopsData = yearsShops.map(year =>
-          shops.filter(row => String(parseInt(row.year)) === year)
-            .reduce((sum, row) => sum + (parseFloat(row.number_of_shops_visited) || 0), 0)
-        );
-        
-        chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[4]}</h3><div class="chart-container"><canvas id="shopsChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[4]}</div></div>`;
-        chartInstances.push(new Chart(document.getElementById('shopsChart').getContext('2d'), {
-          type: 'line',
-          data: {
-            labels: yearsShops,
-            datasets: [{
-              label: currentLang === 'ar' ? 'عدد المحلات' : 'Shops Visited',
-              data: shopsData,
-              borderColor: '#17a2b8',
-              fill: false,
-              tension: 0.3
-            }]
-          },
-          options: {responsive:true, maintainAspectRatio: false, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
-        }));
-
-        logDebug('Charts rendered successfully', { chartsCount: chartInstances.length });
-      } catch (error) {
-        logDebug('Error rendering charts', error);
+        return Array.from(years).sort();
       }
+
+      // 1. Medical Certificates Chart
+      const cert = dataStore.certificates || [];
+      const yearsCert = allYearsFromDatasets(cert);
+      const exportData = yearsCert.map(year =>
+        cert.filter(row => String(parseInt(row.year)) === year && (row.category_en === "Export CoH issued" || row.category_ar === "شهادات صحية تصدير"))
+          .reduce((sum, row) => sum + (parseFloat(row.number_of_certificates_of_health) || 0), 0)
+      );
+      const vetData = yearsCert.map(year =>
+        cert.filter(row => String(parseInt(row.year)) === year && (row.category_en === "Veterinary CoH issued" || row.category_ar === "شهادات صحية بيطرية"))
+          .reduce((sum, row) => sum + (parseFloat(row.number_of_certificates_of_health) || 0), 0)
+      );
+      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[0]}</h3><div class="chart-container"><canvas id="certificatesChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[0]}</div></div>`;
+      chartInstances.push(new Chart(document.getElementById('certificatesChart').getContext('2d'), {
+        type: 'line',
+        data: {
+          labels: yearsCert,
+          datasets: [
+            {label: currentLang === 'ar' ? 'تصدير' : 'Export', data: exportData, borderColor: '#007bff', fill:false, tension:0.3},
+            {label: currentLang === 'ar' ? 'بيطرية' : 'Veterinary', data: vetData, borderColor: '#28a745', fill:false, tension:0.3}
+          ]
+        },
+        options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
+      }));
+
+      // 2. Food Laboratory Test Results Chart
+      const foodLab = dataStore.foodLab || [];
+      const yearsFood = allYearsFromDatasets(foodLab);
+      const fitData = yearsFood.map(year =>
+        foodLab.filter(row => String(parseInt(row.year)) === year && (row.analysis_results_en === "Fit" || row.analysis_results_ar === "صالحة"))
+          .reduce((sum, row) => sum + (parseFloat(row.value) || 0), 0)
+      );
+      const unfitData = yearsFood.map(year =>
+        foodLab.filter(row => String(parseInt(row.year)) === year && (row.analysis_results_en === "Unfit" || row.analysis_results_ar === "غير صالحة"))
+          .reduce((sum, row) => sum + (parseFloat(row.value) || 0), 0)
+      );
+      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[1]}</h3><div class="chart-container"><canvas id="foodLabChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[1]}</div></div>`;
+      chartInstances.push(new Chart(document.getElementById('foodLabChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: yearsFood,
+          datasets: [
+            {label: currentLang === 'ar' ? 'صالحة' : 'Fit', data: fitData, backgroundColor: '#28a745'},
+            {label: currentLang === 'ar' ? 'غير صالحة' : 'Unfit', data: unfitData, backgroundColor: '#dc3545'}
+          ]
+        },
+        options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}, x: {stacked:true}}, interaction: {mode: 'index', intersect: false}, stacked: true}
+      }));
+
+      // 3. Confiscated Food & Health Products Chart
+      const conf = dataStore.confiscated || [];
+      const yearsConf = allYearsFromDatasets(conf);
+      const confData = yearsConf.map(year =>
+        conf.filter(row => String(parseInt(row.year)) === year)
+          .reduce((sum, row) => sum + (parseFloat(row.confiscated_food_and_health_products_kg) || 0), 0)
+      );
+      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[2]}</h3><div class="chart-container"><canvas id="confiscatedChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[2]}</div></div>`;
+      chartInstances.push(new Chart(document.getElementById('confiscatedChart').getContext('2d'), {
+        type: 'line',
+        data: {
+          labels: yearsConf,
+          datasets: [{
+            label: currentLang === 'ar' ? 'المصادرات (كجم)' : 'Confiscated (kg)',
+            data: confData,
+            borderColor: '#ffc107',
+            fill: true,
+            backgroundColor: 'rgba(255, 193, 7, 0.3)',
+            tension: 0.3
+          }]
+        },
+        options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
+      }));
+
+      // 4. Warnings & Violations by Category
+      const violations = dataStore.violations || [];
+      const yearsViol = allYearsFromDatasets(violations);
+      // Dynamic category detection
+      const allCats = Array.from(new Set(violations.map(row => (currentLang === 'ar' ? row.category_ar : row.category_en)).filter(Boolean)));
+      const violByCat = allCats.map(cat =>
+        yearsViol.map(year =>
+          violations.filter(row => String(parseInt(row.year)) === year && ((currentLang === 'ar' ? row.category_ar : row.category_en) === cat))
+            .reduce((sum, row) => sum + (parseFloat(row.number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec) || 0), 0)
+        )
+      );
+      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[3]}</h3><div class="chart-container"><canvas id="violationsChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[3]}</div></div>`;
+      chartInstances.push(new Chart(document.getElementById('violationsChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: yearsViol,
+          datasets: allCats.map((cat, i) => ({
+            label: cat,
+            data: violByCat[i],
+            backgroundColor: ['#007bff','#28a745','#dc3545','#ffc107','#6f42c1','#00bcd4','#ff9800'][i % 7]
+          }))
+        },
+        options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}, x: {stacked:true}}, interaction: {mode: 'index', intersect: false}, stacked: true}
+      }));
+
+      // 5. Shops Visited Chart
+      const shops = dataStore.shops || [];
+      const yearsShops = allYearsFromDatasets(shops);
+      const shopsData = yearsShops.map(year =>
+        shops.filter(row => String(parseInt(row.year)) === year)
+          .reduce((sum, row) => sum + (parseFloat(row.number_of_shops_visited) || 0), 0)
+      );
+      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[4]}</h3><div class="chart-container"><canvas id="shopsChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[4]}</div></div>`;
+      chartInstances.push(new Chart(document.getElementById('shopsChart').getContext('2d'), {
+        type: 'line',
+        data: {
+          labels: yearsShops,
+          datasets: [{
+            label: currentLang === 'ar' ? 'عدد المحلات' : 'Shops Visited',
+            data: shopsData,
+            borderColor: '#17a2b8',
+            fill: false,
+            tension: 0.3
+          }]
+        },
+        options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
+      }));
     }
 
     function renderInsights() {
-      logDebug('Rendering insights...');
-      try {
-        const insights = translations[currentLang].insights;
-        document.getElementById('insightsList').innerHTML = insights.map(ins =>
-          `<div class="insight-item"><div class="insight-icon">${ins.icon}</div><div class="insight-text"><h4>${ins.title}</h4><p>${ins.text}</p></div></div>`
-        ).join('');
-        logDebug('Insights rendered successfully');
-      } catch (error) {
-        logDebug('Error rendering insights', error);
-      }
+      const insights = translations[currentLang].insights;
+      document.getElementById('insightsList').innerHTML = insights.map(ins =>
+        `<div class="insight-item"><div class="insight-icon">${ins.icon}</div><div class="insight-text"><h4>${ins.title}</h4><p>${ins.text}</p></div></div>`
+      ).join('');
     }
-
-    // Initialize the dashboard when the page loads
-    document.addEventListener('DOMContentLoaded', function() {
-      logDebug('Page loaded, initializing dashboard...');
-      loadDataWithFallback();
-    });
   </script>
 </body>
 </html>

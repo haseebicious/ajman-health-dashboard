@@ -69,6 +69,11 @@
         Ajman Vision 2030 [PDF] | رؤية عجمان 2030 [ملف PDF]
       </a>
     </p>
+    <p>
+      Data Source: 
+      <a href="https://data.ajman.ae" target="_blank">data.ajman.ae</a> | 
+      <a href="https://data.ajman.ae" target="_blank">بوابة بيانات عجمان</a>
+    </p>
     <p>Created by Haseeb Juma | © 2025 - Ajman University</p>
   </div>
   <script>
@@ -121,7 +126,7 @@
             text: "Open data and insights foster education, research, and a future-ready society."
           }
         ],
-        footerSource: "Data Source: Ajman Data Portal (data.ajman.ae)",
+        footerSource: 'Data Source: <a href="https://data.ajman.ae" target="_blank">data.ajman.ae</a>',
         footerVision: "Aligned with Ajman Vision 2030 for a sustainable, healthy, and inclusive future."
       },
       ar: {
@@ -171,7 +176,7 @@
             text: "البيانات المفتوحة والرؤى تدعم التعليم والبحث ومجتمع المستقبل."
           }
         ],
-        footerSource: "المصدر: بوابة بيانات عجمان (data.ajman.ae)",
+        footerSource: 'المصدر: <a href="https://data.ajman.ae" target="_blank">بوابة بيانات عجمان</a>',
         footerVision: "تماشياً مع رؤية عجمان 2030 لمستقبل مستدام وصحي وشامل."
       }
     };
@@ -187,7 +192,7 @@
       document.getElementById('dashboardTitle').textContent = translations[lang].dashboardTitle;
       document.getElementById('dashboardSubtitle').textContent = translations[lang].dashboardSubtitle;
       document.getElementById('insightsTitle').textContent = translations[lang].insightsTitle;
-      document.getElementById('footerSource').textContent = translations[lang].footerSource;
+      document.getElementById('footerSource').innerHTML = translations[lang].footerSource;
       document.getElementById('footerVision').textContent = translations[lang].footerVision;
       renderMetrics();
       renderCharts();
@@ -223,9 +228,9 @@
       });
       // 2. Food Safety Pass Rate
       const foodLab = dataStore.foodLab || [];
-      const fit = foodLab.filter(r => r["Analysis Results_EN"] === "Fit" || r["Analysis Results_AR"] === "صالحة")
+      const fit = foodLab.filter(r => (r["Analysis Results_EN"] === "Fit" || r["Analysis Results_AR"] === "صالحة"))
         .reduce((sum, row) => sum + (parseFloat(row.value) || 0), 0);
-      const unfit = foodLab.filter(r => r["Analysis Results_EN"] === "Unfit" || r["Analysis Results_AR"] === "غير صالحة")
+      const unfit = foodLab.filter(r => (r["Analysis Results_EN"] === "Unfit" || r["Analysis Results_AR"] === "غير صالحة"))
         .reduce((sum, row) => sum + (parseFloat(row.value) || 0), 0);
       const passRate = (fit + unfit) > 0 ? (fit / (fit + unfit) * 100).toFixed(1) : "0";
       metrics.push({
@@ -270,9 +275,9 @@
       const cert = dataStore.certificates || [];
       const certByYear = {};
       cert.forEach(row => {
-        let year = parseInt(row.Year);
-        if (isNaN(year)) return;
-        year = String(year);
+        let year = row.Year || row.year;
+        if (year) year = String(parseInt(year));
+        else return;
         const cat = (currentLang === 'ar' ? row.Category_AR : row.Category_EN) || '';
         const count = parseFloat(row["Number of Certificates of Health"]) || 0;
         if (!cat) return;
@@ -299,9 +304,9 @@
       const foodLab = dataStore.foodLab || [];
       const foodByYear = {};
       foodLab.forEach(row => {
-        let year = parseInt(row.year || row.Year);
-        if (isNaN(year)) return;
-        year = String(year);
+        let year = row.year || row.Year;
+        if (year) year = String(parseInt(year));
+        else return;
         const result = (currentLang === 'ar' ? row["Analysis Results_AR"] : row["Analysis Results_EN"]) || '';
         const val = parseFloat(row.value) || 0;
         if (!result) return;
@@ -328,9 +333,9 @@
       const conf = dataStore.confiscated || [];
       const confByYear = {};
       conf.forEach(row => {
-        let year = parseInt(row.Year);
-        if (isNaN(year)) return;
-        year = String(year);
+        let year = row.Year || row.year;
+        if (year) year = String(parseInt(year));
+        else return;
         const val = parseFloat(row["Confiscated food and health products(kg)"]) || 0;
         confByYear[year] = (confByYear[year] || 0) + val;
       });
@@ -356,17 +361,18 @@
       const violations = dataStore.violations || [];
       const violByYearCat = {};
       violations.forEach(row => {
-        let year = parseInt(row.Year);
-        if (isNaN(year)) return;
-        year = String(year);
+        let year = row.Year || row.year;
+        if (year) year = String(parseInt(year));
+        else return;
         const cat = (currentLang === 'ar' ? row.Category_AR : row.Category_EN) || 'Other';
         const val = parseFloat(row["Number Of Violations And Cleanliness Issued By Waste Management &Public Higiene Sec"]) || 0;
         if (!violByYearCat[cat]) violByYearCat[cat] = {};
         violByYearCat[cat][year] = (violByYearCat[cat][year] || 0) + val;
       });
       const yearsViol = [...new Set(violations.map(r => {
-        let y = parseInt(r.Year);
-        return isNaN(y) ? null : String(y);
+        let y = r.Year || r.year;
+        if (y) y = String(parseInt(y));
+        return y;
       }).filter(Boolean))].sort();
       const categories = Object.keys(violByYearCat);
       const datasetsViol = categories.map((cat, i) => ({
@@ -384,9 +390,9 @@
       const shops = dataStore.shops || [];
       const shopsByYear = {};
       shops.forEach(row => {
-        let year = parseInt(row.Year);
-        if (isNaN(year)) return;
-        year = String(year);
+        let year = row.Year || row.year;
+        if (year) year = String(parseInt(year));
+        else return;
         const val = parseFloat(row["Number of Shops Visited"]) || 0;
         shopsByYear[year] = (shopsByYear[year] || 0) + val;
       });

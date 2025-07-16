@@ -37,13 +37,6 @@ This dashboard is aligned with [Ajman Vision 2030 (PDF)](https://drive.google.co
 3. **Explore metrics and charts** for each health and safety indicator.
 4. **Read the insights** section for recommendations and Vision 2030 context.
 
-## Deployment
-
-1. Clone or download this repository.
-2. Place all JSON data files in the `/data` folder.
-3. Place Ajman Data and Vision 2030 logos in `/assets`.
-4. Enable GitHub Pages in repository settings (branch: `main`, folder: `/`).
-5. Access your dashboard at `https://yourusername.github.io/ajman-health-dashboard/`.
 
 ## License
 

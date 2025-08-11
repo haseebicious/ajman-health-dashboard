@@ -271,12 +271,13 @@
       chartInstances.forEach(ch => ch.destroy && ch.destroy());
       chartInstances = [];
       const chartsDiv = document.getElementById('chartsContainer');
-      chartsDiv.innerHTML = '';
+      
+      // --- PART 1: Data Processing ---
+      // Process data for all charts first, without touching the DOM.
 
-      // 1. Medical Certificates Chart (Export vs Veterinary)
+      // 1. Medical Certificates Chart Data
       const cert = dataStore.certificates || [];
       const certYears = getAllYears(cert, "year");
-      const certCats = ["Export CoH issued", "Veterinary CoH issued"];
       const certDataByYearCat = {};
       cert.forEach(row => {
         let year = row.year ? String(parseInt(row.year)) : null;
@@ -288,20 +289,8 @@
       });
       const exportData = certYears.map(y => certDataByYearCat[y]?.["Export CoH issued"] || 0);
       const vetData = certYears.map(y => certDataByYearCat[y]?.["Veterinary CoH issued"] || 0);
-      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[0]}</h3><div class="chart-container"><canvas id="certificatesChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[0]}</div></div>`;
-      chartInstances.push(new Chart(document.getElementById('certificatesChart').getContext('2d'), {
-        type: 'line',
-        data: {
-          labels: certYears,
-          datasets: [
-            {label: currentLang === 'ar' ? 'تصدير' : 'Export', data: exportData, borderColor: '#007bff', fill:false, tension:0.3},
-            {label: currentLang === 'ar' ? 'بيطرية' : 'Veterinary', data: vetData, borderColor: '#28a745', fill:false, tension:0.3}
-          ]
-        },
-        options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
-      }));
 
-      // 2. Food Laboratory Test Results Chart (Fit vs Unfit)
+      // 2. Food Laboratory Test Results Chart Data
       const foodLab = dataStore.foodLab || [];
       const foodYears = getAllYears(foodLab, "year");
       const foodDataByYearCat = {};
@@ -315,20 +304,8 @@
       });
       const fitData = foodYears.map(y => foodDataByYearCat[y]?.["Fit"] || foodDataByYearCat[y]?.["صالحة"] || 0);
       const unfitData = foodYears.map(y => foodDataByYearCat[y]?.["Unfit"] || foodDataByYearCat[y]?.["غير صالحة"] || 0);
-      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[1]}</h3><div class="chart-container"><canvas id="foodLabChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[1]}</div></div>`;
-      chartInstances.push(new Chart(document.getElementById('foodLabChart').getContext('2d'), {
-        type: 'bar',
-        data: {
-          labels: foodYears,
-          datasets: [
-            {label: currentLang === 'ar' ? 'صالحة' : 'Fit', data: fitData, backgroundColor: '#28a745'},
-            {label: currentLang === 'ar' ? 'غير صالحة' : 'Unfit', data: unfitData, backgroundColor: '#dc3545'}
-          ]
-        },
-        options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}, x: {stacked:true}}, interaction: {mode: 'index', intersect: false}, stacked: true}
-      }));
 
-      // 3. Confiscated Food & Health Products Chart
+      // 3. Confiscated Food & Health Products Chart Data
       const conf = dataStore.confiscated || [];
       const confYears = getAllYears(conf, "year");
       const confByYear = {};
@@ -339,7 +316,95 @@
         confByYear[year] = (confByYear[year] || 0) + val;
       });
       const confData = confYears.map(y => confByYear[y] || 0);
-      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[2]}</h3><div class="chart-container"><canvas id="confiscatedChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[2]}</div></div>`;
+
+      // 4. Warnings & Violations by Category Data
+      const violations = dataStore.violations || [];
+      const violYears = getAllYears(violations, "year");
+      const allCats = [...new Set(violations.map(row => (currentLang === 'ar' ? row.category_ar : row.category_en)).filter(Boolean))];
+      const violByYearCat = {};
+      violations.forEach(row => {
+        let year = row.year ? String(parseInt(row.year)) : null;
+        let cat = (currentLang === 'ar' ? row.category_ar : row.category_en) || '';
+        let val = parseFloat(row.number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec) || 0;
+        if (!year || !cat) return;
+        if (!violByYearCat[cat]) violByYearCat[cat] = {};
+        violByYearCat[cat][year] = (violByYearCat[cat][year] || 0) + val;
+      });
+      const datasetsViol = allCats.map((cat, i) => ({
+        label: cat,
+        data: violYears.map(y => violByYearCat[cat]?.[y] || 0),
+        backgroundColor: ['#007bff','#28a745','#dc3545','#ffc107','#6f42c1','#10b981','#eab308'][i % 7]
+      }));
+
+      // 5. Shops Visited Chart Data
+      const shops = dataStore.shops || [];
+      const shopsYears = getAllYears(shops, "year");
+      const shopsByYear = {};
+      shops.forEach(row => {
+        let year = row.year ? String(parseInt(row.year)) : null;
+        let val = parseFloat(row.number_of_shops_visited) || 0;
+        if (!year) return;
+        shopsByYear[year] = (shopsByYear[year] || 0) + val;
+      });
+      const shopsData = shopsYears.map(y => shopsByYear[y] || 0);
+      
+      // --- PART 2: HTML Generation ---
+      // Build the entire HTML string for all charts.
+      chartsDiv.innerHTML = `
+        <div class="chart-card">
+          <h3>${translations[currentLang].charts[0]}</h3>
+          <div class="chart-container"><canvas id="certificatesChart"></canvas></div>
+          <div class="chart-narrative">${translations[currentLang].chartNarratives[0]}</div>
+        </div>
+        <div class="chart-card">
+          <h3>${translations[currentLang].charts[1]}</h3>
+          <div class="chart-container"><canvas id="foodLabChart"></canvas></div>
+          <div class="chart-narrative">${translations[currentLang].chartNarratives[1]}</div>
+        </div>
+        <div class="chart-card">
+          <h3>${translations[currentLang].charts[2]}</h3>
+          <div class="chart-container"><canvas id="confiscatedChart"></canvas></div>
+          <div class="chart-narrative">${translations[currentLang].chartNarratives[2]}</div>
+        </div>
+        <div class="chart-card">
+          <h3>${translations[currentLang].charts[3]}</h3>
+          <div class="chart-container"><canvas id="violationsChart"></canvas></div>
+          <div class="chart-narrative">${translations[currentLang].chartNarratives[3]}</div>
+        </div>
+        <div class="chart-card">
+          <h3>${translations[currentLang].charts[4]}</h3>
+          <div class="chart-container"><canvas id="shopsChart"></canvas></div>
+          <div class="chart-narrative">${translations[currentLang].chartNarratives[4]}</div>
+        </div>
+      `;
+
+      // --- PART 3: Chart Initialization ---
+      // Now that the HTML is on the page, create the charts.
+
+      chartInstances.push(new Chart(document.getElementById('certificatesChart').getContext('2d'), {
+        type: 'line',
+        data: {
+          labels: certYears,
+          datasets: [
+            {label: currentLang === 'ar' ? 'تصدير' : 'Export', data: exportData, borderColor: '#007bff', fill:false, tension:0.3},
+            {label: currentLang === 'ar' ? 'بيطرية' : 'Veterinary', data: vetData, borderColor: '#28a745', fill:false, tension:0.3}
+          ]
+        },
+        options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
+      }));
+
+      chartInstances.push(new Chart(document.getElementById('foodLabChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: foodYears,
+          datasets: [
+            {label: currentLang === 'ar' ? 'صالحة' : 'Fit', data: fitData, backgroundColor: '#28a745'},
+            {label: currentLang === 'ar' ? 'غير صالحة' : 'Unfit', data: unfitData, backgroundColor: '#dc3545'}
+          ]
+        },
+        options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true, stacked: true}, x: {stacked:true}}}
+      }));
+
       chartInstances.push(new Chart(document.getElementById('confiscatedChart').getContext('2d'), {
         type: 'line',
         data: {
@@ -356,44 +421,12 @@
         options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
       }));
 
-      // 4. Warnings & Violations by Category
-      const violations = dataStore.violations || [];
-      const violYears = getAllYears(violations, "year");
-      // Find all unique categories
-      const allCats = [...new Set(violations.map(row => (currentLang === 'ar' ? row.category_ar : row.category_en)).filter(Boolean))];
-      const violByYearCat = {};
-      violations.forEach(row => {
-        let year = row.year ? String(parseInt(row.year)) : null;
-        let cat = (currentLang === 'ar' ? row.category_ar : row.category_en) || '';
-        let val = parseFloat(row.number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec) || 0;
-        if (!year || !cat) return;
-        if (!violByYearCat[cat]) violByYearCat[cat] = {};
-        violByYearCat[cat][year] = (violByYearCat[cat][year] || 0) + val;
-      });
-      const datasetsViol = allCats.map((cat, i) => ({
-        label: cat,
-        data: violYears.map(y => violByYearCat[cat]?.[y] || 0),
-        backgroundColor: ['#007bff','#28a745','#dc3545','#ffc107','#6f42c1','#10b981','#eab308'][i % 7]
-      }));
-      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[3]}</h3><div class="chart-container"><canvas id="violationsChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[3]}</div></div>`;
       chartInstances.push(new Chart(document.getElementById('violationsChart').getContext('2d'), {
         type: 'bar',
         data: { labels: violYears, datasets: datasetsViol },
-        options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}, x: {stacked:true}}, interaction: {mode: 'index', intersect: false}, stacked: true}
+        options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true, stacked: true}, x: {stacked:true}}}
       }));
 
-      // 5. Shops Visited Chart
-      const shops = dataStore.shops || [];
-      const shopsYears = getAllYears(shops, "year");
-      const shopsByYear = {};
-      shops.forEach(row => {
-        let year = row.year ? String(parseInt(row.year)) : null;
-        let val = parseFloat(row.number_of_shops_visited) || 0;
-        if (!year) return;
-        shopsByYear[year] = (shopsByYear[year] || 0) + val;
-      });
-      const shopsData = shopsYears.map(y => shopsByYear[y] || 0);
-      chartsDiv.innerHTML += `<div class="chart-card"><h3>${translations[currentLang].charts[4]}</h3><div class="chart-container"><canvas id="shopsChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[4]}</div></div>`;
       chartInstances.push(new Chart(document.getElementById('shopsChart').getContext('2d'), {
         type: 'line',
         data: {

@@ -273,9 +273,7 @@
       const chartsDiv = document.getElementById('chartsContainer');
       
       // --- PART 1: Data Processing ---
-      // Process data for all charts first, without touching the DOM.
-
-      // 1. Medical Certificates Chart Data
+      // Medical Certificates Data
       const cert = dataStore.certificates || [];
       const certYears = getAllYears(cert, "year");
       const certDataByYearCat = {};
@@ -290,7 +288,7 @@
       const exportData = certYears.map(y => certDataByYearCat[y]?.["Export CoH issued"] || 0);
       const vetData = certYears.map(y => certDataByYearCat[y]?.["Veterinary CoH issued"] || 0);
 
-      // 2. Food Laboratory Test Results Chart Data
+      // Food Laboratory Test Results Data
       const foodLab = dataStore.foodLab || [];
       const foodYears = getAllYears(foodLab, "year");
       const foodDataByYearCat = {};
@@ -305,7 +303,7 @@
       const fitData = foodYears.map(y => foodDataByYearCat[y]?.["Fit"] || foodDataByYearCat[y]?.["صالحة"] || 0);
       const unfitData = foodYears.map(y => foodDataByYearCat[y]?.["Unfit"] || foodDataByYearCat[y]?.["غير صالحة"] || 0);
 
-      // 3. Confiscated Food & Health Products Chart Data
+      // Confiscated Products Data
       const conf = dataStore.confiscated || [];
       const confYears = getAllYears(conf, "year");
       const confByYear = {};
@@ -317,7 +315,7 @@
       });
       const confData = confYears.map(y => confByYear[y] || 0);
 
-      // 4. Warnings & Violations by Category Data
+      // Violations Data
       const violations = dataStore.violations || [];
       const violYears = getAllYears(violations, "year");
       const allCats = [...new Set(violations.map(row => (currentLang === 'ar' ? row.category_ar : row.category_en)).filter(Boolean))];
@@ -336,7 +334,7 @@
         backgroundColor: ['#007bff','#28a745','#dc3545','#ffc107','#6f42c1','#10b981','#eab308'][i % 7]
       }));
 
-      // 5. Shops Visited Chart Data
+      // Shops Visited Data
       const shops = dataStore.shops || [];
       const shopsYears = getAllYears(shops, "year");
       const shopsByYear = {};
@@ -348,98 +346,45 @@
       });
       const shopsData = shopsYears.map(y => shopsByYear[y] || 0);
       
-      // --- PART 2: HTML Generation ---
-      // Build the entire HTML string for all charts.
+      // --- PART 2: Generate all HTML and add it to the page ONCE ---
       chartsDiv.innerHTML = `
-        <div class="chart-card">
-          <h3>${translations[currentLang].charts[0]}</h3>
-          <div class="chart-container"><canvas id="certificatesChart"></canvas></div>
-          <div class="chart-narrative">${translations[currentLang].chartNarratives[0]}</div>
-        </div>
-        <div class="chart-card">
-          <h3>${translations[currentLang].charts[1]}</h3>
-          <div class="chart-container"><canvas id="foodLabChart"></canvas></div>
-          <div class="chart-narrative">${translations[currentLang].chartNarratives[1]}</div>
-        </div>
-        <div class="chart-card">
-          <h3>${translations[currentLang].charts[2]}</h3>
-          <div class="chart-container"><canvas id="confiscatedChart"></canvas></div>
-          <div class="chart-narrative">${translations[currentLang].chartNarratives[2]}</div>
-        </div>
-        <div class="chart-card">
-          <h3>${translations[currentLang].charts[3]}</h3>
-          <div class="chart-container"><canvas id="violationsChart"></canvas></div>
-          <div class="chart-narrative">${translations[currentLang].chartNarratives[3]}</div>
-        </div>
-        <div class="chart-card">
-          <h3>${translations[currentLang].charts[4]}</h3>
-          <div class="chart-container"><canvas id="shopsChart"></canvas></div>
-          <div class="chart-narrative">${translations[currentLang].chartNarratives[4]}</div>
-        </div>
+        <div class="chart-card"><h3>${translations[currentLang].charts[0]}</h3><div class="chart-container"><canvas id="certificatesChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[0]}</div></div>
+        <div class="chart-card"><h3>${translations[currentLang].charts[1]}</h3><div class="chart-container"><canvas id="foodLabChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[1]}</div></div>
+        <div class="chart-card"><h3>${translations[currentLang].charts[2]}</h3><div class="chart-container"><canvas id="confiscatedChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[2]}</div></div>
+        <div class="chart-card"><h3>${translations[currentLang].charts[3]}</h3><div class="chart-container"><canvas id="violationsChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[3]}</div></div>
+        <div class="chart-card"><h3>${translations[currentLang].charts[4]}</h3><div class="chart-container"><canvas id="shopsChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[4]}</div></div>
       `;
 
-      // --- PART 3: Chart Initialization ---
-      // Now that the HTML is on the page, create the charts.
-
-      chartInstances.push(new Chart(document.getElementById('certificatesChart').getContext('2d'), {
-        type: 'line',
-        data: {
-          labels: certYears,
-          datasets: [
-            {label: currentLang === 'ar' ? 'تصدير' : 'Export', data: exportData, borderColor: '#007bff', fill:false, tension:0.3},
-            {label: currentLang === 'ar' ? 'بيطرية' : 'Veterinary', data: vetData, borderColor: '#28a745', fill:false, tension:0.3}
-          ]
-        },
-        options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
+      // --- PART 3: Initialize all charts now that their canvas elements exist ---
+      
+      // Chart 1: Certificates
+      const certCtx = document.getElementById('certificatesChart').getContext('2d');
+      chartInstances.push(new Chart(certCtx, {
+        type: 'line', data: { labels: certYears, datasets: [{label: currentLang === 'ar' ? 'تصدير' : 'Export', data: exportData, borderColor: '#007bff', fill:false, tension:0.3}, {label: currentLang === 'ar' ? 'بيطرية' : 'Veterinary', data: vetData, borderColor: '#28a745', fill:false, tension:0.3}] }, options: {responsive:true, maintainAspectRatio: false, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
       }));
 
-      chartInstances.push(new Chart(document.getElementById('foodLabChart').getContext('2d'), {
-        type: 'bar',
-        data: {
-          labels: foodYears,
-          datasets: [
-            {label: currentLang === 'ar' ? 'صالحة' : 'Fit', data: fitData, backgroundColor: '#28a745'},
-            {label: currentLang === 'ar' ? 'غير صالحة' : 'Unfit', data: unfitData, backgroundColor: '#dc3545'}
-          ]
-        },
-        options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true, stacked: true}, x: {stacked:true}}}
+      // Chart 2: Food Lab
+      const foodLabCtx = document.getElementById('foodLabChart').getContext('2d');
+      chartInstances.push(new Chart(foodLabCtx, {
+        type: 'bar', data: { labels: foodYears, datasets: [{label: currentLang === 'ar' ? 'صالحة' : 'Fit', data: fitData, backgroundColor: '#28a745'}, {label: currentLang === 'ar' ? 'غير صالحة' : 'Unfit', data: unfitData, backgroundColor: '#dc3545'}] }, options: {responsive:true, maintainAspectRatio: false, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true, stacked: true}, x: {stacked:true}}}
       }));
 
-      chartInstances.push(new Chart(document.getElementById('confiscatedChart').getContext('2d'), {
-        type: 'line',
-        data: {
-          labels: confYears,
-          datasets: [{
-            label: currentLang === 'ar' ? 'المصادرات (كجم)' : 'Confiscated (kg)',
-            data: confData,
-            borderColor: '#ffc107',
-            fill: true,
-            backgroundColor: 'rgba(255, 193, 7, 0.3)',
-            tension: 0.3
-          }]
-        },
-        options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
+      // Chart 3: Confiscated
+      const confCtx = document.getElementById('confiscatedChart').getContext('2d');
+      chartInstances.push(new Chart(confCtx, {
+        type: 'line', data: { labels: confYears, datasets: [{ label: currentLang === 'ar' ? 'المصادرات (كجم)' : 'Confiscated (kg)', data: confData, borderColor: '#ffc107', fill: true, backgroundColor: 'rgba(255, 193, 7, 0.3)', tension: 0.3 }] }, options: {responsive:true, maintainAspectRatio: false, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
       }));
 
-      chartInstances.push(new Chart(document.getElementById('violationsChart').getContext('2d'), {
-        type: 'bar',
-        data: { labels: violYears, datasets: datasetsViol },
-        options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true, stacked: true}, x: {stacked:true}}}
+      // Chart 4: Violations
+      const violCtx = document.getElementById('violationsChart').getContext('2d');
+      chartInstances.push(new Chart(violCtx, {
+        type: 'bar', data: { labels: violYears, datasets: datasetsViol }, options: {responsive:true, maintainAspectRatio: false, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true, stacked: true}, x: {stacked:true}}}
       }));
 
-      chartInstances.push(new Chart(document.getElementById('shopsChart').getContext('2d'), {
-        type: 'line',
-        data: {
-          labels: shopsYears,
-          datasets: [{
-            label: currentLang === 'ar' ? 'عدد المحلات' : 'Shops Visited',
-            data: shopsData,
-            borderColor: '#17a2b8',
-            fill: false,
-            tension: 0.3
-          }]
-        },
-        options: {responsive:true, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
+      // Chart 5: Shops Visited
+      const shopsCtx = document.getElementById('shopsChart').getContext('2d');
+      chartInstances.push(new Chart(shopsCtx, {
+        type: 'line', data: { labels: shopsYears, datasets: [{ label: currentLang === 'ar' ? 'عدد المحلات' : 'Shops Visited', data: shopsData, borderColor: '#17a2b8', fill: false, tension: 0.3 }] }, options: {responsive:true, maintainAspectRatio: false, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
       }));
     }
 
@@ -451,4 +396,4 @@
     }
   </script>
 </body>
-</html>
+</html>```

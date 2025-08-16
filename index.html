@@ -27,6 +27,7 @@
     .chart-container { position: relative; height: 320px; flex-grow: 1; }
     .chart-narrative { font-size: 0.95rem; margin-top: 1rem; color: #444; }
     .chart-source { font-size: 0.8rem; color: #777; margin-top: 0.75rem; text-align: right; }
+    .chart-source a { color: #555; text-decoration: underline; }
     .insights-section { background: white; margin: 2rem; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); max-width: 1360px; margin: 2rem auto; }
     .insights-section h2 { color: #1e3a5f; margin-bottom: 1.5rem; font-size: 1.3rem; }
     .insight-item { display: flex; align-items: flex-start; margin-bottom: 1.2rem; padding: 1rem; background: #f8fafc; border-radius: 8px; border-left: 4px solid #7c3aed; }
@@ -162,16 +163,31 @@
     let chartInstances = [];
 
     const files = {
-      certificates: 'data/medical-certificates-issued.json',
-      foodLab: 'data/food-laboratory-test-results.json',
-      confiscated: 'data/confiscated-food-and-health-products.json',
-      violations: 'data/warnings-and-public-health-violations.json',
-      shops: 'data/shops-visited.json'
+        certificates: {
+            path: 'data/medical-certificates-issued.json',
+            sourceUrl: 'https://data.ajman.ae/explore/dataset/health-certificates-for-food-export/information/'
+        },
+        foodLab: {
+            path: 'data/food-laboratory-test-results.json',
+            sourceUrl: 'https://data.ajman.ae/explore/dataset/food-laboratory-test-results/information/'
+        },
+        confiscated: {
+            path: 'data/confiscated-food-and-health-products.json',
+            sourceUrl: 'https://data.ajman.ae/explore/dataset/confiscated-food-and-health-products/information/'
+        },
+        violations: {
+            path: 'https://data.ajman.ae/explore/dataset/warnings-and-public-health-violations/information/',
+            sourceUrl: 'https://data.ajman.ae/datasets/warnings-and-public-health-violations'
+        },
+        shops: {
+            path: 'data/shops-visited.json',
+            sourceUrl: 'https://data.ajman.ae/explore/dataset/shops-visited/information/'
+        }
     };
     
     // --- DATA FETCHING AND INITIALIZATION ---
-    Promise.all(Object.entries(files).map(([key, url]) =>
-      fetch(url).then(r => r.json()).then(data => [key, data])
+    Promise.all(Object.entries(files).map(([key, value]) =>
+      fetch(value.path).then(r => r.json()).then(data => [key, data])
     )).then(results => {
       results.forEach(([key, data]) => dataStore[key] = data);
       initializeDashboard();
@@ -279,7 +295,9 @@
                 <h3>${c.title}</h3>
                 <div class="chart-container"><canvas id="${c.id}"></canvas></div>
                 <div class="chart-narrative">${c.narrative}</div>
-                <div class="chart-source">Source: ${c.source.split('/')[1]}</div>
+                <div class="chart-source">
+                  Source: <a href="${c.source.sourceUrl}" target="_blank" rel="noopener noreferrer">${c.source.path.split('/')[1]}</a>
+                </div>
             </div>
         `).join('');
 

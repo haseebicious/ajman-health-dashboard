@@ -100,6 +100,7 @@
         dashboardSubtitle: "Empowering Ajman’s Future: Data-Driven Health for All",
         yearFilterLabel: "Filter by Year:",
         allYears: "All Years",
+        sourceLinkText: "Source",
         metrics: [
           { title: "Shops Inspected" }, { title: "Food Safety Pass Rate" },
           { title: "Violations Issued" }, { title: "Products Confiscated (kg)" },
@@ -131,6 +132,7 @@
         dashboardSubtitle: "تمكين مستقبل عجمان: الصحة للجميع بالبيانات",
         yearFilterLabel: "تصفية حسب السنة:",
         allYears: "كل السنوات",
+        sourceLinkText: "المصدر",
         metrics: [
           { title: "المحلات التي تم تفتيشها" }, { title: "معدل نجاح سلامة الأغذية" },
           { title: "المخالفات الصادرة" }, { title: "المنتجات المصادرة (كجم)" }, { title: "شهادات التصدير" }
@@ -186,17 +188,25 @@
     };
     
     // --- DATA FETCHING AND INITIALIZATION ---
-    Promise.all(Object.entries(files).map(([key, value]) =>
-      fetch(value.path).then(r => r.json()).then(data => [key, data])
+    Promise.all(Object.entries(files).map(([key, fileInfo]) =>
+      fetch(fileInfo.path)
+        .then(response => {
+            if (!response.ok) throw new Error(`Failed to load ${fileInfo.path}`);
+            return response.json();
+        })
+        .then(data => [key, data])
     )).then(results => {
       results.forEach(([key, data]) => dataStore[key] = data);
       initializeDashboard();
+    }).catch(error => {
+        console.error("Dashboard initialization failed:", error);
+        document.body.innerHTML = `<div style="text-align: center; padding: 50px;"><h1>Error Loading Data</h1><p>Could not load the required data files. Please check the console for more details.</p></div>`;
     });
 
     function initializeDashboard() {
         populateYearFilter();
         document.getElementById('yearFilter').addEventListener('change', updateDashboard);
-        setLang(currentLang); // This will trigger the first render
+        setLang(currentLang);
     }
     
     function updateDashboard() {
@@ -223,13 +233,13 @@
       document.getElementById('footerVision').textContent = trans.footerVision;
       
       renderInsights();
-      updateDashboard(); // Re-render metrics and charts with new language
+      updateDashboard();
     }
 
     function populateYearFilter() {
         const yearSet = new Set();
         Object.values(dataStore).flat().forEach(row => {
-            if (row.year) yearSet.add(String(parseInt(row.year)));
+            if (row && row.year) yearSet.add(String(parseInt(row.year)));
         });
         const yearFilter = document.getElementById('yearFilter');
         const sortedYears = Array.from(yearSet).sort((a, b) => b - a);
@@ -243,10 +253,9 @@
 
     function filterDataByYear(data, selectedYear) {
         if (selectedYear === 'all' || !data) return data;
-        return data.filter(row => String(parseInt(row.year)) === selectedYear);
+        return data.filter(row => row && String(parseInt(row.year)) === selectedYear);
     }
 
-    // --- RENDER FUNCTIONS ---
     function renderMetrics(selectedYear) {
         const metrics = [];
         const transMetrics = translations[currentLang].metrics;
@@ -281,6 +290,7 @@
         const chartsDiv = document.getElementById('chartsContainer');
         const transCharts = translations[currentLang].charts;
         const transNarratives = translations[currentLang].chartNarratives;
+        const sourceText = translations[currentLang].sourceLinkText;
 
         const chartConfigs = [
             { id: 'certificatesChart', title: transCharts[0], narrative: transNarratives[0], source: files.certificates },
@@ -296,7 +306,7 @@
                 <div class="chart-container"><canvas id="${c.id}"></canvas></div>
                 <div class="chart-narrative">${c.narrative}</div>
                 <div class="chart-source">
-                  Source: <a href="${c.source.sourceUrl}" target="_blank" rel="noopener noreferrer">${c.source.path.split('/')[1]}</a>
+                  ${sourceText}: <a href="${c.source.sourceUrl}" target="_blank" rel="noopener noreferrer">${c.source.path.split('/')[1]}</a>
                 </div>
             </div>
         `).join('');
@@ -347,10 +357,9 @@
         const months = currentLang === 'ar' ? ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'] : ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         const monthMapEn = { "January": 0, "February": 1, "March": 2, "April": 3, "May": 4, "June": 5, "July": 6, "August": 7, "September": 8, "October": 9, "November": 10, "December": 11 };
 
-        // Helper to aggregate monthly data
         const aggregateByMonth = (data, valueField, categoryField = null, categoryValue = null) => {
             const monthlyData = Array(12).fill(0);
-            const filteredData = data.filter(r => String(parseInt(r.year)) === year && (!categoryField || r[categoryField] === categoryValue));
+            const filteredData = data.filter(r => r && String(parseInt(r.year)) === year && (!categoryField || r[categoryField] === categoryValue));
             filteredData.forEach(r => {
                 const monthIndex = monthMapEn[r.month_en];
                 if (monthIndex !== undefined) {
@@ -379,7 +388,7 @@
         const confData = aggregateByMonth(dataStore.confiscated, 'confiscated_food_and_health_products_kg');
         createChart('confiscatedChart', 'line', { labels: months, datasets: [{ label: currentLang === 'ar' ? 'المصادرات (كجم)' : 'Confiscated (kg)', data: confData, borderColor: '#ffc107', backgroundColor: 'rgba(255,193,7,0.3)', fill: true }]});
         
-        const violData = dataStore.violations.filter(r => String(parseInt(r.year)) === year);
+        const violData = dataStore.violations.filter(r => r && String(parseInt(r.year)) === year);
         const violCats = [...new Set(violData.map(r => currentLang === 'ar' ? r.category_ar : r.category_en).filter(Boolean))];
         const violDatasets = violCats.map((cat, i) => ({
             label: cat,

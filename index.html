@@ -12,18 +12,21 @@
     .header .logos { display: flex; gap: 1.5rem; align-items: center; }
     .header img { height: 56px; background: white; border-radius: 8px; padding: 3px; }
     .header h1 { font-size: 2rem; margin: 0 0 0 1rem; }
-    .lang-toggle { font-size: 1rem; }
-    .lang-toggle button { background: #fff; color: #1e3a5f; border: none; font-weight: bold; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; margin-left: 0.5rem; }
+    .controls-container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background-color: #eef2f7; border-bottom: 1px solid #d1d9e6; }
+    .filter-group label { font-weight: 600; margin-right: 0.5rem; color: #1e3a5f; }
+    .filter-group select { padding: 0.5rem; border-radius: 6px; border: 1px solid #d1d9e6; font-size: 1rem; }
+    .lang-toggle button { background: #fff; color: #1e3a5f; border: none; font-weight: bold; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; margin-left: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
     .lang-toggle button.active { background: #7c3aed; color: #fff; }
     .metrics-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; padding: 2rem; max-width: 1400px; margin: 0 auto; }
     .metric-card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; }
     .metric-title { color: #7c3aed; font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
     .metric-value { font-size: 2.1rem; font-weight: 700; color: #1e3a5f; }
     .charts-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 2rem; padding: 0 2rem 2rem; max-width: 1400px; margin: 0 auto; }
-    .chart-card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-    .chart-card h3 { font-size: 1.15rem; margin-bottom: 1rem; color: #1e3a5f; }
-    .chart-container { position: relative; height: 320px; }
-    .chart-narrative { font-size: 0.95rem; margin-top: 0.5rem; color: #444; }
+    .chart-card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
+    .chart-card h3 { font-size: 1.15rem; margin-top: 0; margin-bottom: 1rem; color: #1e3a5f; }
+    .chart-container { position: relative; height: 320px; flex-grow: 1; }
+    .chart-narrative { font-size: 0.95rem; margin-top: 1rem; color: #444; }
+    .chart-source { font-size: 0.8rem; color: #777; margin-top: 0.75rem; text-align: right; }
     .insights-section { background: white; margin: 2rem; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); max-width: 1360px; margin: 2rem auto; }
     .insights-section h2 { color: #1e3a5f; margin-bottom: 1.5rem; font-size: 1.3rem; }
     .insight-item { display: flex; align-items: flex-start; margin-bottom: 1.2rem; padding: 1rem; background: #f8fafc; border-radius: 8px; border-left: 4px solid #7c3aed; }
@@ -31,11 +34,16 @@
     .insight-text h4 { color: #1e3a5f; margin-bottom: 0.5rem; }
     .footer { background: #1e3a5f; color: white; padding: 1.5rem; text-align: center; margin-top: 2rem; }
     .footer p { margin: 0.5rem 0; opacity: 0.9; }
-    .footer a { color: #93c5fd; text-decoration: underline; }
+    .footer a { color: #93c5fd; }
     .footer a:hover { text-decoration: underline; }
+    @media (max-width: 992px) {
+        .charts-container { grid-template-columns: 1fr; }
+    }
     @media (max-width: 768px) {
-      .header { flex-direction: column; align-items: flex-start; }
-      .charts-container { grid-template-columns: 1fr; }
+      .header { flex-direction: column; align-items: flex-start; text-align: center; }
+      .header .logos { justify-content: center; width: 100%; }
+      .header h1 { font-size: 1.5rem; }
+      .controls-container { flex-direction: column; gap: 1rem; }
       .metrics-container { grid-template-columns: 1fr; }
       .header img { height: 40px; }
     }
@@ -48,11 +56,21 @@
       <img src="assets/ajman-vision-2030-logo.png" alt="Ajman Vision 2030 Logo" />
       <h1 id="dashboardTitle"></h1>
     </div>
+  </div>
+    
+  <div class="controls-container">
+    <div class="filter-group">
+      <label for="yearFilter" id="yearFilterLabel">Filter by Year:</label>
+      <select id="yearFilter">
+        <option value="all">All Years</option>
+      </select>
+    </div>
     <div class="lang-toggle" id="langToggle">
       <button id="enBtn" class="active" onclick="setLang('en')">English</button>
       <button id="arBtn" onclick="setLang('ar')">العربية</button>
     </div>
   </div>
+
   <p id="dashboardSubtitle" style="text-align:center; margin:1rem 0 0.5rem;"></p>
   <div class="metrics-container" id="metricsContainer"></div>
   <div class="charts-container" id="chartsContainer"></div>
@@ -69,136 +87,80 @@
       </a>
     </p>
     <p>
-      Data Source: 
-      <a href="https://data.ajman.ae" target="_blank">data.ajman.ae</a> | 
-      <a href="https://data.ajman.ae" target="_blank">بوابة بيانات عجمان</a>
+      Primary Data Source: 
+      <a href="https://data.ajman.ae/explore/?refine.theme=Health+well-being+and+care" target="_blank">Ajman Data Portal | بوابة بيانات عجمان</a>
     </p>
     <p>Created by Haseeb Juma | © 2025 - Ajman University</p>
   </div>
   <script>
-    // Translation object as before
     const translations = {
       en: {
         dashboardTitle: "Ajman Health & Food Safety Dashboard",
         dashboardSubtitle: "Empowering Ajman’s Future: Data-Driven Health for All",
+        yearFilterLabel: "Filter by Year:",
+        allYears: "All Years",
         metrics: [
-          { title: "Shops Inspected" },
-          { title: "Food Safety Pass Rate" },
-          { title: "Violations Issued" },
-          { title: "Products Confiscated" },
+          { title: "Shops Inspected" }, { title: "Food Safety Pass Rate" },
+          { title: "Violations Issued" }, { title: "Products Confiscated (kg)" },
           { title: "Export Certificates" }
         ],
         charts: [
-          "Medical Certificates Issued (Export & Veterinary)",
-          "Food Laboratory Test Results (Fit vs Unfit)",
-          "Confiscated Food & Health Products (kg)",
-          "Warnings & Violations by Category",
-          "Shops Visited for Inspection"
+          "Medical Certificates Issued (Export & Veterinary)", "Food Laboratory Test Results (Fit vs Unfit)",
+          "Confiscated Food & Health Products (kg)", "Warnings & Violations by Category", "Shops Visited for Inspection"
         ],
         chartNarratives: [
-          "Ajman’s export and veterinary health certification activity over time. Export certifications dominate, reflecting Ajman’s strong food export oversight.",
-          "Food safety testing results: steady improvement in 'Fit' samples, with a declining trend in 'Unfit' results, supporting Vision 2030 sustainability.",
-          "Confiscated product volumes indicate active enforcement. Spikes often follow increased inspections or targeted campaigns.",
-          "Most violations are issued to companies, suggesting targeted education/enforcement could yield quick wins for public health.",
-          "Inspection activity shows Ajman’s preventive approach to health and food safety, with peaks during high-risk periods."
+          "Export and veterinary health certification activity. When viewing 'All Years', export certifications dominate, reflecting strong oversight. For a single year, see monthly trends.",
+          "Food safety testing results. The long-term trend shows a steady improvement in 'Fit' samples. Filtering by year reveals seasonal patterns in food safety.",
+          "Confiscated product volumes indicate active enforcement. Spikes often follow increased inspections or targeted campaigns during specific months or years.",
+          "Most violations are issued to companies. Filtering by year can highlight the impact of targeted education or enforcement campaigns on violation types.",
+          "Inspection activity shows Ajman’s preventive approach to health and food safety, with peaks often visible during high-risk periods or specific campaigns."
         ],
         insightsTitle: "Key Insights & Vision 2030 Alignment",
         insights: [
-          {
-            icon: "🌱",
-            title: "Sustainability in Action",
-            text: "Reduction in unsafe food and increased preventive enforcement support Ajman’s sustainability goals."
-          },
-          {
-            icon: "🤝",
-            title: "Community Well-being",
-            text: "Transparent health data empowers citizens and supports inclusive, healthy communities."
-          },
-          {
-            icon: "💡",
-            title: "Innovation for Impact",
-            text: "Real-time, interactive analytics enable evidence-based policy and government excellence."
-          },
-          {
-            icon: "📈",
-            title: "Human Capital Development",
-            text: "Open data and insights foster education, research, and a future-ready society."
-          }
+          { icon: "🌱", title: "Sustainability in Action", text: "Reduction in unsafe food and increased preventive enforcement support Ajman’s sustainability goals." },
+          { icon: "🤝", title: "Community Well-being", text: "Transparent health data empowers citizens and supports inclusive, healthy communities." },
+          { icon: "💡", title: "Innovation for Impact", text: "Real-time, interactive analytics enable evidence-based policy and government excellence." },
+          { icon: "📈", title: "Human Capital Development", text: "Open data and insights foster education, research, and a future-ready society." }
         ],
-        footerSource: 'Data Source: <a href="https://data.ajman.ae" target="_blank">data.ajman.ae</a>',
+        footerSource: 'Data sources for each visualization are listed on the chart card. All data is provided by the Ajman Data Portal.',
         footerVision: "Aligned with Ajman Vision 2030 for a sustainable, healthy, and inclusive future."
       },
       ar: {
         dashboardTitle: "لوحة بيانات الصحة وسلامة الغذاء عجمان",
         dashboardSubtitle: "تمكين مستقبل عجمان: الصحة للجميع بالبيانات",
+        yearFilterLabel: "تصفية حسب السنة:",
+        allYears: "كل السنوات",
         metrics: [
-          { title: "المحلات التي تم تفتيشها" },
-          { title: "معدل نجاح سلامة الأغذية" },
-          { title: "المخالفات الصادرة" },
-          { title: "المنتجات المصادرة" },
-          { title: "شهادات التصدير" }
+          { title: "المحلات التي تم تفتيشها" }, { title: "معدل نجاح سلامة الأغذية" },
+          { title: "المخالفات الصادرة" }, { title: "المنتجات المصادرة (كجم)" }, { title: "شهادات التصدير" }
         ],
         charts: [
-          "الشهادات الصحية الصادرة (تصدير وبيطرية)",
-          "نتائج اختبارات مختبر الأغذية (صالحة/غير صالحة)",
-          "المواد الغذائية والمنتجات الصحية المصادرة (كجم)",
-          "الإنذارات والمخالفات حسب الفئة",
-          "المحلات التي تمت زيارتها للتفتيش"
+          "الشهادات الصحية الصادرة (تصدير وبيطرية)", "نتائج اختبارات مختبر الأغذية (صالحة/غير صالحة)",
+          "المواد الغذائية والمنتجات الصحية المصادرة (كجم)", "الإنذارات والمخالفات حسب الفئة", "المحلات التي تمت زيارتها للتفتيش"
         ],
         chartNarratives: [
-          "نشاط إصدار الشهادات الصحية للتصدير والبيطرية في عجمان عبر السنوات. شهادات التصدير تتصدر المشهد، مما يعكس الرقابة القوية على التصدير الغذائي.",
-          "نتائج اختبارات سلامة الأغذية: تحسن مستمر في العينات الصالحة وتراجع في غير الصالحة، دعمًا لاستدامة رؤية عجمان 2030.",
-          "كميات المنتجات المصادرة تعكس فعالية الإنفاذ. الارتفاعات غالبًا ما تتبع حملات تفتيش أو حملات موجهة.",
-          "معظم المخالفات تصدر للشركات، مما يشير إلى أن التوعية أو الإنفاذ الموجه قد يحقق نتائج سريعة للصحة العامة.",
-          "نشاط التفتيش يُظهر نهج عجمان الوقائي في الصحة وسلامة الغذاء مع ذروات في الفترات عالية المخاطر."
+          "نشاط إصدار الشهادات الصحية للتصدير والبيطرية. عند عرض 'كل السنوات'، تتصدر شهادات التصدير المشهد، مما يعكس الرقابة القوية. لسنة واحدة، شاهد الاتجاهات الشهرية.",
+          "نتائج اختبارات سلامة الأغذية: يُظهر الاتجاه طويل الأمد تحسنًا مستمرًا في العينات 'الصالحة'. التصفية حسب السنة تكشف عن الأنماط الموسمية في سلامة الأغذية.",
+          "كميات المنتجات المصادرة تعكس فعالية الإنفاذ. غالبًا ما تتبع الارتفاعات زيادة في التفتيش أو حملات موجهة خلال أشهر أو سنوات معينة.",
+          "تصدر معظم المخالفات للشركات. يمكن أن تُبرز التصفية حسب السنة تأثير حملات التوعية أو الإنفاذ الموجهة على أنواع المخالفات.",
+          "يُظهر نشاط التفتيش نهج عجمان الوقائي للصحة وسلامة الغذاء، مع وجود ذروات غالبًا خلال الفترات عالية الخطورة أو حملات معينة."
         ],
         insightsTitle: "رؤى رئيسية ومحاذاة مع رؤية عجمان 2030",
         insights: [
-          {
-            icon: "🌱",
-            title: "الاستدامة قيد التنفيذ",
-            text: "انخفاض الأغذية غير الصالحة وزيادة الإنفاذ الوقائي يدعم أهداف الاستدامة في عجمان."
-          },
-          {
-            icon: "🤝",
-            title: "رفاهية المجتمع",
-            text: "الشفافية في بيانات الصحة تمكّن المواطنين وتدعم مجتمعات صحية شاملة."
-          },
-          {
-            icon: "💡",
-            title: "الابتكار من أجل التأثير",
-            text: "التحليلات التفاعلية في الوقت الفعلي تمكن السياسات المبنية على الأدلة والتميز الحكومي."
-          },
-          {
-            icon: "📈",
-            title: "تطوير رأس المال البشري",
-            text: "البيانات المفتوحة والرؤى تدعم التعليم والبحث ومجتمع المستقبل."
-          }
+          { icon: "🌱", title: "الاستدامة قيد التنفيذ", text: "انخفاض الأغذية غير الصالحة وزيادة الإنفاذ الوقائي يدعم أهداف الاستدامة في عجمان." },
+          { icon: "🤝", title: "رفاهية المجتمع", text: "الشفافية في بيانات الصحة تمكّن المواطنين وتدعم مجتمعات صحية شاملة." },
+          { icon: "💡", title: "الابتكار من أجل التأثير", text: "التحليلات التفاعلية في الوقت الفعلي تمكن السياسات المبنية على الأدلة والتميز الحكومي." },
+          { icon: "📈", title: "تطوير رأس المال البشري", text: "البيانات المفتوحة والرؤى تدعم التعليم والبحث ومجتمع المستقبل." }
         ],
-        footerSource: 'المصدر: <a href="https://data.ajman.ae" target="_blank">بوابة بيانات عجمان</a>',
+        footerSource: 'مصادر البيانات لكل تصور مدرجة في بطاقة الرسم البياني. جميع البيانات مقدمة من بوابة بيانات عجمان.',
         footerVision: "تماشياً مع رؤية عجمان 2030 لمستقبل مستدام وصحي وشامل."
       }
     };
 
     let currentLang = 'en';
+    let dataStore = {};
+    let chartInstances = [];
 
-    function setLang(lang) {
-      currentLang = lang;
-      document.documentElement.lang = lang;
-      document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-      document.getElementById('enBtn').classList.toggle('active', lang === 'en');
-      document.getElementById('arBtn').classList.toggle('active', lang === 'ar');
-      document.getElementById('dashboardTitle').textContent = translations[lang].dashboardTitle;
-      document.getElementById('dashboardSubtitle').textContent = translations[lang].dashboardSubtitle;
-      document.getElementById('insightsTitle').textContent = translations[lang].insightsTitle;
-      document.getElementById('footerSource').innerHTML = translations[lang].footerSource;
-      document.getElementById('footerVision').textContent = translations[lang].footerVision;
-      renderMetrics();
-      renderCharts();
-      renderInsights();
-    }
-
-    // JSON file paths (match your real file names exactly)
     const files = {
       certificates: 'data/medical-certificates-issued.json',
       foodLab: 'data/food-laboratory-test-results.json',
@@ -206,186 +168,221 @@
       violations: 'data/warnings-and-public-health-violations.json',
       shops: 'data/shops-visited.json'
     };
-    let dataStore = {};
-
-    Promise.all(Object.entries(files).map(([k, url]) =>
-      fetch(url).then(r => r.json()).then(data => [k, data])
+    
+    // --- DATA FETCHING AND INITIALIZATION ---
+    Promise.all(Object.entries(files).map(([key, url]) =>
+      fetch(url).then(r => r.json()).then(data => [key, data])
     )).then(results => {
-      results.forEach(([k, d]) => dataStore[k] = d);
-      setLang(currentLang);
+      results.forEach(([key, data]) => dataStore[key] = data);
+      initializeDashboard();
     });
 
-    function getAllYears(data, yearField) {
-      return [...new Set(data.map(row => row[yearField] ? String(parseInt(row[yearField])) : null).filter(Boolean))].sort();
+    function initializeDashboard() {
+        populateYearFilter();
+        document.getElementById('yearFilter').addEventListener('change', updateDashboard);
+        setLang(currentLang); // This will trigger the first render
+    }
+    
+    function updateDashboard() {
+        const selectedYear = document.getElementById('yearFilter').value;
+        renderMetrics(selectedYear);
+        renderCharts(selectedYear);
     }
 
-    function renderMetrics() {
-      const metrics = [];
-      // Shops Inspected
-      const shops = dataStore.shops || [];
-      const totalShops = shops.reduce((sum, row) => sum + (parseFloat(row.number_of_shops_visited) || 0), 0);
-      metrics.push({
-        title: translations[currentLang].metrics[0].title,
-        value: totalShops.toLocaleString()
-      });
-      // Food Safety Pass Rate
-      const foodLab = dataStore.foodLab || [];
-      const fit = foodLab.filter(r => (r.analysis_results_en === "Fit" || r.analysis_results_ar === "صالحة"))
-        .reduce((sum, row) => sum + (parseFloat(row.value) || 0), 0);
-      const unfit = foodLab.filter(r => (r.analysis_results_en === "Unfit" || r.analysis_results_ar === "غير صالحة"))
-        .reduce((sum, row) => sum + (parseFloat(row.value) || 0), 0);
-      const passRate = (fit + unfit) > 0 ? (fit / (fit + unfit) * 100).toFixed(1) : "0";
-      metrics.push({
-        title: translations[currentLang].metrics[1].title,
-        value: passRate + "%"
-      });
-      // Violations Issued
-      const violations = dataStore.violations || [];
-      const totalViol = violations.reduce((sum, row) => sum + (parseFloat(row.number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec) || 0), 0);
-      metrics.push({
-        title: translations[currentLang].metrics[2].title,
-        value: totalViol.toLocaleString()
-      });
-      // Products Confiscated
-      const conf = dataStore.confiscated || [];
-      const totalConf = conf.reduce((sum, row) => sum + (parseFloat(row.confiscated_food_and_health_products_kg) || 0), 0);
-      metrics.push({
-        title: translations[currentLang].metrics[3].title,
-        value: (totalConf/1000).toFixed(1) + " t"
-      });
-      // Export Certificates
-      const cert = dataStore.certificates || [];
-      const totalExport = cert.filter(r => (r.category_en === "Export CoH issued" || r.category_ar === "شهادات صحية تصدير"))
-        .reduce((sum, row) => sum + (parseFloat(row.number_of_certificates_of_health) || 0), 0);
-      metrics.push({
-        title: translations[currentLang].metrics[4].title,
-        value: totalExport.toLocaleString()
-      });
-      document.getElementById('metricsContainer').innerHTML = metrics.map(m =>
-        `<div class="metric-card"><div class="metric-title">${m.title}</div><div class="metric-value">${m.value}</div></div>`
-      ).join('');
+    function setLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+      
+      document.getElementById('enBtn').classList.toggle('active', lang === 'en');
+      document.getElementById('arBtn').classList.toggle('active', lang === 'ar');
+      
+      const trans = translations[lang];
+      document.getElementById('dashboardTitle').textContent = trans.dashboardTitle;
+      document.getElementById('dashboardSubtitle').textContent = trans.dashboardSubtitle;
+      document.getElementById('yearFilterLabel').textContent = trans.yearFilterLabel;
+      document.querySelector('#yearFilter option[value="all"]').textContent = trans.allYears;
+      document.getElementById('insightsTitle').textContent = trans.insightsTitle;
+      document.getElementById('footerSource').innerHTML = trans.footerSource;
+      document.getElementById('footerVision').textContent = trans.footerVision;
+      
+      renderInsights();
+      updateDashboard(); // Re-render metrics and charts with new language
     }
 
-    let chartInstances = [];
-    function renderCharts() {
-      chartInstances.forEach(ch => ch.destroy && ch.destroy());
-      chartInstances = [];
-      const chartsDiv = document.getElementById('chartsContainer');
-      
-      // --- PART 1: Data Processing ---
-      // Medical Certificates Data
-      const cert = dataStore.certificates || [];
-      const certYears = getAllYears(cert, "year");
-      const certDataByYearCat = {};
-      cert.forEach(row => {
-        let year = row.year ? String(parseInt(row.year)) : null;
-        let cat = row.category_en || row.category_ar || '';
-        let val = parseFloat(row.number_of_certificates_of_health) || 0;
-        if (!year || !cat) return;
-        if (!certDataByYearCat[year]) certDataByYearCat[year] = {};
-        certDataByYearCat[year][cat] = (certDataByYearCat[year][cat] || 0) + val;
-      });
-      const exportData = certYears.map(y => certDataByYearCat[y]?.["Export CoH issued"] || 0);
-      const vetData = certYears.map(y => certDataByYearCat[y]?.["Veterinary CoH issued"] || 0);
+    function populateYearFilter() {
+        const yearSet = new Set();
+        Object.values(dataStore).flat().forEach(row => {
+            if (row.year) yearSet.add(String(parseInt(row.year)));
+        });
+        const yearFilter = document.getElementById('yearFilter');
+        const sortedYears = Array.from(yearSet).sort((a, b) => b - a);
+        sortedYears.forEach(year => {
+            const option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            yearFilter.appendChild(option);
+        });
+    }
 
-      // Food Laboratory Test Results Data
-      const foodLab = dataStore.foodLab || [];
-      const foodYears = getAllYears(foodLab, "year");
-      const foodDataByYearCat = {};
-      foodLab.forEach(row => {
-        let year = row.year ? String(parseInt(row.year)) : null;
-        let result = row.analysis_results_en || row.analysis_results_ar || '';
-        let val = parseFloat(row.value) || 0;
-        if (!year || !result) return;
-        if (!foodDataByYearCat[year]) foodDataByYearCat[year] = {};
-        foodDataByYearCat[year][result] = (foodDataByYearCat[year][result] || 0) + val;
-      });
-      const fitData = foodYears.map(y => foodDataByYearCat[y]?.["Fit"] || foodDataByYearCat[y]?.["صالحة"] || 0);
-      const unfitData = foodYears.map(y => foodDataByYearCat[y]?.["Unfit"] || foodDataByYearCat[y]?.["غير صالحة"] || 0);
+    function filterDataByYear(data, selectedYear) {
+        if (selectedYear === 'all' || !data) return data;
+        return data.filter(row => String(parseInt(row.year)) === selectedYear);
+    }
 
-      // Confiscated Products Data
-      const conf = dataStore.confiscated || [];
-      const confYears = getAllYears(conf, "year");
-      const confByYear = {};
-      conf.forEach(row => {
-        let year = row.year ? String(parseInt(row.year)) : null;
-        let val = parseFloat(row.confiscated_food_and_health_products_kg) || 0;
-        if (!year) return;
-        confByYear[year] = (confByYear[year] || 0) + val;
-      });
-      const confData = confYears.map(y => confByYear[y] || 0);
+    // --- RENDER FUNCTIONS ---
+    function renderMetrics(selectedYear) {
+        const metrics = [];
+        const transMetrics = translations[currentLang].metrics;
 
-      // Violations Data
-      const violations = dataStore.violations || [];
-      const violYears = getAllYears(violations, "year");
-      const allCats = [...new Set(violations.map(row => (currentLang === 'ar' ? row.category_ar : row.category_en)).filter(Boolean))];
-      const violByYearCat = {};
-      violations.forEach(row => {
-        let year = row.year ? String(parseInt(row.year)) : null;
-        let cat = (currentLang === 'ar' ? row.category_ar : row.category_en) || '';
-        let val = parseFloat(row.number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec) || 0;
-        if (!year || !cat) return;
-        if (!violByYearCat[cat]) violByYearCat[cat] = {};
-        violByYearCat[cat][year] = (violByYearCat[cat][year] || 0) + val;
-      });
-      const datasetsViol = allCats.map((cat, i) => ({
-        label: cat,
-        data: violYears.map(y => violByYearCat[cat]?.[y] || 0),
-        backgroundColor: ['#007bff','#28a745','#dc3545','#ffc107','#6f42c1','#10b981','#eab308'][i % 7]
-      }));
+        const shops = filterDataByYear(dataStore.shops, selectedYear);
+        const foodLab = filterDataByYear(dataStore.foodLab, selectedYear);
+        const violations = filterDataByYear(dataStore.violations, selectedYear);
+        const conf = filterDataByYear(dataStore.confiscated, selectedYear);
+        const cert = filterDataByYear(dataStore.certificates, selectedYear);
 
-      // Shops Visited Data
-      const shops = dataStore.shops || [];
-      const shopsYears = getAllYears(shops, "year");
-      const shopsByYear = {};
-      shops.forEach(row => {
-        let year = row.year ? String(parseInt(row.year)) : null;
-        let val = parseFloat(row.number_of_shops_visited) || 0;
-        if (!year) return;
-        shopsByYear[year] = (shopsByYear[year] || 0) + val;
-      });
-      const shopsData = shopsYears.map(y => shopsByYear[y] || 0);
-      
-      // --- PART 2: Generate all HTML and add it to the page ONCE ---
-      chartsDiv.innerHTML = `
-        <div class="chart-card"><h3>${translations[currentLang].charts[0]}</h3><div class="chart-container"><canvas id="certificatesChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[0]}</div></div>
-        <div class="chart-card"><h3>${translations[currentLang].charts[1]}</h3><div class="chart-container"><canvas id="foodLabChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[1]}</div></div>
-        <div class="chart-card"><h3>${translations[currentLang].charts[2]}</h3><div class="chart-container"><canvas id="confiscatedChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[2]}</div></div>
-        <div class="chart-card"><h3>${translations[currentLang].charts[3]}</h3><div class="chart-container"><canvas id="violationsChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[3]}</div></div>
-        <div class="chart-card"><h3>${translations[currentLang].charts[4]}</h3><div class="chart-container"><canvas id="shopsChart"></canvas></div><div class="chart-narrative">${translations[currentLang].chartNarratives[4]}</div></div>
-      `;
+        metrics.push({ title: transMetrics[0].title, value: (shops.reduce((sum, row) => sum + (parseFloat(row.number_of_shops_visited) || 0), 0)).toLocaleString() });
+        
+        const fit = foodLab.filter(r => r.analysis_results_en === "Fit" || r.analysis_results_ar === "صالحة").reduce((s, r) => s + (parseFloat(r.value) || 0), 0);
+        const unfit = foodLab.filter(r => r.analysis_results_en === "Unfit" || r.analysis_results_ar === "غير صالحة").reduce((s, r) => s + (parseFloat(r.value) || 0), 0);
+        const passRate = (fit + unfit) > 0 ? (fit / (fit + unfit) * 100).toFixed(1) + "%" : "N/A";
+        metrics.push({ title: transMetrics[1].title, value: passRate });
 
-      // --- PART 3: Initialize all charts now that their canvas elements exist ---
-      
-      // Chart 1: Certificates
-      const certCtx = document.getElementById('certificatesChart').getContext('2d');
-      chartInstances.push(new Chart(certCtx, {
-        type: 'line', data: { labels: certYears, datasets: [{label: currentLang === 'ar' ? 'تصدير' : 'Export', data: exportData, borderColor: '#007bff', fill:false, tension:0.3}, {label: currentLang === 'ar' ? 'بيطرية' : 'Veterinary', data: vetData, borderColor: '#28a745', fill:false, tension:0.3}] }, options: {responsive:true, maintainAspectRatio: false, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
-      }));
+        metrics.push({ title: transMetrics[2].title, value: (violations.reduce((s, r) => s + (parseFloat(r.number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec) || 0), 0)).toLocaleString() });
+        metrics.push({ title: transMetrics[3].title, value: (conf.reduce((s, r) => s + (parseFloat(r.confiscated_food_and_health_products_kg) || 0), 0)).toLocaleString() });
+        
+        const totalExport = cert.filter(r => r.category_en === "Export CoH issued" || r.category_ar === "شهادات صحية تصدير").reduce((s, r) => s + (parseFloat(r.number_of_certificates_of_health) || 0), 0);
+        metrics.push({ title: transMetrics[4].title, value: totalExport.toLocaleString() });
 
-      // Chart 2: Food Lab
-      const foodLabCtx = document.getElementById('foodLabChart').getContext('2d');
-      chartInstances.push(new Chart(foodLabCtx, {
-        type: 'bar', data: { labels: foodYears, datasets: [{label: currentLang === 'ar' ? 'صالحة' : 'Fit', data: fitData, backgroundColor: '#28a745'}, {label: currentLang === 'ar' ? 'غير صالحة' : 'Unfit', data: unfitData, backgroundColor: '#dc3545'}] }, options: {responsive:true, maintainAspectRatio: false, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true, stacked: true}, x: {stacked:true}}}
-      }));
+        document.getElementById('metricsContainer').innerHTML = metrics.map(m =>
+            `<div class="metric-card"><div class="metric-title">${m.title}</div><div class="metric-value">${m.value}</div></div>`
+        ).join('');
+    }
 
-      // Chart 3: Confiscated
-      const confCtx = document.getElementById('confiscatedChart').getContext('2d');
-      chartInstances.push(new Chart(confCtx, {
-        type: 'line', data: { labels: confYears, datasets: [{ label: currentLang === 'ar' ? 'المصادرات (كجم)' : 'Confiscated (kg)', data: confData, borderColor: '#ffc107', fill: true, backgroundColor: 'rgba(255, 193, 7, 0.3)', tension: 0.3 }] }, options: {responsive:true, maintainAspectRatio: false, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
-      }));
+    function renderCharts(selectedYear) {
+        chartInstances.forEach(ch => ch.destroy());
+        chartInstances = [];
+        const chartsDiv = document.getElementById('chartsContainer');
+        const transCharts = translations[currentLang].charts;
+        const transNarratives = translations[currentLang].chartNarratives;
 
-      // Chart 4: Violations
-      const violCtx = document.getElementById('violationsChart').getContext('2d');
-      chartInstances.push(new Chart(violCtx, {
-        type: 'bar', data: { labels: violYears, datasets: datasetsViol }, options: {responsive:true, maintainAspectRatio: false, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true, stacked: true}, x: {stacked:true}}}
-      }));
+        const chartConfigs = [
+            { id: 'certificatesChart', title: transCharts[0], narrative: transNarratives[0], source: files.certificates },
+            { id: 'foodLabChart', title: transCharts[1], narrative: transNarratives[1], source: files.foodLab },
+            { id: 'confiscatedChart', title: transCharts[2], narrative: transNarratives[2], source: files.confiscated },
+            { id: 'violationsChart', title: transCharts[3], narrative: transNarratives[3], source: files.violations },
+            { id: 'shopsChart', title: transCharts[4], narrative: transNarratives[4], source: files.shops },
+        ];
 
-      // Chart 5: Shops Visited
-      const shopsCtx = document.getElementById('shopsChart').getContext('2d');
-      chartInstances.push(new Chart(shopsCtx, {
-        type: 'line', data: { labels: shopsYears, datasets: [{ label: currentLang === 'ar' ? 'عدد المحلات' : 'Shops Visited', data: shopsData, borderColor: '#17a2b8', fill: false, tension: 0.3 }] }, options: {responsive:true, maintainAspectRatio: false, plugins: {legend: {position: 'top'}}, scales: {y: {beginAtZero:true}}}
-      }));
+        chartsDiv.innerHTML = chartConfigs.map(c => `
+            <div class="chart-card">
+                <h3>${c.title}</h3>
+                <div class="chart-container"><canvas id="${c.id}"></canvas></div>
+                <div class="chart-narrative">${c.narrative}</div>
+                <div class="chart-source">Source: ${c.source.split('/')[1]}</div>
+            </div>
+        `).join('');
+
+        if (selectedYear === 'all') {
+            renderAllYearsCharts();
+        } else {
+            renderSingleYearCharts(selectedYear);
+        }
+    }
+
+    function renderAllYearsCharts() {
+        const certYears = [...new Set(dataStore.certificates.map(r => String(parseInt(r.year))))].sort();
+        const exportData = certYears.map(y => dataStore.certificates.filter(r => String(parseInt(r.year)) === y && r.category_en === "Export CoH issued").reduce((s, c) => s + (parseFloat(c.number_of_certificates_of_health) || 0), 0));
+        const vetData = certYears.map(y => dataStore.certificates.filter(r => String(parseInt(r.year)) === y && r.category_en === "Veterinary CoH issued").reduce((s, c) => s + (parseFloat(c.number_of_certificates_of_health) || 0), 0));
+        createChart('certificatesChart', 'line', { labels: certYears, datasets: [
+            { label: currentLang === 'ar' ? 'تصدير' : 'Export', data: exportData, borderColor: '#007bff', fill: false, tension: 0.3 },
+            { label: currentLang === 'ar' ? 'بيطرية' : 'Veterinary', data: vetData, borderColor: '#28a745', fill: false, tension: 0.3 }
+        ]});
+
+        const foodYears = [...new Set(dataStore.foodLab.map(r => String(parseInt(r.year))))].sort();
+        const fitData = foodYears.map(y => dataStore.foodLab.filter(r => String(parseInt(r.year)) === y && (r.analysis_results_en === "Fit" || r.analysis_results_ar === "صالحة")).reduce((s, c) => s + (parseFloat(c.value) || 0), 0));
+        const unfitData = foodYears.map(y => dataStore.foodLab.filter(r => String(parseInt(r.year)) === y && (r.analysis_results_en === "Unfit" || r.analysis_results_ar === "غير صالحة")).reduce((s, c) => s + (parseFloat(c.value) || 0), 0));
+        createChart('foodLabChart', 'bar', { labels: foodYears, datasets: [
+            { label: currentLang === 'ar' ? 'صالحة' : 'Fit', data: fitData, backgroundColor: '#28a745' },
+            { label: currentLang === 'ar' ? 'غير صالحة' : 'Unfit', data: unfitData, backgroundColor: '#dc3545' }
+        ]}, { scales: { x: { stacked: true }, y: { stacked: true } } });
+
+        const confYears = [...new Set(dataStore.confiscated.map(r => String(parseInt(r.year))))].sort();
+        const confData = confYears.map(y => dataStore.confiscated.filter(r => String(parseInt(r.year)) === y).reduce((s, c) => s + (parseFloat(c.confiscated_food_and_health_products_kg) || 0), 0));
+        createChart('confiscatedChart', 'line', { labels: confYears, datasets: [{ label: currentLang === 'ar' ? 'المصادرات (كجم)' : 'Confiscated (kg)', data: confData, borderColor: '#ffc107', backgroundColor: 'rgba(255,193,7,0.3)', fill: true }]});
+        
+        const violYears = [...new Set(dataStore.violations.map(r => String(parseInt(r.year))))].sort();
+        const violCats = [...new Set(dataStore.violations.map(r => currentLang === 'ar' ? r.category_ar : r.category_en).filter(Boolean))];
+        const violData = violCats.map((cat, i) => ({
+            label: cat,
+            data: violYears.map(y => dataStore.violations.filter(r => String(parseInt(r.year)) === y && (currentLang === 'ar' ? r.category_ar : r.category_en) === cat).reduce((s, v) => s + (parseFloat(v.number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec) || 0), 0)),
+            backgroundColor: ['#007bff','#28a745','#dc3545','#ffc107','#6f42c1','#10b981','#eab308'][i % 7]
+        }));
+        createChart('violationsChart', 'bar', { labels: violYears, datasets: violData }, { scales: { x: { stacked: true }, y: { stacked: true } } });
+
+        const shopsYears = [...new Set(dataStore.shops.map(r => String(parseInt(r.year))))].sort();
+        const shopsData = shopsYears.map(y => dataStore.shops.filter(r => String(parseInt(r.year)) === y).reduce((s, c) => s + (parseFloat(c.number_of_shops_visited) || 0), 0));
+        createChart('shopsChart', 'line', { labels: shopsYears, datasets: [{ label: currentLang === 'ar' ? 'عدد المحلات' : 'Shops Visited', data: shopsData, borderColor: '#17a2b8', fill: false, tension: 0.3 }]});
+    }
+
+    function renderSingleYearCharts(year) {
+        const months = currentLang === 'ar' ? ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'] : ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        const monthMapEn = { "January": 0, "February": 1, "March": 2, "April": 3, "May": 4, "June": 5, "July": 6, "August": 7, "September": 8, "October": 9, "November": 10, "December": 11 };
+
+        // Helper to aggregate monthly data
+        const aggregateByMonth = (data, valueField, categoryField = null, categoryValue = null) => {
+            const monthlyData = Array(12).fill(0);
+            const filteredData = data.filter(r => String(parseInt(r.year)) === year && (!categoryField || r[categoryField] === categoryValue));
+            filteredData.forEach(r => {
+                const monthIndex = monthMapEn[r.month_en];
+                if (monthIndex !== undefined) {
+                    monthlyData[monthIndex] += parseFloat(r[valueField]) || 0;
+                }
+            });
+            return monthlyData;
+        };
+
+        const certs = dataStore.certificates;
+        const exportData = aggregateByMonth(certs, 'number_of_certificates_of_health', 'category_en', 'Export CoH issued');
+        const vetData = aggregateByMonth(certs, 'number_of_certificates_of_health', 'category_en', 'Veterinary CoH issued');
+        createChart('certificatesChart', 'line', { labels: months, datasets: [
+            { label: currentLang === 'ar' ? 'تصدير' : 'Export', data: exportData, borderColor: '#007bff', fill: false, tension: 0.3 },
+            { label: currentLang === 'ar' ? 'بيطرية' : 'Veterinary', data: vetData, borderColor: '#28a745', fill: false, tension: 0.3 }
+        ]});
+
+        const foodLab = dataStore.foodLab;
+        const fitData = aggregateByMonth(foodLab, 'value', 'analysis_results_en', 'Fit');
+        const unfitData = aggregateByMonth(foodLab, 'value', 'analysis_results_en', 'Unfit');
+        createChart('foodLabChart', 'bar', { labels: months, datasets: [
+            { label: currentLang === 'ar' ? 'صالحة' : 'Fit', data: fitData, backgroundColor: '#28a745' },
+            { label: currentLang === 'ar' ? 'غير صالحة' : 'Unfit', data: unfitData, backgroundColor: '#dc3545' }
+        ]}, { scales: { x: { stacked: true }, y: { stacked: true } } });
+
+        const confData = aggregateByMonth(dataStore.confiscated, 'confiscated_food_and_health_products_kg');
+        createChart('confiscatedChart', 'line', { labels: months, datasets: [{ label: currentLang === 'ar' ? 'المصادرات (كجم)' : 'Confiscated (kg)', data: confData, borderColor: '#ffc107', backgroundColor: 'rgba(255,193,7,0.3)', fill: true }]});
+        
+        const violData = dataStore.violations.filter(r => String(parseInt(r.year)) === year);
+        const violCats = [...new Set(violData.map(r => currentLang === 'ar' ? r.category_ar : r.category_en).filter(Boolean))];
+        const violDatasets = violCats.map((cat, i) => ({
+            label: cat,
+            data: aggregateByMonth(violData, 'number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec', currentLang === 'ar' ? 'category_ar' : 'category_en', cat),
+            backgroundColor: ['#007bff','#28a745','#dc3545','#ffc107','#6f42c1','#10b981','#eab308'][i % 7]
+        }));
+        createChart('violationsChart', 'bar', { labels: months, datasets: violDatasets }, { scales: { x: { stacked: true }, y: { stacked: true } } });
+
+        const shopsData = aggregateByMonth(dataStore.shops, 'number_of_shops_visited');
+        createChart('shopsChart', 'line', { labels: months, datasets: [{ label: currentLang === 'ar' ? 'عدد المحلات' : 'Shops Visited', data: shopsData, borderColor: '#17a2b8', fill: false, tension: 0.3 }]});
+    }
+
+    function createChart(canvasId, type, data, options = {}) {
+        const ctx = document.getElementById(canvasId).getContext('2d');
+        const defaultOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { position: 'top' } },
+            scales: { y: { beginAtZero: true } }
+        };
+        chartInstances.push(new Chart(ctx, { type, data, options: { ...defaultOptions, ...options } }));
     }
 
     function renderInsights() {
@@ -396,4 +393,4 @@
     }
   </script>
 </body>
-</html>```
+</html>

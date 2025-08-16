@@ -57,11 +57,11 @@ All datasets are sourced directly from the official **Ajman Data Portal**. Each 
 
 | Dataset Name                                  | Local File                                         | Official Source URL                                                                                             |
 | --------------------------------------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Medical Certificates Issued                   | `data/medical-certificates-issued.json`            | [Link](https://data.ajman.ae/datasets/medical-certificates-issued)                                              |
-| Food Laboratory Test Results                  | `data/food-laboratory-test-results.json`           | [Link](https://data.ajman.ae/datasets/food-laboratory-test-results)                                             |
-| Confiscated Food & Health Products            | `data/confiscated-food-and-health-products.json`   | [Link](https://data.ajman.ae/datasets/confiscated-food-and-health-products)                                     |
-| Warnings and Public Health Violations         | `data/warnings-and-public-health-violations.json`  | [Link](https://data.ajman.ae/datasets/warnings-and-public-health-violations)                                    |
-| Shops Visited                                 | `data/shops-visited.json`                          | [Link](https://data.ajman.ae/datasets/shops-visited)                                                            |
+| Medical Certificates Issued                   | `data/medical-certificates-issued.json`            | [Link](https://data.ajman.ae/explore/dataset/health-certificates-for-food-export/information/)                  |
+| Food Laboratory Test Results                  | `data/food-laboratory-test-results.json`           | [Link](https://data.ajman.ae/explore/dataset/food-laboratory-test-results/information/)                         |
+| Confiscated Food & Health Products            | `data/confiscated-food-and-health-products.json`   | [Link](https://data.ajman.ae/explore/dataset/confiscated-food-and-health-products/information/)                 |
+| Warnings and Public Health Violations         | `data/warnings-and-public-health-violations.json`  | [Link](https://data.ajman.ae/explore/dataset/warnings-and-public-health-violations/information/)                |
+| Shops Visited                                 | `data/shops-visited.json`                          | [Link](https://data.ajman.ae/explore/dataset/shops-visited/information/)                                        |
 
 ---
 
@@ -157,13 +157,13 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for d
 
 جميع مجموعات البيانات مأخوذة مباشرة من **بوابة بيانات عجمان** الرسمية. يتضمن كل تصور في لوحة البيانات رابطًا مباشرًا إلى مصدره.
 
-| اسم مجموعة البيانات                       | الملف المحلي                                      | رابط المصدر الرسمي                                                                                            |
+| اسم مجموعة البيانات                       | الملف المحلي                                      | رابط المصدر الرسمي                                                                                             |
 | ------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| الشهادات الصحية الصادرة                   | `data/medical-certificates-issued.json`            | [الرابط](https://data.ajman.ae/datasets/medical-certificates-issued)                                            |
-| نتائج اختبارات مختبر الأغذية                | `data/food-laboratory-test-results.json`           | [الرابط](https://data.ajman.ae/datasets/food-laboratory-test-results)                                          |
-| المواد الغذائية والمنتجات الصحية المصادرة    | `data/confiscated-food-and-health-products.json`   | [الرابط](https://data.ajman.ae/datasets/confiscated-food-and-health-products)                                  |
-| الإنذارات والمخالفات الصحية العامة         | `data/warnings-and-public-health-violations.json`  | [الرابط](https://data.ajman.ae/datasets/warnings-and-public-health-violations)                                 |
-| المحلات التي تمت زيارتها للتفتيش            | `data/shops-visited.json`                          | [الرابط](https://data.ajman.ae/datasets/shops-visited)                                                         |
+| الشهادات الصحية الصادرة                   | `data/medical-certificates-issued.json`            | [الرابط](https://data.ajman.ae/explore/dataset/health-certificates-for-food-export/information/)                 |
+| نتائج اختبارات مختبر الأغذية                | `data/food-laboratory-test-results.json`           | [الرابط](https://data.ajman.ae/explore/dataset/food-laboratory-test-results/information/)                      |
+| المواد الغذائية والمنتجات الصحية المصادرة    | `data/confiscated-food-and-health-products.json`   | [الرابط](https://data.ajman.ae/explore/dataset/confiscated-food-and-health-products/information/)              |
+| الإنذارات والمخالفات الصحية العامة         | `data/warnings-and-public-health-violations.json`  | [الرابط](https://data.ajman.ae/explore/dataset/warnings-and-public-health-violations/information/)             |
+| المحلات التي تمت زيارتها للتفتيش            | `data/shops-visited.json`                          | [الرابط](https://data.ajman.ae/explore/dataset/shops-visited/information/)                                     |
 
 ---
 

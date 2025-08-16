@@ -53,8 +53,12 @@
 <body>
   <div class="header" id="header">
     <div class="logos">
-      <img src="assets/ajman-data-logo.png" alt="Ajman Data Logo" />
-      <img src="assets/ajman-vision-2030-logo.png" alt="Ajman Vision 2030 Logo" />
+      <a href="https://data.ajman.ae/pages/homepage/" target="_blank" rel="noopener noreferrer">
+        <img src="assets/ajman-data-logo.png" alt="Ajman Data Logo" />
+      </a>
+      <a href="https://drive.google.com/file/d/117tCPxZFDSuK42dQhU_oRK0INWZ8Su2k/view" target="_blank" rel="noopener noreferrer">
+        <img src="assets/ajman-vision-2030-logo.png" alt="Ajman Vision 2030 Logo" />
+      </a>
       <h1 id="dashboardTitle"></h1>
     </div>
   </div>
@@ -165,23 +169,23 @@
     const files = {
         certificates: {
             path: 'data/medical-certificates-issued.json',
-            sourceUrl: 'https://data.ajman.ae/datasets/medical-certificates-issued'
+            sourceUrl: 'https://data.ajman.ae/explore/dataset/health-certificates-for-food-export/information/'
         },
         foodLab: {
             path: 'data/food-laboratory-test-results.json',
-            sourceUrl: 'https://data.ajman.ae/datasets/food-laboratory-test-results'
+            sourceUrl: 'https://data.ajman.ae/explore/dataset/food-laboratory-test-results/information/'
         },
         confiscated: {
             path: 'data/confiscated-food-and-health-products.json',
-            sourceUrl: 'https://data.ajman.ae/datasets/confiscated-food-and-health-products'
+            sourceUrl: 'https://data.ajman.ae/explore/dataset/confiscated-food-and-health-products/information/'
         },
         violations: {
             path: 'data/warnings-and-public-health-violations.json',
-            sourceUrl: 'https://data.ajman.ae/datasets/warnings-and-public-health-violations'
+            sourceUrl: 'https://data.ajman.ae/explore/dataset/warnings-and-public-health-violations/information/'
         },
         shops: {
             path: 'data/shops-visited.json',
-            sourceUrl: 'https://data.ajman.ae/datasets/shops-visited'
+            sourceUrl: 'https://data.ajman.ae/explore/dataset/shops-visited/information/'
         }
     };
     

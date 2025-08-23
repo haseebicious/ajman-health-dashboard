@@ -21,6 +21,7 @@ This dashboard was engineered to be more than just a static report. It's an inte
 *   **Seamless Bilingual Interface:** With a single click, the entire dashboard—from titles and labels to narratives and insights—flips between **English** and **Arabic (العربية)**, ensuring accessibility for all users.
 *   **At-a-Glance KPI Metrics:** Key performance indicators are presented in clear, concise metric cards at the top, providing an immediate summary of the selected time period.
 *   **Fully Responsive Design:** The dashboard is meticulously crafted to provide a seamless experience on any device, from a large desktop monitor to a smartphone.
+*   **Custom Bilingual Tooltips:** Rich, interactive tooltips provide detailed data points and are fully translated when switching between English and Arabic.
 *   **Verifiable and Credible Data:** To ensure full transparency and build trust, every chart includes a direct, clickable link to its original source on the official Ajman Data Portal.
 
 ---
@@ -62,6 +63,9 @@ All datasets are sourced directly from the official **Ajman Data Portal**. Each 
 | Confiscated Food & Health Products            | `data/confiscated-food-and-health-products.json`   | [Link](https://data.ajman.ae/explore/dataset/confiscated-food-and-health-products/information/)                 |
 | Warnings and Public Health Violations         | `data/warnings-and-public-health-violations.json`  | [Link](https://data.ajman.ae/explore/dataset/warnings-and-public-health-violations/information/)                |
 | Shops Visited                                 | `data/shops-visited.json`                          | [Link](https://data.ajman.ae/explore/dataset/shops-visited/information/)                                        |
+
+### Data Processing Note
+To improve visualization clarity, the "Shops" category within the "Warnings & Public Health Violations" dataset was excluded from its corresponding chart. This category contained null or zero values across all available years and its removal helps focus the analysis on more relevant data points.
 
 ---
 
@@ -123,6 +127,7 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for d
 *   **واجهة ثنائية اللغة بالكامل:** بنقرة واحدة، تتحول لوحة البيانات بأكملها — من العناوين والتسميات إلى الشروحات والأفكار — بين **الإنجليزية** و**العربية**، مما يضمن سهولة الوصول لجميع المستخدمين.
 *   **مؤشرات أداء رئيسية سريعة:** تُعرض مؤشرات الأداء الرئيسية في بطاقات واضحة وموجزة في الأعلى، مما يوفر ملخصًا فوريًا للفترة الزمنية المحددة.
 *   **تصميم متجاوب بالكامل:** تم تصميم لوحة البيانات بعناية لتوفر تجربة سلسة على أي جهاز، من شاشات سطح المكتب الكبيرة إلى الهواتف الذكية.
+*   **تلميحات أدوات مخصصة ثنائية اللغة:** توفر تلميحات الأدوات التفاعلية والغنية نقاط بيانات مفصلة وتتم ترجمتها بالكامل عند التبديل بين اللغتين الإنجليزية والعربية.
 *   **بيانات موثوقة ومُثبتة المصدر:** لضمان الشفافية الكاملة وبناء الثقة، يتضمن كل رسم بياني رابطًا مباشرًا وقابلاً للنقر إلى مصدره الأصلي على بوابة بيانات عجمان الرسمية.
 
 ---
@@ -164,6 +169,9 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for d
 | المواد الغذائية والمنتجات الصحية المصادرة    | `data/confiscated-food-and-health-products.json`   | [الرابط](https://data.ajman.ae/explore/dataset/confiscated-food-and-health-products/information/)              |
 | الإنذارات والمخالفات الصحية العامة         | `data/warnings-and-public-health-violations.json`  | [الرابط](https://data.ajman.ae/explore/dataset/warnings-and-public-health-violations/information/)             |
 | المحلات التي تمت زيارتها للتفتيش            | `data/shops-visited.json`                          | [الرابط](https://data.ajman.ae/explore/dataset/shops-visited/information/)                                     |
+
+### ملاحظة حول معالجة البيانات
+لتحسين وضوح التصور البياني، تم استبعاد فئة "المحلات التجارية" من مجموعة بيانات "الإنذارات والمخالفات الصحية العامة" من الرسم البياني الخاص بها. احتوت هذه الفئة على قيم فارغة أو صفرية عبر جميع السنوات المتاحة، وتساعد إزالتها في تركيز التحليل على نقاط البيانات الأكثر صلة.
 
 ---
 

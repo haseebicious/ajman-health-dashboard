@@ -37,6 +37,57 @@
     .footer p { margin: 0.5rem 0; opacity: 0.9; }
     .footer a { color: #93c5fd; }
     .footer a:hover { text-decoration: underline; }
+
+    /* Custom Tooltip */
+    #chartjs-tooltip {
+      opacity: 0;
+      position: absolute;
+      background: white;
+      color: #2c3e50;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: opacity .2s ease, transform .2s ease;
+      pointer-events: none;
+      padding: 0.75rem;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      border: 1px solid #e2e8f0;
+      z-index: 100;
+    }
+    #chartjs-tooltip table {
+      margin: 0;
+      border-collapse: collapse;
+    }
+    #chartjs-tooltip th {
+      font-weight: 700;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid #e2e8f0;
+      text-align: left;
+    }
+    html[dir="rtl"] #chartjs-tooltip th {
+      text-align: right;
+    }
+    #chartjs-tooltip td {
+      padding: 0.4rem 0;
+      font-size: 0.9rem;
+    }
+    .tooltip-body-item {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+    .tooltip-color-box {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      margin-right: 0.6rem;
+      flex-shrink: 0;
+    }
+    html[dir="rtl"] .tooltip-color-box {
+      margin-right: 0;
+      margin-left: 0.6rem;
+    }
+
     @media (max-width: 992px) {
         .charts-container { grid-template-columns: 1fr; }
     }
@@ -333,11 +384,12 @@
         const confData = confYears.map(y => dataStore.confiscated.filter(r => String(parseInt(r.year)) === y).reduce((s, c) => s + (parseFloat(c.confiscated_food_and_health_products_kg) || 0), 0));
         createChart('confiscatedChart', 'line', { labels: confYears, datasets: [{ label: currentLang === 'ar' ? 'المصادرات (كجم)' : 'Confiscated (kg)', data: confData, borderColor: '#ffc107', backgroundColor: 'rgba(255,193,7,0.3)', fill: true }]});
         
-        const violYears = [...new Set(dataStore.violations.map(r => String(parseInt(r.year))))].sort();
-        const violCats = [...new Set(dataStore.violations.map(r => currentLang === 'ar' ? r.category_ar : r.category_en).filter(Boolean))];
+        const violSourceData = dataStore.violations.filter(r => r.category_en !== 'Shops');
+        const violYears = [...new Set(violSourceData.map(r => String(parseInt(r.year))))].sort();
+        const violCats = [...new Set(violSourceData.map(r => currentLang === 'ar' ? r.category_ar : r.category_en).filter(Boolean))];
         const violData = violCats.map((cat, i) => ({
             label: cat,
-            data: violYears.map(y => dataStore.violations.filter(r => String(parseInt(r.year)) === y && (currentLang === 'ar' ? r.category_ar : r.category_en) === cat).reduce((s, v) => s + (parseFloat(v.number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec) || 0), 0)),
+            data: violYears.map(y => violSourceData.filter(r => String(parseInt(r.year)) === y && (currentLang === 'ar' ? r.category_ar : r.category_en) === cat).reduce((s, v) => s + (parseFloat(v.number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec) || 0), 0)),
             backgroundColor: ['#007bff','#28a745','#dc3545','#ffc107','#6f42c1','#10b981','#eab308'][i % 7]
         }));
         createChart('violationsChart', 'bar', { labels: violYears, datasets: violData }, { scales: { x: { stacked: true }, y: { stacked: true } } });
@@ -383,7 +435,7 @@
         const confData = aggregateByMonth(dataStore.confiscated, 'confiscated_food_and_health_products_kg');
         createChart('confiscatedChart', 'line', { labels: months, datasets: [{ label: currentLang === 'ar' ? 'المصادرات (كجم)' : 'Confiscated (kg)', data: confData, borderColor: '#ffc107', backgroundColor: 'rgba(255,193,7,0.3)', fill: true }]});
         
-        const violData = dataStore.violations.filter(r => String(parseInt(r.year)) === year);
+        const violData = dataStore.violations.filter(r => String(parseInt(r.year)) === year && r.category_en !== 'Shops');
         const violCats = [...new Set(violData.map(r => currentLang === 'ar' ? r.category_ar : r.category_en).filter(Boolean))];
         const violDatasets = violCats.map((cat, i) => ({
             label: cat,
@@ -396,12 +448,87 @@
         createChart('shopsChart', 'line', { labels: months, datasets: [{ label: currentLang === 'ar' ? 'عدد المحلات' : 'Shops Visited', data: shopsData, borderColor: '#17a2b8', fill: false, tension: 0.3 }]});
     }
 
+    const getOrCreateTooltip = (chart) => {
+      let tooltipEl = chart.canvas.parentNode.querySelector('#chartjs-tooltip');
+
+      if (!tooltipEl) {
+        tooltipEl = document.createElement('div');
+        tooltipEl.id = 'chartjs-tooltip';
+        tooltipEl.innerHTML = '<table></table>';
+        chart.canvas.parentNode.appendChild(tooltipEl);
+      }
+
+      return tooltipEl;
+    };
+
+    const externalTooltipHandler = (context) => {
+      const { chart, tooltip } = context;
+      const tooltipEl = getOrCreateTooltip(chart);
+
+      if (tooltip.opacity === 0) {
+        tooltipEl.style.opacity = 0;
+        return;
+      }
+
+      const tableRoot = tooltipEl.querySelector('table');
+      tableRoot.innerHTML = ''; // Clear previous content
+
+      if (tooltip.title.length > 0) {
+        const tableHead = document.createElement('thead');
+        const tr = document.createElement('tr');
+        const th = document.createElement('th');
+        th.textContent = tooltip.title[0];
+        tr.appendChild(th);
+        tableHead.appendChild(tr);
+        tableRoot.appendChild(tableHead);
+      }
+
+      const tableBody = document.createElement('tbody');
+      tooltip.body.forEach((bodyItem, i) => {
+        const colors = tooltip.labelColors[i];
+        const dataPoint = tooltip.dataPoints[i];
+        const datasetLabel = dataPoint.dataset.label || '';
+        const value = dataPoint.formattedValue;
+
+        const tr = document.createElement('tr');
+        const td = document.createElement('td');
+        td.className = 'tooltip-body-item';
+
+        const colorBox = document.createElement('span');
+        colorBox.className = 'tooltip-color-box';
+        colorBox.style.backgroundColor = colors.backgroundColor;
+        colorBox.style.borderColor = colors.borderColor;
+        colorBox.style.borderWidth = '2px';
+
+        const text = document.createTextNode(` ${datasetLabel}: ${value}`);
+
+        td.appendChild(colorBox);
+        td.appendChild(text);
+        tr.appendChild(td);
+        tableBody.appendChild(tr);
+      });
+
+      tableRoot.appendChild(tableBody);
+
+      const { offsetLeft: positionX, offsetTop: positionY } = chart.canvas;
+      tooltipEl.style.opacity = 1;
+      tooltipEl.style.left = positionX + tooltip.caretX + 'px';
+      tooltipEl.style.top = positionY + tooltip.caretY + 'px';
+      tooltipEl.style.transform = 'translate(-50%, -115%)'; // Position above the caret
+    };
+
     function createChart(canvasId, type, data, options = {}) {
         const ctx = document.getElementById(canvasId).getContext('2d');
         const defaultOptions = {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: { legend: { position: 'top' } },
+            plugins: { 
+              legend: { position: 'top' },
+              tooltip: {
+                enabled: false,
+                external: externalTooltipHandler
+              }
+            },
             scales: { y: { beginAtZero: true } },
             interaction: {
               mode: 'index',
@@ -429,4 +556,4 @@
     }
   </script>
 </body>
-</html>```
+</html>

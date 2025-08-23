@@ -384,7 +384,7 @@
         const confData = confYears.map(y => dataStore.confiscated.filter(r => String(parseInt(r.year)) === y).reduce((s, c) => s + (parseFloat(c.confiscated_food_and_health_products_kg) || 0), 0));
         createChart('confiscatedChart', 'line', { labels: confYears, datasets: [{ label: currentLang === 'ar' ? 'المصادرات (كجم)' : 'Confiscated (kg)', data: confData, borderColor: '#ffc107', backgroundColor: 'rgba(255,193,7,0.3)', fill: true }]});
         
-        const violSourceData = dataStore.violations.filter(r => r.category_en !== 'Shops');
+        const violSourceData = dataStore.violations.filter(r => r.category_en !== 'Shops' && r.category_en !== 'Houses');
         const violYears = [...new Set(violSourceData.map(r => String(parseInt(r.year))))].sort();
         const violCats = [...new Set(violSourceData.map(r => currentLang === 'ar' ? r.category_ar : r.category_en).filter(Boolean))];
         const violData = violCats.map((cat, i) => ({
@@ -435,7 +435,7 @@
         const confData = aggregateByMonth(dataStore.confiscated, 'confiscated_food_and_health_products_kg');
         createChart('confiscatedChart', 'line', { labels: months, datasets: [{ label: currentLang === 'ar' ? 'المصادرات (كجم)' : 'Confiscated (kg)', data: confData, borderColor: '#ffc107', backgroundColor: 'rgba(255,193,7,0.3)', fill: true }]});
         
-        const violData = dataStore.violations.filter(r => String(parseInt(r.year)) === year && r.category_en !== 'Shops');
+        const violData = dataStore.violations.filter(r => String(parseInt(r.year)) === year && r.category_en !== 'Shops' && r.category_en !== 'Houses');
         const violCats = [...new Set(violData.map(r => currentLang === 'ar' ? r.category_ar : r.category_en).filter(Boolean))];
         const violDatasets = violCats.map((cat, i) => ({
             label: cat,

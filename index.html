@@ -33,10 +33,13 @@
     .insight-item { display: flex; align-items: flex-start; margin-bottom: 1.2rem; padding: 1rem; background: #f8fafc; border-radius: 8px; border-left: 4px solid #7c3aed; }
     .insight-icon { font-size: 1.5rem; margin-right: 1rem; }
     .insight-text h4 { color: #1e3a5f; margin-bottom: 0.5rem; }
-    .footer { background: #1e3a5f; color: white; padding: 1.5rem; text-align: center; margin-top: 2rem; }
+    .footer { background: #1e3a5f; color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
     .footer p { margin: 0.5rem 0; opacity: 0.9; }
     .footer a { color: #93c5fd; }
     .footer a:hover { text-decoration: underline; }
+    .footer .credits { margin-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 1.5rem; }
+    .footer .credits p { margin: 0.4rem 0; font-size: 0.95rem; }
+    .footer .credits strong { color: #fff; }
 
     /* Custom Tooltip */
     #chartjs-tooltip {
@@ -138,15 +141,14 @@
     <p id="footerSource"></p>
     <p id="footerVision"></p>
     <p>
-      <a href="https://drive.google.com/file/d/117tCPxZFDSuK42dQhU_oRK0INWZ8Su2k/view" target="_blank">
-        Ajman Vision 2030 [PDF] | رؤية عجمان 2030 [ملف PDF]
-      </a>
-    </p>
-    <p>
       Primary Data Source: 
       <a href="https://data.ajman.ae/explore/?refine.theme=Health+well-being+and+care" target="_blank">Ajman Data Portal | بوابة بيانات عجمان</a>
     </p>
-    <p>Created by Haseeb Juma | © 2025 - Ajman University</p>
+    <div class="credits">
+      <p><strong>Developed by:</strong> Haseebullah Jumakhan (<a href="mailto:202320029@ajmanuni.ac.ae">202320029@ajmanuni.ac.ae</a>)</p>
+      <p><strong>Supervised by:</strong> Prof. Mohamed Deriche (<a href="mailto:m.deriche@ajman.ac.ae">m.deriche@ajman.ac.ae</a>)</p>
+      <p>© 2025 - Ajman University</p>
+    </div>
   </div>
   <script>
     const translations = {

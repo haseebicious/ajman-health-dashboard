@@ -241,6 +241,16 @@
             sourceUrl: 'https://data.ajman.ae/explore/dataset/shops-visited/information/'
         }
     };
+
+    // --- [FIX START] Define a static map for violation categories and their colors ---
+    const VIOLATION_CATEGORIES = {
+      'Personal':  { ar: 'الأفراد', color: '#007bff' },
+      'Companies': { ar: 'الشركات', color: '#28a745' },
+      'Vehicles':  { ar: 'المركبات', color: '#dc3545' },
+      'Land Plot': { ar: 'قطعة أرض', color: '#ffc107' }
+    };
+    const violCatKeys = Object.keys(VIOLATION_CATEGORIES);
+    // --- [FIX END] ---
     
     // --- DATA FETCHING AND INITIALIZATION ---
     Promise.all(Object.entries(files).map(([key, value]) =>
@@ -386,15 +396,23 @@
         const confData = confYears.map(y => dataStore.confiscated.filter(r => String(parseInt(r.year)) === y).reduce((s, c) => s + (parseFloat(c.confiscated_food_and_health_products_kg) || 0), 0));
         createChart('confiscatedChart', 'line', { labels: confYears, datasets: [{ label: currentLang === 'ar' ? 'المصادرات (كجم)' : 'Confiscated (kg)', data: confData, borderColor: '#ffc107', backgroundColor: 'rgba(255,193,7,0.3)', fill: true }]});
         
-        const violSourceData = dataStore.violations.filter(r => r.category_en !== 'Shops' && r.category_en !== 'Houses');
+        // --- [FIX START] Corrected logic for violations chart (All Years) ---
+        const violSourceData = dataStore.violations;
         const violYears = [...new Set(violSourceData.map(r => String(parseInt(r.year))))].sort();
-        const violCats = [...new Set(violSourceData.map(r => currentLang === 'ar' ? r.category_ar : r.category_en).filter(Boolean))];
-        const violData = violCats.map((cat, i) => ({
-            label: cat,
-            data: violYears.map(y => violSourceData.filter(r => String(parseInt(r.year)) === y && (currentLang === 'ar' ? r.category_ar : r.category_en) === cat).reduce((s, v) => s + (parseFloat(v.number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec) || 0), 0)),
-            backgroundColor: ['#007bff','#28a745','#dc3545','#ffc107','#6f42c1','#10b981','#eab308'][i % 7]
-        }));
-        createChart('violationsChart', 'bar', { labels: violYears, datasets: violData }, { scales: { x: { stacked: true }, y: { stacked: true } } });
+        const violDatasets = violCatKeys.map(catEn => {
+            const catInfo = VIOLATION_CATEGORIES[catEn];
+            return {
+                label: currentLang === 'ar' ? catInfo.ar : catEn,
+                data: violYears.map(y =>
+                    violSourceData.filter(r =>
+                        (r.category_en === catEn || r.category_ar === catInfo.ar) && String(parseInt(r.year)) === y
+                    ).reduce((s, v) => s + (parseFloat(v.number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec) || 0), 0)
+                ),
+                backgroundColor: catInfo.color
+            };
+        });
+        createChart('violationsChart', 'bar', { labels: violYears, datasets: violDatasets }, { scales: { x: { stacked: true }, y: { stacked: true } } });
+        // --- [FIX END] ---
 
         const shopsYears = [...new Set(dataStore.shops.map(r => String(parseInt(r.year))))].sort();
         const shopsData = shopsYears.map(y => dataStore.shops.filter(r => String(parseInt(r.year)) === y).reduce((s, c) => s + (parseFloat(c.number_of_shops_visited) || 0), 0));
@@ -437,14 +455,29 @@
         const confData = aggregateByMonth(dataStore.confiscated, 'confiscated_food_and_health_products_kg');
         createChart('confiscatedChart', 'line', { labels: months, datasets: [{ label: currentLang === 'ar' ? 'المصادرات (كجم)' : 'Confiscated (kg)', data: confData, borderColor: '#ffc107', backgroundColor: 'rgba(255,193,7,0.3)', fill: true }]});
         
-        const violData = dataStore.violations.filter(r => String(parseInt(r.year)) === year && r.category_en !== 'Shops' && r.category_en !== 'Houses');
-        const violCats = [...new Set(violData.map(r => currentLang === 'ar' ? r.category_ar : r.category_en).filter(Boolean))];
-        const violDatasets = violCats.map((cat, i) => ({
-            label: cat,
-            data: aggregateByMonth(violData, 'number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec', currentLang === 'ar' ? 'category_ar' : 'category_en', cat),
-            backgroundColor: ['#007bff','#28a745','#dc3545','#ffc107','#6f42c1','#10b981','#eab308'][i % 7]
-        }));
+        // --- [FIX START] Corrected logic for violations chart (Single Year) ---
+        const violDataForYear = dataStore.violations.filter(r => String(parseInt(r.year)) === year);
+        const violDatasets = violCatKeys.map(catEn => {
+            const catInfo = VIOLATION_CATEGORIES[catEn];
+            const monthlyData = Array(12).fill(0);
+
+            violDataForYear.forEach(r => {
+                if (r.category_en === catEn || r.category_ar === catInfo.ar) {
+                    const monthIndex = monthMapEn[r.month_en];
+                    if (monthIndex !== undefined) {
+                        monthlyData[monthIndex] += parseFloat(r.number_of_violations_and_cleanliness_issued_by_waste_management_public_higiene_sec) || 0;
+                    }
+                }
+            });
+
+            return {
+                label: currentLang === 'ar' ? catInfo.ar : catEn,
+                data: monthlyData,
+                backgroundColor: catInfo.color
+            };
+        });
         createChart('violationsChart', 'bar', { labels: months, datasets: violDatasets }, { scales: { x: { stacked: true }, y: { stacked: true } } });
+        // --- [FIX END] ---
 
         const shopsData = aggregateByMonth(dataStore.shops, 'number_of_shops_visited');
         createChart('shopsChart', 'line', { labels: months, datasets: [{ label: currentLang === 'ar' ? 'عدد المحلات' : 'Shops Visited', data: shopsData, borderColor: '#17a2b8', fill: false, tension: 0.3 }]});

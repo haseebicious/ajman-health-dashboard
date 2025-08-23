@@ -4,7 +4,7 @@
 **Supervised by: Prof. Mohamed Deriche**
 *Ajman University*
 
-A dynamic, bilingual, and interactive dashboard built for the **Ajman Data Visualization Challenge 2025**. This project transforms official open data into a powerful tool for citizens, policymakers, and researchers to explore and understand the landscape of public health and food safety in Ajman.
+A dynamic, bilingual, and interactive dashboard built for the **Ajman Data Visualization Challenge 2025**. This project transforms official open data into a powerful tool for citizens, policymakers, and researchers to explore the landscape of public health and food safety in Ajman.
 
 [![Language: English/العربية](https://img.shields.io/badge/Language-English%20%2F%20%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-blue.svg)](https://haseebicious.github.io/ajman-health-dashboard/) [![Tech: HTML/CSS/JS](https://img.shields.io/badge/Tech-HTML%20%2F%20CSS%20%2F%20JS-orange.svg)](https://github.com/haseebicious/ajman-health-dashboard) [![Library: Chart.js](https://img.shields.io/badge/Library-Chart.js-red.svg)](https://www.chartjs.org/) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
@@ -14,17 +14,17 @@ A dynamic, bilingual, and interactive dashboard built for the **Ajman Data Visua
 
 ## 🌟 Key Features
 
-This dashboard was engineered to be more than just a static report. It's an interactive journey through Ajman's public health data, designed with the user in mind.
+This dashboard is more than just a static report; it's an interactive journey through Ajman's public health data, designed with the user in mind.
 
-*   **Interactive Year-Based Filtering:** A central dropdown control allows users to filter the entire dashboard by a specific year or view trends across all available years. This instantly tailors the data to the user's analytical needs.
-*   **Dual-Mode Visualizations:** The charts are intelligently designed to be responsive to the year filter:
-    *   **All Years View:** Displays powerful year-over-year trend lines, perfect for long-term strategic analysis.
-    *   **Single Year View:** Automatically pivots the data to a detailed month-by-month breakdown, ideal for identifying seasonal patterns and short-term impacts.
-*   **Seamless Bilingual Interface:** With a single click, the entire dashboard—from titles and labels to narratives and insights—flips between **English** and **Arabic (العربية)**, ensuring accessibility for all users.
-*   **At-a-Glance KPI Metrics:** Key performance indicators are presented in clear, concise metric cards at the top, providing an immediate summary of the selected time period.
-*   **Fully Responsive Design:** The dashboard is meticulously crafted to provide a seamless experience on any device, from a large desktop monitor to a smartphone.
+*   **Interactive Year-Based Filtering:** A central dropdown allows users to filter the entire dashboard by a specific year or view trends across all available years.
+*   **Dual-Mode Visualizations:** The charts intelligently respond to the year filter:
+    *   **All Years View:** Displays year-over-year trend lines, perfect for long-term strategic analysis.
+    *   **Single Year View:** Pivots the data to a detailed month-by-month breakdown, ideal for identifying seasonal patterns.
+*   **Seamless Bilingual Interface:** With a single click, the entire dashboard—from titles and labels to narratives and insights—flips between **English** and **Arabic (العربية)**, making it accessible to both English and Arabic speakers.
+*   **At-a-Glance KPI Metrics:** Key performance indicators are presented in clear cards at the top, providing an immediate summary of the selected time period.
+*   **Fully Responsive Design:** The dashboard is carefully designed to provide a seamless experience on any device, from a desktop monitor to a smartphone.
 *   **Custom Bilingual Tooltips:** Rich, interactive tooltips provide detailed data points and are fully translated when switching between English and Arabic.
-*   **Verifiable and Credible Data:** To ensure full transparency and build trust, every chart includes a direct, clickable link to its original source on the official Ajman Data Portal.
+*   **Verifiable and Credible Data:** To ensure transparency, every chart includes a direct link to its original source on the official Ajman Data Portal.
 
 ---
 

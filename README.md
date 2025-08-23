@@ -65,7 +65,7 @@ All datasets are sourced directly from the official **Ajman Data Portal**. Each 
 | Shops Visited                                 | `data/shops-visited.json`                          | [Link](https://data.ajman.ae/explore/dataset/shops-visited/information/)                                        |
 
 ### Data Processing Note
-To improve visualization clarity, the "Shops" category within the "Warnings & Public Health Violations" dataset was excluded from its corresponding chart. This category contained null or zero values across all available years and its removal helps focus the analysis on more relevant data points.
+To improve visualization clarity, the "Shops" and "Houses" categories within the "Warnings & Public Health Violations" dataset were excluded from its corresponding chart. These categories contained null or zero values across all available years and their removal helps focus the analysis on more relevant data points.
 
 ---
 
@@ -171,7 +171,7 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for d
 | المحلات التي تمت زيارتها للتفتيش            | `data/shops-visited.json`                          | [الرابط](https://data.ajman.ae/explore/dataset/shops-visited/information/)                                     |
 
 ### ملاحظة حول معالجة البيانات
-لتحسين وضوح التصور البياني، تم استبعاد فئة "المحلات التجارية" من مجموعة بيانات "الإنذارات والمخالفات الصحية العامة" من الرسم البياني الخاص بها. احتوت هذه الفئة على قيم فارغة أو صفرية عبر جميع السنوات المتاحة، وتساعد إزالتها في تركيز التحليل على نقاط البيانات الأكثر صلة.
+لتحسين وضوح التصور البياني، تم استبعاد فئتي "المحلات التجارية" و "المنازل" من مجموعة بيانات "الإنذارات والمخالفات الصحية العامة" من الرسم البياني الخاص بها. احتوت هذه الفئات على قيم فارغة أو صفرية عبر جميع السنوات المتاحة، وتساعد إزالتها في تركيز التحليل على نقاط البيانات الأكثر صلة.
 
 ---
 

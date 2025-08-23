@@ -1,6 +1,8 @@
 # Ajman Health & Food Safety Dashboard
 
-**Created by Haseeb Juma | Ajman University**
+**Developed by: Haseebullah Jumakhan**
+**Supervised by: Prof. Mohamed Deriche**
+*Ajman University*
 
 A dynamic, bilingual, and interactive dashboard built for the **Ajman Data Visualization Challenge 2025**. This project transforms official open data into a powerful tool for citizens, policymakers, and researchers to explore and understand the landscape of public health and food safety in Ajman.
 
@@ -95,6 +97,15 @@ To explore this project on your local machine, follow these simple steps:
 
 ---
 
+## 👥 Development Team
+
+This dashboard was developed as part of the Ajman Data Visualization Challenge 2025.
+
+*   **Lead Developer:** Haseebullah Jumakhan ([202320029@ajmanuni.ac.ae](mailto:202320029@ajmanuni.ac.ae))
+*   **Supervising Professor:** Prof. Mohamed Deriche ([m.deriche@ajman.ac.ae](mailto:m.deriche@ajman.ac.ae))
+
+---
+
 ## 📜 License
 
 This project is licensed under the **MIT License**. See the `LICENSE` file for details.
@@ -106,7 +117,9 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for d
 
 # لوحة بيانات الصحة وسلامة الغذاء في عجمان (README.md - العربية)
 
-**إعداد: حسيب جمعة | جامعة عجمان**
+**تطوير: حسيب الله جمعة خان**
+**إشراف: أ.د. محمد دريش**
+*جامعة عجمان*
 
 لوحة بيانات تفاعلية ديناميكية وثنائية اللغة، تم إنشاؤها خصيصًا **لتحدي عجمان لتصوير البيانات 2025**. يقوم هذا المشروع بتحويل البيانات الرسمية المفتوحة إلى أداة قوية للمواطنين وصناع السياسات والباحثين لاستكشاف وفهم مشهد الصحة العامة وسلامة الغذاء في إمارة عجمان.
 
@@ -198,6 +211,15 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for d
     ```
 3.  **افتح ملف `index.html` في متصفحك:**
     يمكنك ببساطة النقر المزدوج على ملف `index.html`، أو إذا كنت تستخدم محرر أكواد مع خادم مباشر (مثل Live Server في VS Code)، فيمكنك تشغيله من خلاله.
+
+---
+
+## 👥 فريق التطوير
+
+تم تطوير لوحة البيانات هذه كجزء من تحدي عجمان لتصوير البيانات 2025.
+
+*   **المطور الرئيسي:** حسيب الله جمعة خان ([202320029@ajmanuni.ac.ae](mailto:202320029@ajmanuni.ac.ae))
+*   **الأستاذ المشرف:** أ.د. محمد دريش ([m.deriche@ajman.ac.ae](mailto:m.deriche@ajman.ac.ae))
 
 ---
 

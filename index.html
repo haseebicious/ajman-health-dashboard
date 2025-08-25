@@ -6,6 +6,7 @@
   <title>Ajman Health & Food Safety Dashboard</title>
   <link rel="icon" href="assets/ajman-data-logo.png" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-crosshair"></script>
   <style>
     body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #2c3e50; margin: 0; }
     .header { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); color: white; padding: 1.5rem 2rem; }
@@ -200,7 +201,7 @@
           "نشاط إصدار الشهادات الصحية للتصدير والبيطرية. عند عرض 'كل السنوات'، تتصدر شهادات التصدير المشهد، مما يعكس الرقابة القوية. لسنة واحدة، شاهد الاتجاهات الشهرية.",
           "نتائج اختبارات سلامة الأغذية: يُظهر الاتجاه طويل الأمد تحسنًا مستمرًا في العينات 'الصالحة'. التصفية حسب السنة تكشف عن الأنماط الموسمية في سلامة الأغذية.",
           "كميات المنتجات المصادرة تعكس فعالية الإنفاذ. غالبًا ما تتبع الارتفاعات زيادة في التفتيش أو حملات موجهة خلال أشهر أو سنوات معينة.",
-          "تصدر معظم المخالفات للشركات. يمكن أن تُبرز التصفية حسب السنة تأثير حملات التوعية أو الإنفاذ الموجهة على أنواع المخخالفات.",
+          "تصدر معظم المخالفات للشركات. يمكن أن تُبرز التصفية حسب السنة تأثير حملات التوعية أو الإنفاذ الموجهة على أنواع المخالفات.",
           "يُظهر نشاط التفتيش نهج عجمان الوقائي للصحة وسلامة الغذاء، مع وجود ذروات غالبًا خلال الفترات عالية الخطورة أو حملات معينة."
         ],
         insightsTitle: "رؤى رئيسية ومحاذاة مع رؤية عجمان 2030",
@@ -242,7 +243,6 @@
         }
     };
 
-    // --- [FIX START] Define a static map for violation categories and their colors ---
     const VIOLATION_CATEGORIES = {
       'Personal':  { ar: 'الأفراد', color: '#007bff' },
       'Companies': { ar: 'الشركات', color: '#28a745' },
@@ -250,7 +250,6 @@
       'Land Plot': { ar: 'قطعة أرض', color: '#ffc107' }
     };
     const violCatKeys = Object.keys(VIOLATION_CATEGORIES);
-    // --- [FIX END] ---
     
     // --- DATA FETCHING AND INITIALIZATION ---
     Promise.all(Object.entries(files).map(([key, value]) =>
@@ -396,7 +395,6 @@
         const confData = confYears.map(y => dataStore.confiscated.filter(r => String(parseInt(r.year)) === y).reduce((s, c) => s + (parseFloat(c.confiscated_food_and_health_products_kg) || 0), 0));
         createChart('confiscatedChart', 'line', { labels: confYears, datasets: [{ label: currentLang === 'ar' ? 'المصادرات (كجم)' : 'Confiscated (kg)', data: confData, borderColor: '#ffc107', backgroundColor: 'rgba(255,193,7,0.3)', fill: true }]});
         
-        // --- [FIX START] Corrected logic for violations chart (All Years) ---
         const violSourceData = dataStore.violations;
         const violYears = [...new Set(violSourceData.map(r => String(parseInt(r.year))))].sort();
         const violDatasets = violCatKeys.map(catEn => {
@@ -412,7 +410,6 @@
             };
         });
         createChart('violationsChart', 'bar', { labels: violYears, datasets: violDatasets }, { scales: { x: { stacked: true }, y: { stacked: true } } });
-        // --- [FIX END] ---
 
         const shopsYears = [...new Set(dataStore.shops.map(r => String(parseInt(r.year))))].sort();
         const shopsData = shopsYears.map(y => dataStore.shops.filter(r => String(parseInt(r.year)) === y).reduce((s, c) => s + (parseFloat(c.number_of_shops_visited) || 0), 0));
@@ -455,7 +452,6 @@
         const confData = aggregateByMonth(dataStore.confiscated, 'confiscated_food_and_health_products_kg');
         createChart('confiscatedChart', 'line', { labels: months, datasets: [{ label: currentLang === 'ar' ? 'المصادرات (كجم)' : 'Confiscated (kg)', data: confData, borderColor: '#ffc107', backgroundColor: 'rgba(255,193,7,0.3)', fill: true }]});
         
-        // --- [FIX START] Corrected logic for violations chart (Single Year) ---
         const violDataForYear = dataStore.violations.filter(r => String(parseInt(r.year)) === year);
         const violDatasets = violCatKeys.map(catEn => {
             const catInfo = VIOLATION_CATEGORIES[catEn];
@@ -477,7 +473,6 @@
             };
         });
         createChart('violationsChart', 'bar', { labels: months, datasets: violDatasets }, { scales: { x: { stacked: true }, y: { stacked: true } } });
-        // --- [FIX END] ---
 
         const shopsData = aggregateByMonth(dataStore.shops, 'number_of_shops_visited');
         createChart('shopsChart', 'line', { labels: months, datasets: [{ label: currentLang === 'ar' ? 'عدد المحلات' : 'Shops Visited', data: shopsData, borderColor: '#17a2b8', fill: false, tension: 0.3 }]});
@@ -562,6 +557,20 @@
               tooltip: {
                 enabled: false,
                 external: externalTooltipHandler
+              },
+              crosshair: {
+                line: {
+                  color: '#6e7f98',
+                  width: 1
+                },
+                sync: {
+                  enabled: true,
+                  group: 1,
+                  suppressTooltips: false
+                },
+                zoom: {
+                    enabled: false
+                }
               }
             },
             scales: { y: { beginAtZero: true } },
@@ -580,7 +589,8 @@
               }
             }
         };
-        chartInstances.push(new Chart(ctx, { type, data, options: { ...defaultOptions, ...options } }));
+        const chart = new Chart(ctx, { type, data, options: { ...defaultOptions, ...options } });
+        chartInstances.push(chart);
     }
 
     function renderInsights() {

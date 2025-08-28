@@ -21,7 +21,6 @@ This dashboard is more than just a static report; it's an interactive journey th
     *   **All Years View:** Displays year-over-year trend lines, perfect for long-term strategic analysis.
     *   **Single Year View:** Pivots the data to a detailed month-by-month breakdown, ideal for identifying seasonal patterns.
 *   **Seamless Bilingual Interface:** With a single click, the entire dashboard—from titles and labels to narratives and insights—flips between **English** and **Arabic (العربية)**, making it accessible to both English and Arabic speakers.
-*   **At-a-Glance KPI Metrics:** Key performance indicators are presented in clear cards at the top, providing an immediate summary of the selected time period.
 *   **Fully Responsive Design:** The dashboard is carefully designed to provide a seamless experience on any device, from a desktop monitor to a smartphone.
 *   **Custom Bilingual Tooltips:** Rich, interactive tooltips provide detailed data points and are fully translated when switching between English and Arabic.
 *   **Verifiable and Credible Data:** To ensure transparency, every chart includes a direct link to its original source on the official Ajman Data Portal.
@@ -138,7 +137,6 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for d
     *   **عرض جميع السنوات:** يعرض اتجاهات سنوية قوية، وهو مثالي للتحليل الاستراتيجي طويل الأمد.
     *   **عرض سنة واحدة:** يحول البيانات تلقائيًا إلى تفصيل شهري، مما يجعله مثاليًا لتحديد الأنماط الموسمية والتأثيرات قصيرة المدى.
 *   **واجهة ثنائية اللغة بالكامل:** بنقرة واحدة، تتحول لوحة البيانات بأكملها — من العناوين والتسميات إلى الشروحات والأفكار — بين **الإنجليزية** و**العربية**، مما يضمن سهولة الوصول لجميع المستخدمين.
-*   **مؤشرات أداء رئيسية سريعة:** تُعرض مؤشرات الأداء الرئيسية في بطاقات واضحة وموجزة في الأعلى، مما يوفر ملخصًا فوريًا للفترة الزمنية المحددة.
 *   **تصميم متجاوب بالكامل:** تم تصميم لوحة البيانات بعناية لتوفر تجربة سلسة على أي جهاز، من شاشات سطح المكتب الكبيرة إلى الهواتف الذكية.
 *   **تلميحات أدوات مخصصة ثنائية اللغة:** توفر تلميحات الأدوات التفاعلية والغنية نقاط بيانات مفصلة وتتم ترجمتها بالكامل عند التبديل بين اللغتين الإنجليزية والعربية.
 *   **بيانات موثوقة ومُثبتة المصدر:** لضمان الشفافية الكاملة وبناء الثقة، يتضمن كل رسم بياني رابطًا مباشرًا وقابلاً للنقر إلى مصدره الأصلي على بوابة بيانات عجمان الرسمية.
